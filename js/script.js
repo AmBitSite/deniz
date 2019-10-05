@@ -5,11 +5,11 @@ if (test) {
         test1.innerText = test.value;
     })
 }
-var test3 = document.querySelector(".test");
+
 var arrMoney =['CNY','CHF','GBP','USD', 'TRY'];
 var moneyName = document.querySelectorAll(".info-converter-row__name");
 var moneyValue = document.querySelectorAll(".info-converter-row__value");
-test3.addEventListener('click', ()=>{
+
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = false;
     xhr.addEventListener("readystatechange", function () {
@@ -23,4 +23,4 @@ test3.addEventListener('click', ()=>{
     });
     xhr.open("GET", "https://api.exchangeratesapi.io/latest?base=EUR", true);
     xhr.send()
-})
+
