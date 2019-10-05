@@ -15,7 +15,7 @@ test3.addEventListener('click', ()=>{
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === this.DONE) {
             // console.log(this.responseText)
-            for(var i = 0; i<=moneyName.length; i++){
+            for(var i = 0; i<moneyName.length; i++){
                 moneyName[i].innerText = arrMoney[i]
                 moneyValue[i].innerText=JSON.parse(this.responseText).rates[arrMoney[i]]
             }
