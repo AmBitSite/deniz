@@ -224,34 +224,35 @@ a {
     color: #fff;
     text-transform: uppercase
 }
-
-.last-nav-wrap__item_banking {
+.last-nav-wrap__link_banking:hover {
+    color: #D63347;
+}
+.last-nav-wrap__item_banking{
     position: relative;
     z-index: 2;
 }
+.test{
+    
+}
 .last-nav-wrap__item_banking:hover {
+    box-sizing: content-box;
     background-color: #fff;
-    top: 10px;
-    height: 30px;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
     border-left: 2px solid #db4357;
 }
-.last-nav-wrap__item_banking:hover>a {
+.last-nav-wrap__item_banking:hover>.last-nav-wrap__item>.last-nav-wrap__link_banking {
     color: #D63347;
-    position: relative;
-    top: -5px;
 }
-.last-nav-wrap__item_banking:hover+.drop-list {
+.last-nav-wrap__item_banking:hover>.drop-list {
     visibility: visible;
 }
-
 .drop-list {
     visibility: hidden;
     position: absolute;
     width: 610px;
     height: 400px;
-    top: 50px;
+    top: 45px;
     left: 0px;
     list-style: none;
     margin: 0;
@@ -275,9 +276,6 @@ a {
 }
 .drop-list_link{
     color:#D63347;
-}
-.hidden{
-    visibility: hidden
 }
 .drop-list_link-Expat:hover>ul{
     visibility: visible;
