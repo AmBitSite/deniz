@@ -5,10 +5,12 @@ if (test) {
         test1.innerText = test.value;
     })
 }
+var tast3 = document.querySelector(".test");
 var arrMoney =['CNY','CHF','GBP','USD', 'TRY'];
 var moneyName = document.querySelectorAll(".info-converter-row__name");
 var moneyValue = document.querySelectorAll(".info-converter-row__value");
-var xhr = new XMLHttpRequest();
+test3.addEventListener('click', ()=>{
+    var xhr = new XMLHttpRequest();
     xhr.withCredentials = false;
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === this.DONE) {
@@ -20,3 +22,4 @@ var xhr = new XMLHttpRequest();
     });
     xhr.open("GET", "http://data.fixer.io/api/latest?access_key=645238903eda58c949c022307aa13dcc", true);
     xhr.send()
+})
