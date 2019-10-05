@@ -21,6 +21,6 @@ test3.addEventListener('click', ()=>{
             // }
         }
     });
-    xhr.open("GET", "https://api.exchangeratesapi.io/latest?base=USD", true);
+    xhr.open("GET", "https://api.exchangeratesapi.io/latest?base=EUR", true);
     xhr.send()
 })
