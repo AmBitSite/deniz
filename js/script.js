@@ -5,7 +5,7 @@ if (test) {
         test1.innerText = test.value;
     })
 }
-var tast3 = document.querySelector(".test");
+var test3 = document.querySelector(".test");
 var arrMoney =['CNY','CHF','GBP','USD', 'TRY'];
 var moneyName = document.querySelectorAll(".info-converter-row__name");
 var moneyValue = document.querySelectorAll(".info-converter-row__value");
