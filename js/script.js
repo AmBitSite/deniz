@@ -14,10 +14,11 @@ test3.addEventListener('click', ()=>{
     xhr.withCredentials = false;
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === this.DONE) {
-            for(var i = 0; i<=moneyName.length; i++){
-                moneyName[i].innerText = arrMoney[i]
-                moneyValue[i].innerText=JSON.parse(this.responseText).rates[arrMoney[i]]
-            }
+            console.log(this.responseText)
+            // for(var i = 0; i<=moneyName.length; i++){
+            //     moneyName[i].innerText = arrMoney[i]
+            //     moneyValue[i].innerText=JSON.parse(this.responseText).rates[arrMoney[i]]
+            // }
         }
     });
     xhr.open("POST", "https://data.fixer.io/api/latest?access_key=645238903eda58c949c022307aa13dcc", true);
