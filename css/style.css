@@ -232,11 +232,6 @@ a {
     z-index: 3;
     top:2px;
 }
-.last-nav-wrap__item_drop:hover{
-    position: relative;
-    /* border-bottom: 2px solid #fff;
-    z-index: 4; */
-}
 
 .last-nav-wrap__item_banking:hover {
     margin:0;
