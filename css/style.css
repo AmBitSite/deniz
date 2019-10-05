@@ -75,6 +75,7 @@ a {
     background-image: url(../img/logo1.png);
     background-size: 100%;
     background-repeat: no-repeat;
+    margin-right: 10px;
 }
 
 .second-nav-search {
