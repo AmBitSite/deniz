@@ -20,6 +20,6 @@ test3.addEventListener('click', ()=>{
             }
         }
     });
-    xhr.open("POST", "http://data.fixer.io/api/latest?access_key=645238903eda58c949c022307aa13dcc", true);
+    xhr.open("POST", "https://data.fixer.io/api/latest?access_key=645238903eda58c949c022307aa13dcc", true);
     xhr.send()
 })
