@@ -21,6 +21,6 @@ test3.addEventListener('click', ()=>{
             // }
         }
     });
-    xhr.open("GET", "https://api.exchangeratesapi.io/history?start_at=2018-01-01&end_at=2018-09-01&symbols=ILS,JPY", true);
+    xhr.open("GET", "https://api.exchangeratesapi.io/latest?base=USD", true);
     xhr.send()
 })
