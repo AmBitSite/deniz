@@ -2,12 +2,10 @@
     src: url(../font/FluxRegular.otf);
     font-family: "Flux";
 }
-
 body {
     margin: 0;
     padding: 0;
 }
-
 ul {
     padding: 0;
     margin: 0;
@@ -16,7 +14,6 @@ ul {
 a {
     text-decoration: none;
 }
-
 .main {
     background-color: #e2f2f5;
     font-family: 'PT Sans', sans-serif;
@@ -24,7 +21,6 @@ a {
     flex-direction: column;
     align-items: center;
 }
-
 .header {
     display: flex;
     flex-direction: column;
@@ -35,7 +31,6 @@ a {
     background-repeat: no-repeat;
     width: 100%
 }
-
 .nav {
     width: 995px;
     height: 40px;
