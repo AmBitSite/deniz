@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main class="main">
+        <nav class="nav">
+        </nav>
+        <header class="header fees-bg">
+            <div class="second-nav">
+                <a href="index.html" class="second-nav__logo"></a>
+                <div class="second-nav-search">
+                    <input class="second-nav-search__input" type="text" placeholder="Search">
+                    <button class="second-nav-search__btn"></button>
+                </div>
+                @@include('block-login.html')
+            </div>
+            @@include('header-nav.html')
+        </header>
+        <section class="section box">
+            <div class="section__header box">
+                <div class="section__header-text box">Our Fees</div>
+            </div>
+            <ul class="section__nav box">
+                <li class="section__nav-item box"><a href="">Home Page</a></li>
+                <li class="section__nav-item box">Our Fees</li>
+            </ul>
+            </div>
+            <div class="table">
+                <div class="fees-table">
+                    <div class="fees-table-row">
+                        <div class="fees-table-line">
+                            <span class="fees-table-line__text">Corporate account set up</span>
+                            <span class="fees-table-line__second-text">1000 Euro</span>
+                        </div>
+                    </div>
+                    <div class="fees-table-row">
+                        <div class="fees-table-line">
+                            <span class="fees-table-line__text">Personal account set up</span>
+                            <span class="fees-table-line__second-text">500 Euro</span>
+                        </div>
+                    </div>
+                    <div class="fees-table-row">
+                        <div class="fees-table-line">
+                            <span class="fees-table-line__text">Dedicated SEPA IBAN account (Euro
+                                currency only)</span>
+                            <span class="fees-table-line__second-text">✓ *terms apply</span>
+                        </div>
+                    </div>
+                    <div class="fees-table-row">
+                        <div class="fees-table-line">
+                            <span class="fees-table-line__text">Dedicated SWIFT account (Multiple
+                                currencies)</span>
+                            <span class="fees-table-line__second-text">✓ *terms apply</span>
+                        </div>
+                    </div>
+                    <div class="fees-table-row">
+                        <div class="fees-table-line">
+                            <span class="fees-table-line__text">Incoming/Outgoing transfer </span>
+                            <span class="fees-table-line__second-text">0.5 %</span>
+                        </div>
+                    </div>
+                    <div class="fees-table-row">
+                        <div class="fees-table-line">
+                            <span class="fees-table-line__text">Express transfer </span>
+                            <span class="fees-table-line__second-text">0.8%</span>
+                        </div>
+                    </div>
+                    <div class="fees-table-row">
+                        <div class="fees-table-line">
+                            <span class="fees-table-line__text">Transfers within Cleveland Bank</span>
+                            <span class="fees-table-line__second-text">Free</span>
+                        </div>
+                    </div>
+                    <div class="fees-table-row">
+                        <div class="fees-table-line">
+                            <span class="fees-table-line__text">Personal Banker </span>
+                            <span class="fees-table-line__second-text">40 Euro per month</span>
+                        </div>
+                    </div>
+                    <div class="fees-table-row">
+                        <div class="fees-table-line">
+                            <span class="fees-table-line__text">Cash collection </span>
+                            <span class="fees-table-line__second-text">4%</span>
+                        </div>
+                    </div>
+                    <div class="fees-table-row">
+                        <div class="fees-table-line">
+                            <span class="fees-table-line__text">Cheque clearance</span>
+                            <span class="fees-table-line__second-text">200 Euro</span>
+                        </div>
+                    </div>
+                    <div class="fees-table-row">
+                        <div class="fees-table-line">
+                            <span class="fees-table-line__text">Account closure </span>
+                            <span class="fees-table-line__second-text">500 Euro</span>
+                        </div>
+                    </div>
+                </div>
+                <span class="fees-account">*Account set up fees are paid only once</span>
+                <div class="fees-second-table">
+                    <span class="fees-second-table__caption">Debit cards fees:</span>
+                    <div class="fees-table">
+                        <div class="fees-table-row">
+                            <div class="fees-table-line">
+                                <span class="fees-table-line__text">Card issue</span>
+                                <span class="fees-table-line__second-text">350 Euro</span>
+                            </div>
+                        </div>
+                        <div class="fees-table-row">
+                            <div class="fees-table-line">
+                                <span class="fees-table-line__text">Card top up</span>
+                                <span class="fees-table-line__second-text">2 %</span>
+                            </div>
+                        </div>
+                        <div class="fees-table-row">
+                            <div class="fees-table-line">
+                                <span class="fees-table-line__text"></span>
+                                <span class="fees-table-line__second-text"></span>
+                            </div>
+                        </div>
+                        <div class="fees-table-row">
+                            <div class="fees-table-line">
+                                <span class="fees-table-line__text"></span>
+                                <span class="fees-table-line__second-text"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        @@include('map-site.html')
+        @@include('footer-nav.html')
+        @@include('footer.html')
+    </main>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

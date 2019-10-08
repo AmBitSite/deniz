@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <main class="main">
+        <nav class="nav">
+        </nav>
+        <header class="header fees-bg">
+            <div class="second-nav">
+                <a href="index.html" class="second-nav__logo"></a>
+                <div class="second-nav-search">
+                    <input class="second-nav-search__input" type="text" placeholder="Search">
+                    <button class="second-nav-search__btn"></button>
+                </div>
+                @@include('block-login.html')
+            </div>
+            @@include('header-nav.html')
+        </header>
+        <section class="section box">
+            <div class="section__header box">
+                <div class="section__header-text box">About Us</div>
+            </div>
+            <ul class="section__nav box">
+                <li class="section__nav-item box"><a href="">Home Page</a></li>
+                <li class="section__nav-item box">About Us</li>
+            </ul>
+            <article class="about-us__text-block box clearfix">
+                <img src="img/aboutUs-content-image.jpg" alt="About Us" class="about-us__text-block-img  box">
+                <h2 class="about-us__text-block-header box">From a single bank to a large financial services group </h2>
+                <span class="about-us__text box">
+                    Cleveland International Banking Unit Ltd. Is a financial holding company with over $42 billion in
+                    total assets and a top 10 deposit market share in the Mideast based in North Cyprus. We offer
+                    secure asset management for corporate and individual clients worldwide since 1993.
+                </span>
+                <span class="about-us__text box">
+                    We focus on a consistent superior performance through our highly qualified personnel that helps our
+                    customers achieve their goals fast and secure. With great success we promote asset growth through
+                    our core deposits providing the best customer experience on the market
+                </span>
+                <span class="about-us__text box">
+                    As a well-capitalized Bank we correspond with leading financial organizations worldwide and
+                    establish routes in every jurisdiction
+                </span>
+                <span class="about-us__text box">
+                    Our aim is to provide banking solutions to majority of business activities and residents around the
+                    globe, double your assets by investing in prosperous markets and provide best interest rates
+                    possible.
+                </span>
+            </article>
+            <div class="about-us__table box">
+                <div class="about-us__table-row about-us__table-header box">
+                    <div class="about-us__table-column box">Benefits from banking with us:</div>
+                </div>
+                <div class="about-us__table-row box">
+                    <div class="about-us__table-column box">Free from CRS and FATCA regulations</div>
+                </div>
+                <div class="about-us__table-row box">
+                    <div class="about-us__table-column box">No transfer limits</div>
+                </div>
+                <div class="about-us__table-row box">
+                    <div class="about-us__table-column box">High interest rates</div>
+                </div>
+                <div class="about-us__table-row box">
+                    <div class="about-us__table-column box">Cash deposits</div>
+                </div>
+                <div class="about-us__table-row box">
+                    <div class="about-us__table-column box">Crypto friendly</div>
+                </div>
+                <div class="about-us__table-row box">
+                    <div class="about-us__table-column box">Multicurrency support </div>
+                </div>
+            </div>
+        </section>
+        @@include('map-site.html')
+        @@include('footer-nav.html')
+        @@include('footer.html')
+    </main>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <main class="main">
+        <nav class="nav">
+        </nav>
+        <header class="header fees-bg">
+            <div class="second-nav">
+                <a href="index.html" class="second-nav__logo"></a>
+                <div class="second-nav-search">
+                    <input class="second-nav-search__input" type="text" placeholder="Search">
+                    <button class="second-nav-search__btn"></button>
+                </div>
+                @@include('block-login.html')
+            </div>
+            @@include('header-nav.html')
+        </header>
+        <div class="block-caption section box">
+            <div class="section__header box">
+                <div class="section__header-text box">Special Solutions for Special People</div>
+            </div>
+            <ul class="section__nav box">
+                <li class="section__nav-item box"><a href="index.html">Home Page</a></li>
+                <li class="section__nav-item box"><a href="index.html">Banking</a></li>
+                <li class="section__nav-item box"><a href="index.html">Private Banking</a></li>
+                <li class="section__nav-item box">Special Solutions for Special People</li>
+            </ul>
+            <div class="services">
+                <div class="services-block">
+                    <div>
+                        <h2 class="services__header">DenizBank Private Banking products and services are directed at
+                            our clients with different investment expectations who will channel their savings in our
+                            bank (minimum 250,000 USD) into direct investment.</h2>
+                        <span class="services__text">
+                            DenizBank Private Banking products and services are especially designed for clients with
+                            different investment expectations who channel a minimum of USD 250.000, into direct
+                            investment.
+                        </span>
+                        <span class="services__text">
+                            As our Private Banking portfolio managers recommend investment products and solutions to
+                            help achieve your financial goals, they also share the information base and knowledge
+                            accumulation of experienced teams from DenizPortfolio, DenizInvest and
+                            other DenizBank subsidiaries specialized on financial markets.
+                        </span>
+                        <a href="#">Click here for more information</a>
+                    </div>
+                    <img class="services__img" src="img/special-solution-for-special-people.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        </div>
+        @@include('map-site.html')
+        @@include('footer-nav.html')
+        @@include('footer.html')
+    </main>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

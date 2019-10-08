@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style-busines-card.css">
+</head>
+
+<body>
+    <main class="main">
+        <nav class="nav">
+        </nav>
+        <header class="header fees-bg">
+            <div class="second-nav">
+                <a href="index.html" class="second-nav__logo"></a>
+                <div class="second-nav-search">
+                    <input class="second-nav-search__input" type="text" placeholder="Search">
+                    <button class="second-nav-search__btn"></button>
+                </div>
+                @@include('block-login.html')
+            </div>
+            @@include('header-nav.html')
+        </header>
+        <section class="section box">
+            <div class="section__header box">
+                <div class="section__header-text box">BUSINES CARD</div>
+            </div>
+            <ul class="section__nav box">
+                <li class="section__nav-item box"><a href="">Home Page</a></li>
+                <li class="section__nav-item box">Busines Card</li>
+            </ul>
+            <article class="busines-card-content box">
+                <div class="busines-card-content__image-contanier box">
+                    <img src="img/busines-card-image.png" alt="busines card" class="busines-card-content__image">
+                </div>
+                <h2 class="busines-card-content__header box">SME CARD</h2>
+                <h2 class="busines-card-content__slogan box">
+                    SME Card is a loan management platform dedicated to SME’s.
+                    SME Card offers 4 different loan products under an umbrella limit.
+                </h2>
+                <div class="busines-card-content__text-block">
+                    <span class="busines-card-content__text">First in the World and Turkey </span>
+                    <span class="busines-card-content__text">4 Different Loan Products on One Card!</span>
+                    <ul>
+                        <li class="busines-card-content__text">For Emergency Payments : Overdraft</li>
+                        <li class="busines-card-content__text">Installments for all your cash needs : Installment Loan
+                        </li>
+                        <li class="busines-card-content__text">No Payments on periods where your sector’s income is low
+                            : Sectoral Loan</li>
+                        <li class="busines-card-content__text">For all your personal and business spending needs :
+                            Business Card</li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+        @@include('map-site.html')
+        @@include('footer-nav.html')
+        @@include('footer.html')
+    </main>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
