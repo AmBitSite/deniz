@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <main class="main">
+        @@include('nav-top.html')
+        <header class="header fees-bg">
+            <div class="second-nav">
+                <a href="index.html" class="second-nav__logo"></a>
+                <div class="second-nav-search">
+                    <input class="second-nav-search__input" type="text" placeholder="Search">
+                    <button class="second-nav-search__btn"></button>
+                </div>
+                @@include('block-login.html')
+            </div>
+            @@include('header-nav.html')
+            <div class="block-caption section box">
+                <div class="section__header box">
+                    <div class="section__header-text box">Savings Deposit Guarantee</div>
+                </div>
+                <ul class="section__nav box">
+                    <li class="section__nav-item box"><a href="index.html">Home Page</a></li>
+                    <li class="section__nav-item box"><a href="#">Wealth Managment</a></li>
+                    <li class="section__nav-item box"><a href="#">Deposit Products</a></li>
+                    <li class="section__nav-item box">Savings Deposit Guarantee</li>
+                </ul>
+                <div class="services">
+                    <div class="services-block">
+                        <div>
+                            <h2 class="services__header">Your savings deposit is safe and secure!</h2>
+                            <h3 class="services__header">Up to 100.000 TL of your savings is guaranteed by SDIF!</h3>
+
+                            <h2 class="services__header">In Domestic Branches;</h2>
+                            <p class="services__text">Accounts opened for real person, deposits that are not subject to
+                                commercial operations, TL, Foreign Exchange and precious metal deposit accounts are
+                                covered by insurance up to 100.000 TL per one real person in deposit bank.</p>
+
+                            <h2 class="services__header">Deposits out of Insurance Coverage;</h2>
+                            <p class="services__text">Deposits opened at foreign branches of deposit banks, deposits in
+                                credit companies that perform offshore banking activities in Turkey and abroad,
+                                excessive interest rates when maximum interest rate and total deposit declared to the
+                                public and pronounced to the Central Bank are above average interest rates of top five
+                                deposit banks are out insurance coverage.</p>
+
+                            <h2 class="services__header">Payments Related to Insurance Coverage;</h2>
+                            <p class="services__text">In case official authorization is revoked, payments related to
+                                insurance coverage are made in TL. Amount to be paid in the scope of insurance is
+                                defined considering total principal amount and rediscount of interest of the savings
+                                deposit account. TL equivalent of foreign exchange and gold deposit accounts are defined
+                                based on buying exchange rate of the Central Bank and closing price of Istanbul Gold
+                                Exchange (for gold accounts) for the date when official authorization of deposit bank is
+                                revoked.</p>
+
+                            <p class="services__text">Descriptions above are for information purpose and details are
+                                given in provisions of Regulation below:</p>
+
+                            <p class="services__text">“REGULATION ON PREMIUMS TO BE COLLECTED BY SAVINGS DEPOSIT
+                                INSURANCE FUND AND DEPOSIT AND PARTICIPATION FUNDS SUBJECT TO INSURANCE” was published
+                                in Official Gazette dated 07/11/2006 and numbered 26339.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @@include('map-site.html')
+            @@include('footer-nav.html')
+            @@include('footer.html')
+    </main>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

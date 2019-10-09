@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <main class="main">
+        @@include('nav-top.html')
+        <header class="header fees-bg">
+            <div class="second-nav">
+                <a href="index.html" class="second-nav__logo"></a>
+                <div class="second-nav-search">
+                    <input class="second-nav-search__input" type="text" placeholder="Search">
+                    <button class="second-nav-search__btn"></button>
+                </div>
+                @@include('block-login.html')
+            </div>
+            @@include('header-nav.html')
+            <div class="block-caption section box">
+                <div class="section__header box">
+                    <div class="section__header-text box">Treasury Bills/ Government Bonds</div>
+                </div>
+                <ul class="section__nav box">
+                    <li class="section__nav-item box"><a href="index.html">Home Page</a></li>
+                    <li class="section__nav-item box"><a href="#">Wealth Managment</a></li>
+                    <li class="section__nav-item box"><a href="#">Treasury</a></li>
+                    <li class="section__nav-item box">Treasury Bills</li>
+
+                </ul>
+                <div class="services">
+                    <div class="services-block">
+                        <div>
+                            <p class="services__text">These are Government Debt Securities in TL issued by the Republic
+                                of Turkey Undersecretariat of Treasury. Treasury Bills have terms less than a year while
+                                Government Bonds have terms for a year or more. </p>
+                            <p class="services__text">If you wish to capitalize on your investments on medium or long
+                                term and receive a secure return, you can invest in Treasury Bills and Government Bonds.
+                            </p>
+                            <h2 class="services__header">Features</h2>
+                            <ul class="services__text">
+                                <li>They can be issued as discounted or with coupon payments on fixed or variable
+                                    interest. </li>
+                                <li>They guarantee a certain return when they are maintained until the end of the term.
+                                </li>
+                                <li>They have high liquidity. There is a secondary market. When the investment is
+                                    required to convert into cash without waiting the end of term, the market conditions
+                                    of that day are taken as basis. </li>
+                                <li>10 % stoppage applies to purchase and sales returns and interest incomes received on
+                                    Government Debt Securities issued after 01.01.2006. </li>
+                            </ul>
+                            <h2 class="services__header">How can I carry out a transaction?</h2>
+                            <ul class="services__text">
+                                <li>You only need to have a Demand Deposit Account at DenizBank to make Treasury Bills
+                                    and Government Bonds transactions. </li>
+                                <li>You can realize sales between 09:30-13:30 and purchases between 09:30 – 14:00.</li>
+                                <li>You can easily make transactions via our Branches and DenizBank internet Branch.
+                                </li>
+                                <li>In order to realize a buy/sell transaction of Treasury Bills/ Government Bonds, the
+                                    minimum limit is 50 Nominal TL and multiples of 5 Nominal TL.</li>
+                                <li>You can participate in bills and bonds tenders opened by the Treasury via our Bank.
+                                    The minimum participation in the tenders is TL 30.000 Nominal and multiples of TL
+                                    10.000 Nominal. </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            @@include('map-site.html')
+            @@include('footer-nav.html')
+            @@include('footer.html')
+    </main>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

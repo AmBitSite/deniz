@@ -15,6 +15,7 @@ ul {
 a {
     text-decoration: none;
 }
+
 .main {
     background-color: #e2f2f5;
     font-family: 'PT Sans', sans-serif;
@@ -268,6 +269,9 @@ a {
     border:2px solid #ce293a;
     z-index: 1;
 }
+.drop-list_wealth-width{
+    width: 675px;
+}
 
 .drop-list:hover{
     visibility: visible;
@@ -296,6 +300,23 @@ a {
     background-color: #c2c2c2;
     border-top-right-radius: 6px;
 }
+.drop-list_link-Expat-wrap-width{
+    width: 465px;
+    display: flex;
+}
+.drop-list_link-Expat-wrap-width>div{
+    display: flex;
+    flex-direction: column;
+}
+.drop-list_link-Expat-wrap-width>div>li{
+    margin-bottom: 10px;
+    margin-left:20px;
+}
+.drop-list_link-Expat-wrap-w-464{
+    width:464px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
 .drop-list_link-Expat-list_start:hover>ul{
     visibility: visible
 }
@@ -304,6 +325,9 @@ a {
     height: 30px;
     padding-left: 20px;
     padding-top: 10px;
+}
+.drop-list_link-Expat-wrap-width>li{
+    width: 200px;
 }
 ul{
     list-style: none;
@@ -457,6 +481,7 @@ ul{
 .info {
     width: 995px;
     height: 277px;
+    margin-top: 50px;
     margin-bottom: 50px;
     display: flex;
     justify-content: space-between;
@@ -610,6 +635,16 @@ ul{
 
 .info-converter-row__value {}
 
+.info-converter-crypto-row{
+    display: flex;
+    height: 30px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #000;
+    margin-bottom: 5px;
+}
+.info-converter-crypto-row__name{}
+.info-converter-crypto-row__value{}
 .site-map {
     display: flex;
     width: 995px;
@@ -665,7 +700,7 @@ ul{
 }
 
 .footer {
-    height: 100px;
+    height: 115px;
 }
 
 .footer-block {
@@ -1243,4 +1278,11 @@ ul{
 	line-height: 26px;
 	font-weight: normal;
 	letter-spacing: 0;
+}
+.mt-0{
+    margin-top:0;
+}
+.width-block-news_link{
+    display: block;
+    border-bottom:2px solid #ce293a
 }

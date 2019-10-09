@@ -61,6 +61,7 @@ gulp.task("watch",(done)=>{
     });
     gulp.watch("src/css/*.css").on('change', gulp.series(['css:build',browserSync.reload]));
     gulp.watch("src/*.html").on('change', gulp.series(['html:build',browserSync.reload]));
+    gulp.watch("src/template/*.html").on('change', gulp.series(['html:build',browserSync.reload]));
     gulp.watch("src/img/*.*").on('change', gulp.series(['img:build',browserSync.reload]));
     gulp.watch("src/font/*.*").on('change', gulp.series(['font:build',browserSync.reload]));
     gulp.watch("src/js/*.js").on('change', gulp.series(['js:build',browserSync.reload]));

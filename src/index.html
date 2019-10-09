@@ -12,8 +12,7 @@
 
 <body>
     <main class="main">
-        <nav class="nav">
-        </nav>
+        @@include('nav-top.html')
         <header class="header">
             <div class="second-nav">
                 <a href="index.html" class="second-nav__logo"></a>
@@ -24,206 +23,111 @@
                 @@include('block-login.html')
             </div>
             @@include('header-nav.html')
+
+            <section class="slider">
+                <div class="slider-wrap">
+                    <a class="slider-wrap-block slider-wrap__1" href="#" >
+                        <div class="slider-wrap-block-lelft">
+                            <h2 class="slider-wrap-block__header">Mortgage for Foreigners</h2>
+                            <span class="slider-wrap-block__text">We Finance your Dream</span>
+                            <button class="slider-wrap-block__btn">DETAILS</button>
+                        </div>
+                        <img class="slider-wrap-block__img" src="img/mortgage-1.png" alt="">
+                    </a>
+                    <a class="slider-wrap-block slider-wrap__2" href="#" style="display: none">
+                        <div class="slider-wrap-block-lelft">
+                            <h2 class="slider-wrap-block__header">Crypto Desk</h2>
+                            <span class="slider-wrap-block__text">Special Solutions for Special People</span>
+                            <button class="slider-wrap-block__btn">MORE INFORMATION</button>
+                        </div>
+                        <img class="slider-wrap-block__img" src="img/corporate_banking-1.png" alt="">
+                    </a>
+                    <a class="slider-wrap-block slider-wrap__3" href="#" style="display: none">
+                        <div class="slider-wrap-block-lelft">
+                            <h2 class="slider-wrap-block__header">Fatca/CRS</h2>
+                            <span class="slider-wrap-block__text">Web Deposit, the deposit that makes you earn with each
+                                click</span>
+                            <button class="slider-wrap-block__btn">DETAILS</button>
+                        </div>
+                        <img class="slider-wrap-block__img" src="img/web_deposit-1.png" alt="">
+                    </a>
+                </div>
+                <div class="slider-control">
+                    <div class="slider-control-block">
+                        <button class="slider-control__item slider-control__item_active">Corporate Banking</button>
+                    </div>
+                    <div class="slider-control-block">
+                        <button class="slider-control__item">Crypto Desk</button>
+                    </div>
+                    <div class="slider-control-block">
+                        <button class="slider-control__item">Fatca/CRS</button>
+                    </div>
+                </div>
+            </section>
         </header>
-        <section class="slider">
-            <div class="slider-wrap">
-                <a class="slider-wrap-block" href="#" style="display: none">
-                    <div class="slider-wrap-block-lelft">
-                        <h2 class="slider-wrap-block__header">Mortgage for Foreigners</h2>
-                        <span class="slider-wrap-block__text">We Finance your Dream</span>
-                        <button class="slider-wrap-block__btn">DETAILS</button>
-                    </div>
-                    <img class="slider-wrap-block__img" src="img/mortgage-1.png" alt="">
-                </a>
-                <a class="slider-wrap-block" href="#">
-                    <div class="slider-wrap-block-lelft">
-                        <h2 class="slider-wrap-block__header">Tailored Solutions for Your Business Needs</h2>
-                        <span class="slider-wrap-block__text">Special Solutions for Special People</span>
-                        <button class="slider-wrap-block__btn">MORE INFORMATION</button>
-                    </div>
-                    <img class="slider-wrap-block__img" src="img/corporate_banking-1.png" alt="">
-                </a>
-                <a class="slider-wrap-block" href="#" style="display: none">
-                    <div class="slider-wrap-block-lelft">
-                        <h2 class="slider-wrap-block__header">Double Your Gains with One Click</h2>
-                        <span class="slider-wrap-block__text">Web Deposit, the deposit that makes you earn with each
-                            click</span>
-                        <button class="slider-wrap-block__btn">DETAILS</button>
-                    </div>
-                    <img class="slider-wrap-block__img" src="img/web_deposit-1.png" alt="">
-                </a>
-            </div>
-            <div class="slider-control">
-                <div class="slider-control-block">
-                    <button class="slider-control__item slider-control__item_active">Corporate Banking</button>
-                </div>
-                <div class="slider-control-block">
-                    <button class="slider-control__item">Corporate Banking</button>
-                </div>
-                <div class="slider-control-block">
-                    <button class="slider-control__item">Web Deposit</button>
-                </div>
-            </div>
-        </section>
         <section class="info">
-            <div class="info-column">
-                <div class="info-calculator">
-                    <a class="info-calculator-block" href="#">
-                        <div class="info-calculator__img info-calculator__img_1"></div>
-                        <div class="info-calculator-block-text">
-                            <span class="info-calculator__text info-calculator__text_active">CALCULATION</span>
-                            <span class="info-calculator__text info-calculator__text_active">TOOLS</span>
-                        </div>
-                    </a>
-                    <a class="info-calculator-block" href="#">
-                        <img class="info-calculator__img info-calculator__img_2" src="" alt="">
-                        <div class="info-calculator-block-text">
-                            <span class="info-calculator__text">Personal</span>
-                            <span class="info-calculator__text">Loan</span>
-                        </div>
-                    </a>
-                    <a class="info-calculator-block" href="#">
-                        <div class="info-calculator__img info-calculator__img_3"></div>
-                        <div class="info-calculator-block-text">
-                            <span class="info-calculator__text">installment Cash</span>
-                            <span class="info-calculator__text">Advence</span>
-                        </div>
-                    </a>
-                    <a class="info-calculator-block" href="#">
-                        <div class="info-calculator__img info-calculator__img_4"></div>
-                        <div class="info-calculator-block-text">
-                            <span class="info-calculator__text">Deposit</span>
-                            <span class="info-calculator__text">Return</span>
-                        </div>
-                    </a>
-                    <a class="info-calculator-block" href="#">
-                        <div class="info-calculator__img info-calculator__img_5"></div>
-                        <div class="info-calculator-block-text">
-                            <span class="info-calculator__text">FX</span>
-                            <span class="info-calculator__text">Converter</span>
-                        </div>
-                    </a>
+            <div class="info-converter test">
+                <a class="info-news-block width-block-news_link" href="">
+                    <h4 class="services__header mt-0 width-block-news"></h4>
+                </a>
+                <a class="info-news-block width-block-news_link" href="">
+                    <h4 class="services__header mt-0 width-block-news"></h4>
+                </a>
+                <a class="info-news-block width-block-news_link" href="">
+                    <h4 class="services__header mt-0 width-block-news"></h4>
+                </a>
+                
+            </div>
+            <div class="info-converter">
+                <div class="info-converter-crypto-row">
+                    <span class="info-converter-crypto-row__name"></span>
+                    <span class="info-converter-crypto-row__value"></span>
                 </div>
-                <div class="info-news">
-                    <a class="info-news__link-header" href="#">News</a>
-                    <a class="info-news__link-text" href="#">The Announcement made by our Main Shareholder</a>
-                    <div class="info-news-control">
-                        <button class="info-news-control__prev"></button>
-                        <button class="info-news-control__next"></button>
-                    </div>
+                <div class="info-converter-crypto-row">
+                    <span class="info-converter-crypto-row__name"></span>
+                    <span class="info-converter-crypto-row__value"></span>
+                </div>
+                <div class="info-converter-crypto-row">
+                    <span class="info-converter-crypto-row__name"></span>
+                    <span class="info-converter-crypto-row__value"></span>
+                </div>
+                <div class="info-converter-crypto-row">
+                    <span class="info-converter-crypto-row__name"></span>
+                    <span class="info-converter-crypto-row__value"></span>
+                </div>
+                <div class="info-converter-crypto-row">
+                    <span class="info-converter-crypto-row__name"></span>
+                    <span class="info-converter-crypto-row__value"></span>
                 </div>
             </div>
             <div class="info-converter">
                 <div class="info-converter-row">
-                    <span class="info-converter-row__name">euro</span>
-                    <span class="info-converter-row__value">1111</span>
+                    <span class="info-converter-row__name"></span>
+                    <span class="info-converter-row__value"></span>
                 </div>
                 <div class="info-converter-row">
-                    <span class="info-converter-row__name">euro</span>
-                    <span class="info-converter-row__value">1111</span>
+                    <span class="info-converter-row__name"></span>
+                    <span class="info-converter-row__value"></span>
                 </div>
                 <div class="info-converter-row">
-                    <span class="info-converter-row__name">euro</span>
-                    <span class="info-converter-row__value">1111</span>
+                    <span class="info-converter-row__name"></span>
+                    <span class="info-converter-row__value"></span>
                 </div>
                 <div class="info-converter-row">
-                    <span class="info-converter-row__name">euro</span>
-                    <span class="info-converter-row__value">1111</span>
+                    <span class="info-converter-row__name"></span>
+                    <span class="info-converter-row__value"></span>
                 </div>
                 <div class="info-converter-row">
-                    <span class="info-converter-row__name">euro</span>
-                    <span class="info-converter-row__value">1111</span>
+                    <span class="info-converter-row__name"></span>
+                    <span class="info-converter-row__value"></span>
                 </div>
             </div>
         </section>
         </header>
-        <section class="site-map">
-            <ul class="site-map-wrap">
-                <li class="site-map-wrap__item site-map-wrap__item_active"><a
-                        class="site-map-wrap__link site-map-wrap__link_active" href="#">Banking</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Retail Banking</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Expat Banking</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Private Banking</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Business Banking</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Agriculture Banking</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Corporate Banking</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Commercial Banking</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Public Finance</a></li>
-            </ul>
-            <ul class="site-map-wrap">
-                <li class="site-map-wrap__item site-map-wrap__item_active"><a
-                        class="site-map-wrap__link site-map-wrap__link_active" href="#">Loans</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Personal Loans</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Business Loans</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Agriculture Loans</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Commercial Loans</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Corporate Loans</a></li>
-            </ul>
-            <ul class="site-map-wrap">
-                <li class="site-map-wrap__item site-map-wrap__item_active"><a
-                        class="site-map-wrap__link site-map-wrap__link_active" href="#">Credits Cards</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Retail Cards</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Commercial Cards</a></li>
-                <li class="site-map-wrap__item site-map-wrap__item_active"><a
-                        class="site-map-wrap__link site-map-wrap__link_active" href="#">Human
-                        Resources</a></li>
-            </ul>
-            <ul class="site-map-wrap">
-                <li class="site-map-wrap__item site-map-wrap__item_active"><a
-                        class="site-map-wrap__link site-map-wrap__link_active" href="#">Wealth Managements</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Investment Products</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Treasury</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Deposit Products</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Overview of Markets</a></li>
-            </ul>
-            <ul class="site-map-wrap">
-                <li class="site-map-wrap__item site-map-wrap__item_active"><a
-                        class="site-map-wrap__link site-map-wrap__link_active" href="#">Insurances</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Retail</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Business</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Agriculture</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Corporate</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Commercial</a></li>
-                <li class="site-map-wrap__item site-map-wrap__item_active"><a
-                        class="site-map-wrap__link site-map-wrap__link_active" href="#">Service Points</a></li>
-            </ul>
-            <ul class="site-map-wrap">
-                <li class="site-map-wrap__item site-map-wrap__item_active"><a
-                        class="site-map-wrap__link site-map-wrap__link_active" href="#">Dijital Deniz</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">Online Banking</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">fastPay</a></li>
-                <li class="site-map-wrap__item"><a class="site-map-wrap__link" href="#">MobilDeniz</a></li>
-            </ul>
-        </section>
-        <section class="footer-nav">
-            <ul class="footer-nav-wrap">
-                <li class="footer-nav-wrap__item"><a class="footer-nav-wrap__link" href="about.html">about us</a></li>
-                <li class="footer-nav-wrap__item"><a class="footer-nav-wrap__link" href="services.html">services</a>
-                </li>
-                <li class="footer-nav-wrap__item"><a class="footer-nav-wrap__link" href="fees.html">fees</a></li>
-                <li class="footer-nav-wrap__item"><a class="footer-nav-wrap__link" href="contact.html">contact us</a>
-                </li>
-            </ul>
-        </section>
-        <footer class="footer">
-            <div class="footer-block">
-                <div class="footer-block-left">
-                    <span class="footer-block-left__text">©2019 DenizBank. All rights reserved.</span>
-                    <div class="footer-block-link">
-                        <a class="footer-block__link footer-block__link_1" href="#"></a>
-                        <a class="footer-block__link footer-block__link_2" href="#"></a>
-                        <a class="footer-block__link footer-block__link_3" href="#"></a>
-                        <a class="footer-block__link footer-block__link_4" href="#"></a>
-                    </div>
-                </div>
-                <div class="footer-block-right">
-                    <span class="footer-block-right__text">
-                        Call the Contact Center
-                    </span>
-                    <a class="footer-block-right__link" href="tel:+00000000000">0000 000 0 000</a>
-                </div>
-            </div>
-        </footer>
+        @@include('map-site.html')
+        @@include('footer-nav.html')
+        @@include('footer.html')
+
     </main>
     <script src="js/script.js"></script>
 </body>
