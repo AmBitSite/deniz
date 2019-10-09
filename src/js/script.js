@@ -84,5 +84,4 @@ sliderControls.addEventListener("click", (e)=>{
             slideItem3.style.display = "flex";
         }
     }
-    console.log(e.target)
 })
