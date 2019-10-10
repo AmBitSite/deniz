@@ -108,6 +108,7 @@ a {
     background-position-x: right;
     background-position-y: -40px;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .second-nav-search__btn:active {
@@ -351,6 +352,7 @@ ul{
     height: 394px;
     display: flex;
     justify-content: space-between;
+    transition: all .3s;
 }
 
 .slider-wrap-block-lelft {
@@ -392,8 +394,11 @@ ul{
     font-size: 15px;
     padding: 13px 20px;
     letter-spacing: -1px;
+    cursor: pointer;
 }
-
+.slider-wrap-block__btn:hover{
+    background-color: #004e69
+}
 .slider-wrap-block__img {
     align-self: flex-end;
 }
@@ -476,6 +481,10 @@ ul{
     left: -70px;
     top: -14px;
     cursor: pointer;
+}
+.slider-control__item_active:active{
+    color:#fff;
+    background-color: #ce293a;
 }
 
 .info {
@@ -627,24 +636,36 @@ ul{
     height: 30px;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #000;
+    border-bottom:2px solid #ce293a;
     margin-bottom: 5px;
 }
 
-.info-converter-row__name {}
+.info-converter-row__name {
+    color: #0393af;
+    font-weight: bold;
+}
 
-.info-converter-row__value {}
+.info-converter-row__value {
+    color: #0393af;
+    font-weight: bold;
+}
 
 .info-converter-crypto-row{
     display: flex;
     height: 30px;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #000;
+    border-bottom:2px solid #ce293a;
     margin-bottom: 5px;
 }
-.info-converter-crypto-row__name{}
-.info-converter-crypto-row__value{}
+.info-converter-crypto-row__name{
+    color: #0393af;
+    font-weight: bold;
+}
+.info-converter-crypto-row__value{
+    color: #0393af;
+    font-weight: bold;
+}
 .site-map {
     display: flex;
     width: 995px;
@@ -696,7 +717,7 @@ ul{
 }
 
 .footer-nav-wrap__link:hover {
-    color: #000;
+    color: #ce293a;
 }
 
 .footer {
@@ -1285,4 +1306,10 @@ ul{
 .width-block-news_link{
     display: block;
     border-bottom:2px solid #ce293a
+}
+.width-block-news_link:hover{
+    border-bottom:2px solid #0393af;
+}
+.width-block-news_link:hover>h4{
+    color: #ce293a;
 }
