@@ -282,14 +282,18 @@ a {
     z-index: 5;
 }
 .drop-list_link{
-    color:#D63347;
+    color:#5a5a5a;
+    font-size: 14px;
+}
+.drop-list_link:hover{
+    color:#000;
 }
 .drop-list_link-Expat:hover>ul{
     visibility: visible;
-    background-color: #c2c2c2;
+    background-color: #f5f5f5;
 }
 .drop-list_link-Expat-list:hover{
-    background-color: #c2c2c2;
+    background-color: #f5f5f5;
 }
 .drop-list_link-Expat-wrap{
     visibility: hidden;
@@ -298,8 +302,13 @@ a {
     top:00px;
     width: 400px;
     height: 400px;
-    background-color: #c2c2c2;
+    background-color: #f5f5f5;
     border-top-right-radius: 6px;
+    list-style: inside;
+    list-style-image: url(../img/list-style.png);
+}
+.drop-list_link-Expat-wrap>li>a:hover{
+    color: #ce293a;
 }
 .drop-list_link-Expat-wrap-width{
     width: 465px;
