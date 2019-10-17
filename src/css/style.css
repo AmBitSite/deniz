@@ -126,8 +126,51 @@ a {
     right: 0;
     top: -87px;
     height: 122px;
+    transition: all .5s;
 }
+.internet-banking_height{
+    height: 200px;
+    z-index: 2;
+}
+.authorization{
+    
+}
+.authorization__input{
+    width:200px;
+    height: 25px;
+    border:none;
+    border-radius: 6px;
+    padding: 5px 13px;
+    margin-bottom: 10px;
+    font-size: 17px;
+    outline: none;
+}
+.authorization__input:focus::placeholder{
+    color:transparent;
+}
+.authorization-block-btn{
+    
+}
+.authorization-block__btn{
+    width: 108px;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: 'PT Sans', tahoma, sans-serif;
+    height: 42px;
+    background: linear-gradient(to bottom, #db4357 0, #ce293a 100%);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    outline: none;
+    cursor: pointer;
+}
+.authorization-block__btn-close{
+    background: linear-gradient(to bottom, #5a5a5a 0, #b2b2b2 100%);
+}
+.authorization-block__btn-enter{
 
+}
 .internet-banking__header {
     margin: 0;
     padding: 0;
