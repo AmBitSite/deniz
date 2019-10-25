@@ -39,6 +39,12 @@ gulp.task('js:build', (done) => {
 
     done();
 });
+gulp.task('file:build', (done) => {
+    gulp.src("src/pdf/*.*")
+        .pipe(gulp.dest("build/pdf"))
+
+    done();
+});
 
 gulp.task('build', (done) => {
         gulp.series(['css:build','html:build','img:build','font:build','js:build'])
@@ -65,6 +71,7 @@ gulp.task("watch",(done)=>{
     gulp.watch("src/img/*.*").on('change', gulp.series(['img:build',browserSync.reload]));
     gulp.watch("src/font/*.*").on('change', gulp.series(['font:build',browserSync.reload]));
     gulp.watch("src/js/*.js").on('change', gulp.series(['js:build',browserSync.reload]));
+    gulp.watch("src/pdf/*.*").on('change', gulp.series(['file:build',browserSync.reload]));
     done()
 })
 

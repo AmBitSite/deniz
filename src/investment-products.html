@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Investment Products</title>
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <main class="main">
+        @@include('nav-top.html')
+        <header class="header fees-bg">
+            <div class="second-nav">
+                <a href="index.html" class="second-nav__logo"></a>
+                <div class="second-nav-search">
+                    <input class="second-nav-search__input" type="text" placeholder="Search">
+                    <button class="second-nav-search__btn"></button>
+                </div>
+                @@include('block-login.html')
+            </div>
+            @@include('header-nav.html')
+        </header>
+        <div class="block-caption section box">
+            <div class="section__header box">
+                <div class="section__header-text box">Investment Products</div>
+            </div>
+            <ul class="section__nav box">
+                <li class="section__nav-item box"><a href="index.html">Home Page</a></li>
+                <li class="section__nav-item box"><a href="wealth-management.html">Wealth Managment</a></li>
+                <li class="section__nav-item box">Investment Products</li>
+            </ul>
+            <div class="services">
+                <div class="services-block">
+                    <div>
+                        <h2 class="services__header">The service of investment consulting is viable building a business.</h2>
+                        <span class="services__text">
+                            To those who are interested in maximizing their welfare we offer options for the most
+                            profitable investment of available funds. We provide a complex approach which includes
+                            assessing the investment attractiveness, development of investment program and increasing of
+                            its effectiveness, selection of a particular product. A selective formula is created for
+                            each of the client exclusively.
+                        </span>
+                        <span class="services__text">
+                            Our specialists have extensive practical experience and sufficient theoretical knowledge in the area to help you obtain best possible value and service.
+                        </span>
+                        <a href="contact.html">Click here for more information</a>
+                    </div>
+                    <img class="services__img" src="img/investment-consulting.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        @@include('map-site.html')
+        @@include('footer-nav.html')
+        @@include('footer.html')
+    </main>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
