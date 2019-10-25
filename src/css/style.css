@@ -269,15 +269,18 @@ h3, h4{
 
 .last-nav-wrap__link {
     color: #fff;
-    text-transform: uppercase
+    text-transform: uppercase;
+    font-size: 16px;
 }
 .last-nav-wrap__link_banking:hover {
     color: #D63347;
+    
+
 }
 .last-nav-wrap__item_banking{
     position: relative;
     z-index: 3;
-    top:2px;
+    top:0px;
 }
 
 .last-nav-wrap__item_banking:hover {
@@ -290,6 +293,7 @@ h3, h4{
     border-left: 2px solid #ce293a;
     border-right: 2px solid #ce293a;
     z-index: 4;
+    top:5px;
 }
 .last-nav-wrap__item_banking:hover>.last-nav-wrap__item_drop{
     position: relative;
@@ -1052,11 +1056,14 @@ ul{
 }
 
 .services__header {
-    color: #0393af;
+    color: #0393af !important;
     margin-bottom: 5px;
     margin-top: 20px;
+    font-size: 16px;
 }
-
+.services__header:hover {
+color:#ce293a!important;
+}
 .services__text {
     color: #6c6d6f;
     font-size: 12px;
