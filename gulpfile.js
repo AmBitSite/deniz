@@ -1,4 +1,3 @@
-
 var gulp = require('gulp'),
     cssmin = require('gulp-minify-css'),
     fileinclude = require('gulp-file-include'),
@@ -7,9 +6,9 @@ var gulp = require('gulp'),
 gulp.task('html:build', (done) => {
     gulp.src('src/*.html')
         .pipe(fileinclude({
-            prefix: '@@',
-            basepath: 'src/template/'
-          }))
+            prefix: "@@",
+            basepath: "src/template/"
+        }))
         .pipe(gulp.dest('build/'))
     done();
 });
@@ -47,7 +46,7 @@ gulp.task('file:build', (done) => {
 });
 
 gulp.task('build', (done) => {
-        gulp.series(['css:build','html:build','img:build','font:build','js:build'])
+    gulp.parallel(['css:build', 'html:build', 'img:build', 'font:build', 'js:build'])
     done();
 });
 gulp.task('serve', (done) => {
@@ -61,17 +60,16 @@ gulp.task('serve', (done) => {
     gulp.watch("src/js/*.js").on('change', gulp.series('js:build'));
     done()
 });
-gulp.task("watch",(done)=>{
+gulp.task("watch", (done) => {
     browserSync.init({
         server: "build/"
     });
-    gulp.watch("src/css/*.css").on('change', gulp.series(['css:build',browserSync.reload]));
-    gulp.watch("src/*.html").on('change', gulp.series(['html:build',browserSync.reload]));
-    gulp.watch("src/template/*.html").on('change', gulp.series(['html:build',browserSync.reload]));
-    gulp.watch("src/img/*.*").on('change', gulp.series(['img:build',browserSync.reload]));
-    gulp.watch("src/font/*.*").on('change', gulp.series(['font:build',browserSync.reload]));
-    gulp.watch("src/js/*.js").on('change', gulp.series(['js:build',browserSync.reload]));
-    gulp.watch("src/pdf/*.*").on('change', gulp.series(['file:build',browserSync.reload]));
+    gulp.watch("src/css/*.css").on('change', gulp.parallel(['css:build', browserSync.reload]));
+    gulp.watch("src/*.html").on('change', gulp.parallel(['html:build', browserSync.reload]));
+    gulp.watch("src/template/*.html").on('change', gulp.parallel(['html:build', browserSync.reload]));
+    gulp.watch("src/img/*.*").on('change', gulp.parallel(['img:build', browserSync.reload]));
+    gulp.watch("src/font/*.*").on('change', gulp.parallel(['font:build', browserSync.reload]));
+    gulp.watch("src/js/*.js").on('change', gulp.parallel(['js:build', browserSync.reload]));
+    gulp.watch("src/pdf/*.*").on('change', gulp.parallel(['file:build', browserSync.reload]));
     done()
 })
-
