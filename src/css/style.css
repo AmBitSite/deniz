@@ -1054,7 +1054,9 @@ ul{
     display: flex;
     margin-left: 15px;
 }
-
+.services-block_mr-25{
+    margin-right: 25px;
+}
 .services__header {
     color: #0393af !important;
     margin-bottom: 5px;
