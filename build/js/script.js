@@ -92,4 +92,6 @@ function runSlider() {
         }
     }, 3000);
 }
-window.onload = ()=>{runSlider()}
+if(!window.matchMedia("(max-width: 1000px)").matches){
+    window.onload = ()=>{runSlider()}
+}
