@@ -92,6 +92,3 @@ function runSlider() {
         }
     }, 3000);
 }
-if(!window.matchMedia("(max-width: 1000px)").matches){
-    window.onload = ()=>{runSlider()}
-}
