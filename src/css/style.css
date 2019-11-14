@@ -20,7 +20,7 @@ a {
 }
 
 h3, h4 {
-    color: #ce293a !important;
+    color: #ce293a;
 }
 
 .mt-30 {
@@ -1056,9 +1056,8 @@ ul {
 
 .about-us__text {
     margin-bottom: 15px;
-    font-family: tahoma, sans-serif;
-    font-size: 12px;
-    line-height: 18px;
+    font-family: 'PT Sans',sans-serif;
+    font-size: 16px;
     color: #6c6d6f;
 }
 
@@ -1131,15 +1130,15 @@ ul {
 }
 
 .services__header {
-    color: #0393af !important;
+    color: #0393af;
     margin-bottom: 5px;
     margin-top: 20px;
     font-size: 16px;
 }
 
-.services__header:hover {
+/* .services__header:hover {
     color: #ce293a!important;
-}
+} */
 
 .services__text {
     color: #6c6d6f;
