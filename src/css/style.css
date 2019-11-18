@@ -1204,7 +1204,7 @@ ul {
 }
 
 .block-caption__btn {
-    margin-top: 25px;
+    margin-top: 10px;
     background: linear-gradient(to bottom, #db4357 0, #ce293a 100%);
     color: #fff;
     height: 40px;
@@ -1213,7 +1213,6 @@ ul {
     border-radius: 6px;
     cursor: pointer;
     outline: none;
-    margin-left: 15px;
 }
 
 .block-caption__btn:hover {
