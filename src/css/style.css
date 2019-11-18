@@ -1088,6 +1088,8 @@ ul {
     min-width: 300px !important;
     height: 242px;
     float:left;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
 }
 
 .services-block-text {
