@@ -39,6 +39,9 @@ h4 {
 .jus-cont{
     justify-content: space-between;
 }
+.text-color_fff{
+    color:#fff;
+}
 .site-btn{
     background-color: #ce293a;
     padding:5px 15px;
@@ -1106,22 +1109,24 @@ ul {
     width: 955px;
     margin-left: 15px;
     margin-bottom: 30px;
-    border: 1px solid #0393af;
+    border: 1px solid #82CFD7;
     border-bottom: transparent;
 }
 
 .fees-table-row {
     display: flex;
-    border-bottom: 1px solid #0393af;
+    border-bottom: 1px solid #82CFD7;
 }
 
 .fees-table-row__item {
-    width: 33%;
+    width: 34%;
     display: flex;
     padding: 10px 5px;
     box-sizing: border-box;
 }
-
+.contact-table-colored-item{
+    background-color: #82CFD7;
+}
 .fees-table-row__item_width-100 {
     width: 100%
 }
@@ -1139,7 +1144,7 @@ ul {
 }
 
 .fees-table-row__item_border-right {
-    border-right: 1px solid #0393af;
+    border-right: 1px solid #82CFD7;
 }
 
 .fees__text_margin-25 {
@@ -1156,7 +1161,7 @@ ul {
     display: flex;
     width: 50%;
     height: 100%;
-    border-right: 1px solid #0393af;
+    border-right: 1px solid #52bac8;
     align-items: center;
     padding-left: 10px;
     color: #004f5f
