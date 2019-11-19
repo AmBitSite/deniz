@@ -150,8 +150,7 @@ h4 {
     background-position-x: right;
     background-position-y: -305px;
 }
-
-.internet-banking {
+.internet-bankings{
     border-radius: 0 0 8px 8px;
     width: 308px;
     text-align: center;
@@ -160,8 +159,12 @@ h4 {
     position: absolute;
     right: 0;
     top: -87px;
-    height: 122px;
+    height: auto;
     transition: all .5s;
+    z-index:6;
+}
+.internet-banking {
+    
 }
 
 .internet-banking_height {
@@ -169,8 +172,23 @@ h4 {
     z-index: 2;
 }
 
-.authorization {}
-
+.authorization {
+    position: relative;
+}
+.authorization__close{
+    position: absolute;
+    top:10px;
+    right: 10px;
+    border:0;
+    background-color: transparent;
+    cursor: pointer;
+    color:#5a5a5a;
+    transition: all .3s;
+    outline: none;
+}
+.authorization__close:hover{
+    color:#000;
+}
 .authorization__input {
     width: 200px;
     height: 25px;
@@ -193,7 +211,7 @@ h4 {
     font-weight: bold;
     font-size: 14px;
     font-family: 'PT Sans', tahoma, sans-serif;
-    height: 42px;
+    height: 32px;
     background: linear-gradient(to bottom, #db4357 0, #ce293a 100%);
     color: #fff;
     border: none;
@@ -201,13 +219,19 @@ h4 {
     letter-spacing: 1px;
     outline: none;
     cursor: pointer;
+    margin-top:10px;
+    margin-bottom:20px;
 }
 
 .authorization-block__btn-close {
-    background: linear-gradient(to bottom, #5a5a5a 0, #b2b2b2 100%);
+    background: linear-gradient(to bottom, #838282 0, #b2b2b2 100%);
 }
 
 .authorization-block__btn-enter {}
+
+.authorization__error_text{
+    color: #7f7f7f;
+}
 
 .internet-banking__header {
     margin: 0;
@@ -215,6 +239,11 @@ h4 {
     color: #0393af;
     font-size: 18px;
     padding: 10px 0 11px 0;
+}
+
+.authorization__error_text{
+    display: flex;
+    padding:18px 20px;
 }
 
 .internet-banking__btn {
@@ -229,6 +258,7 @@ h4 {
     border-radius: 5px;
     letter-spacing: 1px;
     outline: none;
+    cursor: pointer;
 }
 
 .internet-banking-repair {
@@ -358,6 +388,7 @@ h4 {
     border-radius: 6px;
     border: 2px solid #ce293a;
     z-index: 1;
+    border-top-left-radius: initial;
 }
 
 .drop-list_wealth-width {
@@ -1497,4 +1528,7 @@ ul {
 }
 .mt-30 {
     margin-top: 30px;
+}
+.visible{
+    visibility: visible;
 }
