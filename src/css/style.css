@@ -92,10 +92,10 @@ h4 {
 
 .second-nav__logo {
     display: flex;
-    width: 210px;
-    height: 48px;
+    width: 263px;
+    height: 50px;
     background-image: url(../img/logo1.png);
-    background-size: 100%;
+    background-size: cover;
     background-repeat: no-repeat;
     margin-right: 10px;
 }
@@ -837,6 +837,7 @@ ul {
     display: flex;
     width: 995px;
     margin-bottom: 50px;
+    justify-content: space-between;
 }
 
 .site-map-wrap {
@@ -861,7 +862,10 @@ ul {
     color: #0498b3;
     font-size: 16px;
 }
-
+.site-map-wrap__link_width{
+    display: inline-block;
+    width:150px;
+}
 .footer-nav {
     display: flex;
     height: 70px;
