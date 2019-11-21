@@ -103,12 +103,15 @@ function runSlider() {
 runSlider()
 // -----------------------------------------------authorization----------------------------------------------------------
 var authorizationBlock = document.querySelector(".internet-banking");
+var btnBlock = document.querySelector(".authorization-block-btn");
+var pointAuthorithation = 0;
 
 function hideCildrenElements(element) {
     for (var countElements = 0; countElements < element.children.length; countElements++) {
         element.children[countElements].style.display = "none";
     }
 }
+
 
 hideCildrenElements(authorizationBlock);
 authorizationBlock.children[0].style.display = "block";
@@ -128,27 +131,35 @@ authorizationBlock.children[0].style.display = "block";
 // }
 // createBTN();
 
-
+function showElement(elem) {
+    elem.style.display = "block";
+}
 
 
 
 
 
 authorizationBlock.addEventListener("click", function (e) {
-    switch (e.srcElement) {
-        case document.querySelector(".internet-banking__btn"):
-            hideCildrenElements(authorizationBlock);
-            authorizationBlock.children[1].style.display = "block";
-            break;
-        case document.querySelector(".authorization-block__btn-enter"):
-            hideCildrenElements(authorizationBlock);
-            authorizationBlock.children[2].style.display = "block";
-            break;
-        case document.querySelector(".authorization__close"):
-            hideCildrenElements(authorizationBlock);
-            authorizationBlock.children[0].style.display = "block";
-            break;
-        default:
-            console.log(document.querySelectorAll(".authorization-block__btn-close")[0])
+
+    if (e.target === document.querySelector(".internet-banking__btn")) {
+        hideCildrenElements(authorizationBlock);
+        showElement(authorizationBlock.children[1]);
+        showElement(btnBlock);
     }
 })
+
+btnBlock.children[0].addEventListener("click", function () {
+    if (!pointAuthorithation) {
+        hideCildrenElements(authorizationBlock);
+        showElement(authorizationBlock.children[2]);
+        if(pointAuthorithation<1){
+            pointAuthorithation = 1;
+        }
+    }
+    else if(pointAuthorithation) {
+        hideCildrenElements(authorizationBlock);
+        showElement(authorizationBlock.children[3]);
+        hideCildrenElements(btnBlock);
+        pointAuthorithation = 1;
+    }
+});

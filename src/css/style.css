@@ -154,7 +154,7 @@ h4 {
     z-index:6;
 }
 .internet-banking {
-    
+    padding-bottom: 10px;
 }
 
 .internet-banking_height {
@@ -209,8 +209,7 @@ h4 {
     letter-spacing: 1px;
     outline: none;
     cursor: pointer;
-    margin-top:10px;
-    margin-bottom:20px;
+    margin-bottom:10px;
 }
 
 .authorization-block__btn-close {
