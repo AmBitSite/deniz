@@ -158,8 +158,14 @@ btnBlock.children[0].addEventListener("click", function () {
     }
     else if(pointAuthorithation) {
         hideCildrenElements(authorizationBlock);
+        showElement(authorizationBlock.children[4]);
+        hideCildrenElements(btnBlock);
+        if(pointAuthorithation)pointAuthorithation = 2;
+    }
+    else{
+        hideCildrenElements(authorizationBlock);
         showElement(authorizationBlock.children[3]);
         hideCildrenElements(btnBlock);
-        pointAuthorithation = 1;
+        pointAuthorithation = 0;
     }
 });
