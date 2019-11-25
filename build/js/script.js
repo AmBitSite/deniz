@@ -154,7 +154,7 @@ btnBlock.children[1].addEventListener("click", function () {
         pointAuthorithation = 0;
     }
 });
-// btnBlock.children[0].addEventListener("click", function () {
-//     hideCildrenElements(authorizationBlock);
-//     authorizationBlock.children[0].style.display = "block";
-// })
+btnBlock.children[0].addEventListener("click", function () {
+    hideCildrenElements(authorizationBlock);
+    authorizationBlock.children[0].style.display = "block";
+})
