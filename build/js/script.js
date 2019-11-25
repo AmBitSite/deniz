@@ -73,7 +73,7 @@ if (sliderControls) {
         }
         clearInterval(window.myInterval);
     })
-    setTimeout(() => runSlider(), 1000);
+    setTimeout(() => runSlider(), 5000);
 }
 function runSlider() {
     let count = 0;
@@ -98,7 +98,7 @@ function runSlider() {
             };
             i = sliderControls.children.length;
         }
-    }, 3000);
+    }, 5000);
 }
 runSlider()
 // -----------------------------------------------authorization----------------------------------------------------------
@@ -119,7 +119,9 @@ authorizationBlock.children[0].style.display = "block";
 function showElement(elem) {
     elem.style.display = "block";
 }
-
+function hideElement(elem) {
+    elem.style.display = "none";
+}
 
 
 
@@ -144,17 +146,18 @@ btnBlock.children[1].addEventListener("click", function () {
     else if(pointAuthorithation) {
         hideCildrenElements(authorizationBlock);
         showElement(authorizationBlock.children[3]);
-        hideCildrenElements(btnBlock);
+        hideElement(btnBlock.children[1]);
         if(pointAuthorithation)pointAuthorithation = 0;
     }
     else{
         hideCildrenElements(authorizationBlock);
         showElement(authorizationBlock.children[3]);
-        hideCildrenElements(btnBlock);
+        
         pointAuthorithation = 0;
     }
 });
 btnBlock.children[0].addEventListener("click", function () {
     hideCildrenElements(authorizationBlock);
     authorizationBlock.children[0].style.display = "block";
+    hideElement(btnBlock.children[0]);
 })

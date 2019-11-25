@@ -175,6 +175,7 @@ h4 {
     color:#5a5a5a;
     transition: all .3s;
     outline: none;
+    z-index: 3;
 }
 .authorization__close:hover{
     color:#000;
