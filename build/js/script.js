@@ -116,21 +116,6 @@ function hideCildrenElements(element) {
 hideCildrenElements(authorizationBlock);
 authorizationBlock.children[0].style.display = "block";
 
-// function createBTN(){
-//     var btnContain = document.querySelector(".authorization-block-btn");
-//     var btnCloseContain = document.createElement("div");
-//     var btnEnterContain = document.createElement("div");
-//     btnCloseContain.classList.add("authorization-block__btn");
-//     btnCloseContain.classList.add("authorization-block__btn-close");
-//     btnEnterContain.classList.add("authorization-block__btn");
-//     btnEnterContain.classList.add("authorization-block__btn-enter");
-//     btnCloseContain.innerText="Close";
-//     btnEnterContain.innerText="Enter";
-//     btnContain.appendChild(btnCloseContain);
-//     btnContain.appendChild(btnEnterContain);
-// }
-// createBTN();
-
 function showElement(elem) {
     elem.style.display = "block";
 }
@@ -148,7 +133,7 @@ authorizationBlock.addEventListener("click", function (e) {
     }
 })
 
-btnBlock.children[0].addEventListener("click", function () {
+btnBlock.children[1].addEventListener("click", function () {
     if (!pointAuthorithation) {
         hideCildrenElements(authorizationBlock);
         showElement(authorizationBlock.children[2]);
@@ -158,9 +143,9 @@ btnBlock.children[0].addEventListener("click", function () {
     }
     else if(pointAuthorithation) {
         hideCildrenElements(authorizationBlock);
-        showElement(authorizationBlock.children[4]);
+        showElement(authorizationBlock.children[3]);
         hideCildrenElements(btnBlock);
-        if(pointAuthorithation)pointAuthorithation = 2;
+        if(pointAuthorithation)pointAuthorithation = 0;
     }
     else{
         hideCildrenElements(authorizationBlock);
@@ -169,3 +154,7 @@ btnBlock.children[0].addEventListener("click", function () {
         pointAuthorithation = 0;
     }
 });
+// btnBlock.children[0].addEventListener("click", function () {
+//     hideCildrenElements(authorizationBlock);
+//     authorizationBlock.children[0].style.display = "block";
+// })
