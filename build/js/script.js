@@ -56,51 +56,47 @@ xhrC.addEventListener("readystatechange", function () {
 });
 
 // -----------------------------------------------   Slider   ----------------------------------------------------------------
+function sliderCart(arrElem, count) {
+    for (let j = 0; j < arrElem.children.length; j++) {
+        arrElem.children[j].style.display = "none";
+    }
+    arrElem.children[count].style.display = "flex";
+}
+
 if (sliderControls) {
-    sliderControls.addEventListener("click", (e) => {
-        var btnSlider = e.target;
-        var activeClass = document.querySelector(".slider-control__item_active");
-        if (activeClass && btnSlider.classList.contains("slider-control__item")) {
-            activeClass.classList.remove("slider-control__item_active");
-            btnSlider.classList.add("slider-control__item_active");
+    sliderControls.addEventListener("click", function (e) {
+        if (e.target.classList.contains("slider-control__item")) {
+            var btnSlider = e.target;
             var activeClass = document.querySelector(".slider-control__item_active");
+            activeClass.classList.remove("slider-control__item_active")
+            btnSlider.classList.add("slider-control__item_active")
             for (let i = 0; i < sliderControls.children.length; i++) {
-                sliderParent.children[i].style.display = "none";
                 if (sliderControls.children[i].children[0].classList.contains("slider-control__item_active")) {
-                    sliderParent.children[i].style.display = "flex";
+                    sliderCart(sliderParent, i)
                 }
             }
         }
-        clearInterval(window.myInterval);
     })
-    setTimeout(() => runSlider(), 5000);
 }
 function runSlider() {
-    let count = 0;
-    window.myInterval = setInterval(function tick() {
-        for (let i = 0; i < sliderControls.children.length; i++) {
-            if (sliderControls.children[count].children[0].classList.contains("slider-control__item_active")) {
-                sliderParent.children[count].style.display = "none";
-                sliderControls.children[count].children[0].classList.remove("slider-control__item_active");
-                sliderControls.children[count].children[0].classList.remove("visible");
-                count++;
-                if (count < sliderControls.children.length) {
-                    sliderControls.children[count].children[0].classList.add("slider-control__item_active");
-                    sliderControls.children[count].children[0].classList.add("visible");
-                    sliderParent.children[count].style.display = "flex";
-                }
-                else {
-                    count = 0;
-                    sliderControls.children[count].children[0].classList.add("slider-control__item_active");
-                    sliderControls.children[count].children[0].classList.add("visible");
-                    sliderParent.children[count].style.display = "flex";
-                }
-            };
-            i = sliderControls.children.length;
+    let arrControlSlider = document.querySelectorAll(".slider-control__item")
+    for (let i = 0; i < arrControlSlider.length; i++) {
+        if (arrControlSlider[i].classList.contains("slider-control__item_active")) {
+            arrControlSlider[i].classList.remove("slider-control__item_active")
+            if (i!= arrControlSlider.length-1) {
+                arrControlSlider[`${i += 1}`].classList.add("slider-control__item_active")
+                sliderCart(sliderParent, i)
+            }
+            else{
+                i=0;
+                arrControlSlider[i].classList.add("slider-control__item_active")
+                sliderCart(sliderParent, i)
+            }
         }
-    }, 5000);
+    }
 }
-runSlider()
+
+setInterval(runSlider ,5000)
 // -----------------------------------------------authorization----------------------------------------------------------
 var authorizationBlock = document.querySelector(".internet-banking");
 var btnBlock = document.querySelector(".authorization-block-btn");
@@ -139,20 +135,20 @@ btnBlock.children[1].addEventListener("click", function () {
     if (!pointAuthorithation) {
         hideCildrenElements(authorizationBlock);
         showElement(authorizationBlock.children[2]);
-        if(pointAuthorithation<1){
+        if (pointAuthorithation < 1) {
             pointAuthorithation = 1;
         }
     }
-    else if(pointAuthorithation) {
+    else if (pointAuthorithation) {
         hideCildrenElements(authorizationBlock);
         showElement(authorizationBlock.children[3]);
         hideElement(btnBlock.children[1]);
-        if(pointAuthorithation)pointAuthorithation = 0;
+        if (pointAuthorithation) pointAuthorithation = 0;
     }
-    else{
+    else {
         hideCildrenElements(authorizationBlock);
         showElement(authorizationBlock.children[3]);
-        
+
         pointAuthorithation = 0;
     }
 });

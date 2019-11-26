@@ -1522,6 +1522,47 @@ ul {
     width: 19px;
     height: 19px;
 }
+/*------------------------------------account--------------------------------*/
+.menu{
+    width: 955px;
+    height: 100vh;
+}
+.menu-wrap{
+    display: flex;
+    justify-content: center;
+}
+.menu-wrap-item{
+    color:#fefefe;
+    font-weight: bold;
+    box-sizing: border-box;
+    border:1px solid #000;
+    border-top: transparent;
+    border-right: transparent;
+    cursor: pointer;
+    border-bottom: transparent;
+    border-left: transparent;
+}
+.menu-wrap-item__label_left-radius{
+    
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.menu-wrap-item__label_right-radius{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.menu-wrap-item__input{
+    display: none;
+}
+.menu-wrap-item__label{
+    display: flex;
+    padding:13px 6.7px;
+    cursor: pointer;
+    background: linear-gradient(180deg, #18A7C0 0%, #0E8196 100%);
+}
+.menu-wrap-item__input:checked+.menu-wrap-item__label{
+    background: linear-gradient(180deg, rgba(24, 167, 192, 0.5) 0%, #0E8196 100%);
+}
 .mt-0{
     margin-top:0
 }
