@@ -79,7 +79,7 @@
                             <img class="menu-wrap-item-label__img" src="img/payment-i.png" alt="">
                             <span class="menu-wrap-item-label__text">PAYMENT REQUEST</span>
                         </label>
-                    </div class="menu-wrap-item">
+                    </div>
                     <div class="menu-wrap-item">
                         <input class="menu-wrap-item__input" type="radio" name="inset" value="" id="tab_5">
                         <label class="menu-wrap-item-label" for="tab_5">
@@ -111,7 +111,7 @@
                 </div>
             </div>
             <div class="menu-bord">
-                <div class="menu-bord-home">
+                <div class="menu-bord-home d-flex">
                     <h2 class="menu-bord__header">
                         HOME
                     </h2>
@@ -131,7 +131,7 @@
                                 <span class="menu-bord_text-bold">Currency: USD Buying/Selling Rates</span>
                                 <img src="img/arrow-i.png" alt="" class="menu-bord-currency-label-item__img">
                             </label>
-                            <div class="test">
+                            <div class="menu-bord-currency-wrap">
                                 <div class="menu-bord-currency-item">
                                     <span class="menu-bord_text-normal">GBP:&nbsp;</span>
                                     <span class="menu-bord_text-normal">1.2/1.3</span>
@@ -153,18 +153,180 @@
                         <input type="checkbox" name="" id="menu-bord-message__input" class="menu-bord-message__input">
                         <label for="menu-bord-message__input" class="menu-bord-message-label-item">
                             <span class="menu-bord_text-bold">MESSAGE BOARD</span>
-                            <img src="img/arrow-i.png" alt="">
+                            <img src="img/arrow-i.png" alt="" class="menu-bord-currency-label-item__img">
                         </label>
                         <div class="menu-bord-message-header-table">
-                            <span class="menu-bord-message-header-table__status menu-bord_text-bold">Status</span>
-                            <span class="menu-bord-message-header-table__subject menu-bord_text-bold">Subject</span>
-                            <span class="menu-bord-message-header-table__received menu-bord_text-bold">Received</span>
+                            <div>
+                                <span class="menu-bord-message-header-table__status menu-bord_text-bold">Status</span>
+                                <span class="menu-bord-message-header-table__subject menu-bord_text-bold">Subject</span>
+                                <span
+                                    class="menu-bord-message-header-table__received menu-bord_text-bold">Received</span>
+                            </div>
                         </div>
                     </div>
+                </div>
+                <div class="menu-account">
+                    <h2 class="menu-bord__header">
+                        ACCOUNTS DETAILS
+                    </h2>
+                    <div class="menu-bord-account">
+                        <input type="checkbox" name="" id="menu-bord-account__input" class="menu-bord-account__input">
+                        <label for="menu-bord-account__input" class="menu-bord-account-label-item">
+                            <span class="menu-bord_text-bold">FINANCIAL STATEMENT</span>
+                            <img src="img/arrow-i.png" alt="" class="menu-bord-account-label-item__img">
+                        </label>
+                        <div class="menu-bord-account-header-table">
+                            <div class="menu-bord-account-table-row">
+                                <span class="menu-bord-account-table-row-1st-column menu-bord_text-bold">Client
+                                    ID:</span>
+                                <span class="menu-bord_text-normal">***</span>
+                            </div>
+                            <div class="menu-bord-account-table-row">
+                                <span class="menu-bord-account-table-row-1st-column menu-bord_text-bold">Client
+                                    Name:</span>
+                                <span class="menu-bord_text-normal">***</span>
+                            </div>
+                            <div class="menu-bord-account-table-row">
+                                <span class="menu-bord-account-table-row-1st-column menu-bord_text-bold">Company
+                                    Name:</span>
+                                <span class="menu-bord_text-normal">***</span>
+                            </div>
+                            <div class="menu-bord-account-table-row">
+                                <span class="menu-bord-account-table-row-1st-column menu-bord_text-bold">Email
+                                    Address:</span>
+                                <span class="menu-bord_text-normal">***</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-bord-statement">
+                        <input type="checkbox" name="" id="menu-bord-statement__input"
+                            class="menu-bord-statement__input">
+                        <label for="menu-bord-statement__input" class="menu-bord-statement-label-item">
+                            <span class="menu-bord_text-bold">Click Account Number to view the account statement</span>
+                            <img src="img/arrow-i.png" alt="" class="menu-bord-statement-label-item__img">
+                        </label>
+                        <div class="menu-bord-statement-header-table">
+                            <div class="menu-bord-statement-table-row">
+                                <span class="menu-bord-statement-table-row-1st-column menu-bord_text-bold">
+                                    Account Name / Number
+                                </span>
+                                <span class="menu-bord-statement-table-row-2st-column menu-bord_text-bold">
+                                    Accout Type
+                                </span>
+                                <span class="menu-bord-statement-table-row-3st-column menu-bord_text-bold">
+                                    Currency
+                                </span>
+                                <span class="menu-bord-statement-table-row-4st-column menu-bord_text-bold">
+                                    Status
+                                </span>
+                                <span class="menu-bord-statement-table-row-6st-column menu-bord_text-bold">
+                                    Deactivation Date
+                                </span>
+                                <span class="menu-bord-statement-table-row-7st-column menu-bord_text-bold">
+                                    Deactivation Reason
+                                </span>
+                            </div>
+                            <div class="menu-bord-statement-table-row">
+                                <div class="menu-bord-statement-table-row-1st-column">
+                                    <span class="menu-bord_text-normal">
+                                        Corporate Account EUR
+                                    </span>
+                                    <a href="#" class="menu-bord-statement__number-account-link">
+                                        19-9-999-9-99999999
+                                    </a>
+                                </div>
+                                <span class="menu-bord-statement-table-row-2st-column menu-bord_text-normal">
+                                    Corporate Account
+                                </span>
+                                <span class="menu-bord-statement-table-row-3st-column menu-bord_text-normal">
+                                    Euro
+                                </span>
+                                <span class="menu-bord-statement-table-row-4st-column menu-bord_text-normal">
+                                    Active
+                                </span>
+                                <span class="menu-bord-statement-table-row-6st-column menu-bord_text-normal">
+                                    Oct. 23, 2019
+                                </span>
+                                <span class="menu-bord-statement-table-row-7st-column menu-bord_text-normal">
+                                    Have no idea
+                                </span>
+                            </div>
+                            <div class="menu-bord-statement-table-row">
+                                <div class="menu-bord-statement-table-row-1st-column">
+                                    <span class="menu-bord_text-normal">
+                                        Corporate Account EUR
+                                    </span>
+                                    <a href="#" class="menu-bord-statement__number-account-link">
+                                        19-9-999-9-99999999
+                                    </a>
+                                </div>
+                                <span class="menu-bord-statement-table-row-2st-column menu-bord_text-normal">
+                                    Corporate Account
+                                </span>
+                                <span class="menu-bord-statement-table-row-3st-column menu-bord_text-normal">
+                                    Euro
+                                </span>
+                                <span class="menu-bord-statement-table-row-4st-column menu-bord_text-normal">
+                                    Active
+                                </span>
+                                <span class="menu-bord-statement-table-row-6st-column menu-bord_text-normal">
+                                    Oct. 23, 2019
+                                </span>
+                                <span class="menu-bord-statement-table-row-7st-column menu-bord_text-normal">
+                                    Have no idea
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-bord-crypto">
+                        <input type="checkbox" name="" id="menu-bord-crypto__input" class="menu-bord-crypto__input">
+                        <label for="menu-bord-crypto__input" class="menu-bord-crypto-label-item">
+                            <span class="menu-bord_text-bold">CRYPTO: Click Account Number to view the account statement</span>
+                            <img src="img/arrow-i.png" alt="" class="menu-bord-crypto-label-item__img">
+                        </label>
+                        <div class="menu-bord-crypto-header-table">
+                            <div class="menu-bord-crypto-table-row">
+                                <span class="menu-bord_text-bold">
+                                    No Record Found
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-statement">
+                    <h2 class="menu-bord__header">
+                        E-STATEMENTS
+                    </h2>
+                </div>
+                <div class="menu-payment">
+                    <h2 class="menu-bord__header">
+                        PAYMENT REQUEST
+                    </h2>
+                </div>
+                <div class="menu-transfer">
+                    <h2 class="menu-bord__header">
+                        INTRA TRASFER
+                    </h2>
+                </div>
+                <div class="menu-beneficiary">
+                    <h2 class="menu-bord__header">
+                        BENEFICIARY
+                    </h2>
+                </div>
+                <div class="menu-exchange">
+                    <h2 class="menu-bord__header">
+                        CURRENCY EXCHANGE
+                    </h2>
+                </div>
+                <div class="menu-message">
+                    <h2 class="menu-bord__header">
+                        MESSAGES
+                    </h2>
                 </div>
             </div>
         </div>
     </main>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
