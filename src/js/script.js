@@ -134,7 +134,6 @@ function hideElement(elem) {
 }
 
 
-
 if (btnBlock) {
     btnBlock.children[1].addEventListener("click", function () {
         var obj = {
@@ -147,11 +146,9 @@ if (btnBlock) {
         let promise = new Promise((resolve, reject) => {
             var xhrd = new XMLHttpRequest();
             xhrd.withCredentials = false;
-            xhrd.open("POST", "https://watch.samtsov.com:8070/api/login_check", true);
+            xhrd.open("POST", "http://watch.samtsov.com:8070/api/login_check", true);
             xhrd.send(objS);
             xhrd.addEventListener("readystatechange", function () {
-                console.log(this.readyState)
-                console.log(this.DONE)
                 if (this.status == 200) {
                     resolve(sessionStorage.setItem("token", JSON.parse(this.responseText).token))
                 }
@@ -167,7 +164,7 @@ if (btnBlock) {
                 result => {
                     // hideCildrenElements(authorizationBlock);
                     // showElement(authorizationBlock.children[2]);
-                    window.location.href = "https://eurodeniz.com/account.html"
+                    window.location.href = `${window.location.origin}/account.html`;
                 },
                 error => {
                     hideCildrenElements(authorizationBlock);
@@ -211,4 +208,19 @@ if (blockArrTabs) {
             }
         }
     })
+}
+//-----------------------------------------open account---------------------------
+if(localStorage.getItem("test")){
+    var test = document.querySelector(".form-block-hide");
+    var test2 = document.querySelector(".account-open-resolve")
+        test.style.display = "none";
+        test2.style.display = "block"
+        localStorage.removeItem('test')
+}
+function accountOpenFunc() {
+    localStorage.setItem("test", "1")
+    // setTimeout(() => {
+    //     var test = document.querySelector(".form-block-hide");
+    //     test.style.display = "none";
+    // }, 2000)
 }
