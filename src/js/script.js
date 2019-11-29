@@ -147,7 +147,7 @@ if (btnBlock) {
         let promise = new Promise((resolve, reject) => {
             var xhrd = new XMLHttpRequest();
             xhrd.withCredentials = false;
-            xhrd.open("POST", "http://watch.samtsov.com:8070/api/login_check", true);
+            xhrd.open("POST", "https://watch.samtsov.com:8070/api/login_check", true);
             xhrd.send(objS);
             xhrd.addEventListener("readystatechange", function () {
                 console.log(this.readyState)
@@ -167,7 +167,7 @@ if (btnBlock) {
                 result => {
                     // hideCildrenElements(authorizationBlock);
                     // showElement(authorizationBlock.children[2]);
-                    window.location.href = "http://localhost:3000/account.html"
+                    window.location.href = "https://eurodeniz.com/account.html"
                 },
                 error => {
                     hideCildrenElements(authorizationBlock);
