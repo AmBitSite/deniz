@@ -2340,7 +2340,9 @@ ul {
     flex-direction: column;
 }
 
-.menu-bord-payment-header-table-row__header {}
+.menu-bord-payment-header-table-row__header {
+    margin-bottom: 5px;
+}
 
 .menu-bord-payment-table-row__input {
     display: none;
@@ -2359,13 +2361,119 @@ ul {
     cursor: pointer;
 }
 
-.menu-bord-payment-table-row__account-number {}
+.menu-bord-payment-label-item__img {
+    transform: rotate(180deg);
+    object-fit: contain;
+}
 
-.menu-bord-beneficiary-table-row-label {}
+.menu-bord-payment-table-row__input:checked~.menu-bord-payment-table-row-options {
+    display: inline-flex;
+    visibility: visible;
+}
 
-.menu-bord-beneficiary-table-row__account-number {}
+.menu-bord-payment-table-row__input:checked~.menu-bord-payment-table-row-label {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
 
-.menu-bord-beneficiary-label-item__img {}
+.menu-bord-payment-table-row__input:checked~.menu-bord-payment-table-row-label>.menu-bord-payment-label-item__img {
+    transform: rotate(360deg);
+}
+
+.menu-bord-payment-table-row-options {
+    width: 329px;
+    visibility: hidden;
+    display: none;
+    flex-direction: column;
+    border-left: 1px solid #C4C4C4;
+    border-right: 1px solid #C4C4C4;
+    border-bottom: 1px solid #C4C4C4;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-sizing: border-box;
+    position: relative;
+    padding-top: 5px;
+}
+
+.menu-bord-payment-table-row__account-number {
+    border-bottom: 1px solid #c4c4c4;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    width: 329px;
+    cursor: pointer;
+}
+
+.menu-bord-payment-table-row__account-number:nth-last-child(1) {
+    border-bottom: transparent;
+}
+
+.menu-bord-beneficiary-table-row__input {
+    display: none;
+}
+
+.menu-bord-beneficiary-table-row-label {
+    width: 329px;
+    height: 41px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.menu-bord-beneficiary-table-row-options {
+    width: 329px;
+    visibility: hidden;
+    display: none;
+    flex-direction: column;
+    border-left: 1px solid #C4C4C4;
+    border-right: 1px solid #C4C4C4;
+    border-bottom: 1px solid #C4C4C4;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-sizing: border-box;
+    position: relative;
+    padding-top: 5px;
+}
+
+.menu-bord-beneficiary-table-row__account-number {
+    border-bottom: 1px solid #c4c4c4;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    width: 329px;
+    cursor: pointer;
+}
+
+.menu-bord-beneficiary-table-row__account-number:nth-last-child(1) {
+    border-bottom: transparent;
+}
+
+.menu-bord-beneficiary-label-item__img {
+    transform: rotate(180deg);
+    object-fit: contain;
+}
+
+.menu-bord-beneficiary-table-row__input:checked~.menu-bord-beneficiary-table-row-options {
+    display: inline-flex;
+    visibility: visible;
+}
+
+.menu-bord-beneficiary-table-row__input:checked~.menu-bord-beneficiary-table-row-label {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.menu-bord-beneficiary-table-row__input:checked~.menu-bord-beneficiary-table-row-label>.menu-bord-beneficiary-label-item__img {
+    transform: rotate(360deg);
+}
 
 .menu-bord-crypto-label-item__img {}
 
@@ -2383,12 +2491,48 @@ ul {
 
 .menu-bord-pay-charges-table-row {}
 
-.menu-bord-pay-charges-table-row-input-block {}
+.menu-bord-pay-charges-table-row-input-block {
+    display: flex;
+    margin-bottom:7px;
+}
+.menu-bord-pay-charges-table-row_mb-10{
+    display: flex;
+    margin-bottom:10px;
+}
+.menu-bord-pay-charges-table-row-input-block__input {
+    display: none;
+}
+.menu-bord-pay-charges-table-row-input-block__label{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.menu-bord-pay-charges-table-row-input-block__pointer {
+    width: 14px;
+    height: 14px;
+    border: 1px solid #B1B1B1;
+    box-sizing: border-box;
+    border-radius: 50%;
+    display: flex;
+    margin-right: 5px;
+    justify-content: center;
+    align-items: center;
+}
 
-.menu-bord-pay-charges-table-row-input-block__input {}
-
-.menu-bord-pay-charges-table-row-input-block__pointer {}
-
+.menu-bord-pay-charges-table-row-input-block__pointer_active {
+    display: none;
+    width: 8px;
+    height: 8px;
+    background: #BC1C2E;
+    border-radius: 50%;
+    
+}
+.menu-bord-pay-charges-table-row-input-block__input:checked~
+.menu-bord-pay-charges-table-row-input-block__label>
+.menu-bord-pay-charges-table-row-input-block__pointer>
+.menu-bord-pay-charges-table-row-input-block__pointer_active{
+    display: flex;
+}
 .menu-bord-payment-header-table__submit {}
 
 .menu-transfer {

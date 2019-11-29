@@ -66,13 +66,13 @@
                             <span class="menu-wrap-item-label__text">ACCOUNTS DETAILS</span>
                         </label>
                     </div>
-                    <div class="menu-wrap-item">
+                    <!-- <div class="menu-wrap-item">
                         <input class="menu-wrap-item__input" type="radio" name="inset" value="" id="tab_3">
                         <label class="menu-wrap-item-label" for="tab_3">
                             <img class="menu-wrap-item-label__img" src="img/statement-i.png" alt="">
                             <span class="menu-wrap-item-label__text">STATEMENTS</span>
                         </label>
-                    </div>
+                    </div> -->
                     <div class="menu-wrap-item">
                         <input class="menu-wrap-item__input" type="radio" name="inset" value="" id="tab_4">
                         <label class="menu-wrap-item-label" for="tab_4">
@@ -294,11 +294,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="menu-statement">
+                <!-- <div class="menu-statement">
                     <h2 class="menu-bord__header">
                         E-STATEMENTS
                     </h2>
-                </div>
+                </div> -->
                 <div class="menu-payment">
                     <h2 class="menu-bord__header">
                         PAYMENT REQUEST
@@ -323,44 +323,54 @@
                                 <span class="menu-bord-payment-header-table-row__header menu-bord_text-normal">
                                     Account Number
                                 </span>
-                                <input type="checkbox" name="" id="menu-bord-payment-table-row__input" class="menu-bord-payment-table-row__input">
-                                <label for="menu-bord-payment-table-row__input" class="menu-bord-payment-table-row-label">
-                                    <span class="menu-bord-payment-table-row__account-number menu-bord_text-normal">
+                                <input type="checkbox" name="" id="menu-bord-payment-table-row__input"
+                                    class="menu-bord-payment-table-row__input">
+                                <label for="menu-bord-payment-table-row__input"
+                                    class="menu-bord-payment-table-row-label">
+                                    <span class="menu-bord_text-normal">
                                         19-9-999-9-99999999
                                     </span>
-                                    <img src="img/arrow-i.png" alt="" class="menu-bord-crypto-label-item__img">
+                                    <img src="img/arrow-i.png" alt="" class="menu-bord-payment-label-item__img">
                                 </label>
-                                <span class="menu-bord-payment-table-row__account-number menu-bord_text-normal">
-                                    19-9-999-9-99999998
-                                </span>
-                                <span class="menu-bord-payment-table-row__account-number menu-bord_text-normal">
-                                    19-9-999-9-99999997
-                                </span>
+
+                                <div class="menu-bord-payment-table-row-options">
+                                    <span class="menu-bord-payment-table-row__account-number menu-bord_text-normal">
+                                        19-9-999-9-99999998
+                                    </span>
+                                    <span class="menu-bord-payment-table-row__account-number menu-bord_text-normal">
+                                        19-9-999-9-99999997
+                                    </span>
+                                </div>
                             </div>
                             <div class="menu-bord-payment-table-row">
                                 <span class="menu-bord-payment-header-table-row__header menu-bord_text-normal">
                                     Beneficiary
                                 </span>
-                                <input type="checkbox" name="" id="menu-bord-beneficiary-table-row__input">
-                                <label for="menu-bord-beneficiary-table-row__input" class="menu-bord-beneficiary-table-row-label">
-                                    <span class="menu-bord-beneficiary-table-row__account-number menu-bord_text-normal">
+                                <input type="checkbox" name="" id="menu-bord-beneficiary-table-row__input"
+                                    class="menu-bord-beneficiary-table-row__input">
+                                <label for="menu-bord-beneficiary-table-row__input"
+                                    class="menu-bord-beneficiary-table-row-label">
+                                    <span class="menu-bord_text-normal">
                                         Nick Immortal
                                     </span>
                                     <img src="img/arrow-i.png" alt="" class="menu-bord-beneficiary-label-item__img">
                                 </label>
-                                <span class="menu-bord-beneficiary-table-row__account-number menu-bord_text-normal">
-                                    Alex God
-                                </span>
-                                <span class="menu-bord-beneficiary-table-row__account-number menu-bord_text-normal">
-                                    John Dead
-                                </span>
+                                <div class="menu-bord-beneficiary-table-row-options">
+                                    <span class="menu-bord-beneficiary-table-row__account-number menu-bord_text-normal">
+                                        Alex God
+                                    </span>
+                                    <span class="menu-bord-beneficiary-table-row__account-number menu-bord_text-normal">
+                                        John Dead
+                                    </span>
+                                </div>
                             </div>
                             <div class="menu-bord-calendar-table-row">
                                 <span class="menu-bord-payment-header-table-row__header menu-bord_text-normal">
                                     Payment Date
                                 </span>
                                 <input type="checkbox" name="" id="menu-bord-calendar-table-row__input">
-                                <label for="menu-bord-calendar-table-row__input" class="menu-bord-calendar-table-row-label">
+                                <label for="menu-bord-calendar-table-row__input"
+                                    class="menu-bord-calendar-table-row-label">
                                     <input type="date" class="menu-bord-calendar-table-row__input" />
                                     <img src="img/calendar-i.png" alt="" class="menu-bord-calendar-label-item__img">
                                 </label>
@@ -381,15 +391,20 @@
                                 </textarea>
                             </div>
                             <div class="menu-bord-pay-charges-table-row">
-                                <span class="menu-bord-payment-header-table-row__header menu-bord_text-normal">
+                                <span
+                                    class="menu-bord-payment-header-table-row__header menu-bord-pay-charges-table-row_mb-10 menu-bord_text-normal">
                                     Who will pay the charges:
                                 </span>
                                 <div class="menu-bord-pay-charges-table-row-input-block">
-                                    <input type="checkbox" name="" id="menu-bord-pay-charges-table-row-input-block__input"
-                                        class="menu-bord-pay-charges-table-row-input-block__input"/>
-                                    <label for="menu-bord-pay-charges-table-row-input-block__input" class="menu-bord-pay-charges-table-row-input-block__label">
+                                    <input type="radio" name="menu-bord-pay-charges-table-row-input-block__input"
+                                        id="menu-bord-pay-charges-table-row-input-block__input-all"
+                                        class="menu-bord-pay-charges-table-row-input-block__input" />
+                                    <label for="menu-bord-pay-charges-table-row-input-block__input-all"
+                                        class="menu-bord-pay-charges-table-row-input-block__label">
                                         <div class="menu-bord-pay-charges-table-row-input-block__pointer">
+                                            <div class="menu-bord-pay-charges-table-row-input-block__pointer_active">
 
+                                            </div>
                                         </div>
                                         <span class="menu-bord_text-normal">
                                             Sender to pay all charges
@@ -397,11 +412,15 @@
                                     </label>
                                 </div>
                                 <div class="menu-bord-pay-charges-table-row-input-block">
-                                    <input type="checkbox" name="" id="menu-bord-pay-charges-table-row-input-block__input"
-                                        class="menu-bord-pay-charges-table-row-input-block__input"/>
-                                    <label for="menu-bord-pay-charges-table-row-input-block__input" class="menu-bord-pay-charges-table-row-input-block__label">
+                                    <input type="radio" name="menu-bord-pay-charges-table-row-input-block__input"
+                                        id="menu-bord-pay-charges-table-row-input-block__input-beneficiary"
+                                        class="menu-bord-pay-charges-table-row-input-block__input" />
+                                    <label for="menu-bord-pay-charges-table-row-input-block__input-beneficiary"
+                                        class="menu-bord-pay-charges-table-row-input-block__label">
                                         <div class="menu-bord-pay-charges-table-row-input-block__pointer">
+                                            <div class="menu-bord-pay-charges-table-row-input-block__pointer_active">
 
+                                            </div>
                                         </div>
                                         <span class="menu-bord_text-normal">
                                             Beneficiary to pay all charges
@@ -409,11 +428,15 @@
                                     </label>
                                 </div>
                                 <div class="menu-bord-pay-charges-table-row-input-block">
-                                    <input type="checkbox" name="" id="menu-bord-pay-charges-table-row-input-block__label"
-                                        class="menu-bord-pay-charges-table-row-input-block__input"/>
-                                    <label for="menu-bord-pay-charges-table-row-input-block__label" class="menu-bord-pay-charges-table-row-input-block__label">
+                                    <input type="radio" name="menu-bord-pay-charges-table-row-input-block__input"
+                                        id="menu-bord-pay-charges-table-row-input-block__label-shared"
+                                        class="menu-bord-pay-charges-table-row-input-block__input" />
+                                    <label for="menu-bord-pay-charges-table-row-input-block__label-shared"
+                                        class="menu-bord-pay-charges-table-row-input-block__label">
                                         <div class="menu-bord-pay-charges-table-row-input-block__pointer">
+                                            <div class="menu-bord-pay-charges-table-row-input-block__pointer_active">
 
+                                            </div>
                                         </div>
                                         <span class="menu-bord_text-normal">
                                             Shared (Sender & Beneficiary pay in half)
