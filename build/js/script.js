@@ -146,7 +146,7 @@ if (btnBlock) {
         let promise = new Promise((resolve, reject) => {
             var xhrd = new XMLHttpRequest();
             xhrd.withCredentials = false;
-            xhrd.open("POST", "https://watch.samtsov.com:8070/api/login_check", true);
+            xhrd.open("POST", "http://watch.samtsov.com:8070/api/login_check", true);
             xhrd.send(objS);
             xhrd.addEventListener("readystatechange", function () {
                 if (this.status == 200) {

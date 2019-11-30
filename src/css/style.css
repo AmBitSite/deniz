@@ -1541,21 +1541,6 @@ ul {
 
 /* --------------------------------------online account---------------------- */
 
-.second-nav__account {
-    font-weight: 700;
-    font-family: 'PT Sans', tahoma, sans-serif;
-    background: linear-gradient(to bottom, #db4357 0, #ce293a 100%);
-    color: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    letter-spacing: 1px;
-    padding: 14px 38px;
-    text-transform: capitalize;
-    margin-left: 60px;
-}
-
 .account-open-form {
     display: flex;
     flex-direction: row;
@@ -2493,20 +2478,24 @@ ul {
 
 .menu-bord-pay-charges-table-row-input-block {
     display: flex;
-    margin-bottom:7px;
+    margin-bottom: 7px;
 }
-.menu-bord-pay-charges-table-row_mb-10{
+
+.menu-bord-pay-charges-table-row_mb-10 {
     display: flex;
-    margin-bottom:10px;
+    margin-bottom: 10px;
 }
+
 .menu-bord-pay-charges-table-row-input-block__input {
     display: none;
 }
-.menu-bord-pay-charges-table-row-input-block__label{
+
+.menu-bord-pay-charges-table-row-input-block__label {
     display: flex;
     align-items: center;
     cursor: pointer;
 }
+
 .menu-bord-pay-charges-table-row-input-block__pointer {
     width: 14px;
     height: 14px;
@@ -2525,14 +2514,12 @@ ul {
     height: 8px;
     background: #BC1C2E;
     border-radius: 50%;
-    
 }
-.menu-bord-pay-charges-table-row-input-block__input:checked~
-.menu-bord-pay-charges-table-row-input-block__label>
-.menu-bord-pay-charges-table-row-input-block__pointer>
-.menu-bord-pay-charges-table-row-input-block__pointer_active{
+
+.menu-bord-pay-charges-table-row-input-block__input:checked~.menu-bord-pay-charges-table-row-input-block__label>.menu-bord-pay-charges-table-row-input-block__pointer>.menu-bord-pay-charges-table-row-input-block__pointer_active {
     display: flex;
 }
+
 .menu-bord-payment-header-table__submit {}
 
 .menu-transfer {
