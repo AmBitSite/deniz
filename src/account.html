@@ -314,10 +314,9 @@
                         </span>
                     </div>
                     <div class="menu-bord-payment">
-                        <input type="checkbox" name="" id="menu-bord-payment__input" class="menu-bord-payment__input">
-                        <label for="menu-bord-payment__input" class="menu-bord-payment-label-item">
+                        <div class="menu-bord-payment-label-item">
                             <span class="menu-bord_text-bold">FINANCIAL STATEMENT</span>
-                        </label>
+                        </div>
                         <div class="menu-bord-payment-header-table">
                             <div class="menu-bord-payment-table-row">
                                 <span class="menu-bord-payment-header-table-row__header menu-bord_text-normal">
@@ -368,10 +367,10 @@
                                 <span class="menu-bord-payment-header-table-row__header menu-bord_text-normal">
                                     Payment Date
                                 </span>
-                                <input type="checkbox" name="" id="menu-bord-calendar-table-row__input">
+
                                 <label for="menu-bord-calendar-table-row__input"
                                     class="menu-bord-calendar-table-row-label">
-                                    <input type="date" class="menu-bord-calendar-table-row__input" />
+                                    <input type="text" class="menu-bord-calendar-table-row__input" />
                                     <img src="img/calendar-i.png" alt="" class="menu-bord-calendar-label-item__img">
                                 </label>
                             </div>
@@ -385,10 +384,7 @@
                                 <span class="menu-bord-payment-header-table-row__header menu-bord_text-normal">
                                     Reason/Message/Comments
                                 </span>
-                                <textarea class="menu-bord-reference-table-row__textarea" name="" id="" cols="10"
-                                    rows="5">
-
-                                </textarea>
+                                <textarea class="menu-bord-reference-table-row__textarea"></textarea>
                             </div>
                             <div class="menu-bord-pay-charges-table-row">
                                 <span
@@ -452,6 +448,82 @@
                     <h2 class="menu-bord__header">
                         INTRA TRASFER
                     </h2>
+                    <div class="menu-bord-transfer">
+                        <div class="menu-bord-payment-label-item">
+                            <span class="menu-bord_text-bold">CONVERT CURRENCY - ENTER TRANSFER INFORMATION</span>
+                        </div>
+                        <div class="menu-bord-payment-header-table">
+                            <div class="menu-bord-payment-table-row">
+                                <span class="menu-bord-payment-header-table-row__header menu-bord_text-normal">
+                                    From Account Number
+                                </span>
+                                <input type="checkbox" name="" id="menu-bord-transfer-table-row__input-from-transfer"
+                                    class="menu-bord-transfer-table-row__input-from-transfer">
+                                <label for="menu-bord-transfer-table-row__input-from-transfer"
+                                    class="menu-bord-transfer-table-row__label-from-transfer">
+                                    <span class="menu-bord_text-normal">
+                                        19-9-999-9-99999999
+                                    </span>
+                                    <img src="img/arrow-i.png" alt="" class="menu-bord-transfer-label-item__img">
+                                </label>
+                                <div class="menu-bord-transfer-table-row-options">
+                                    <span class="menu-bord-transfer-table-row__account-number menu-bord_text-normal">
+                                        19-9-999-9-99999998
+                                    </span>
+                                    <span class="menu-bord-transfer-table-row__account-number menu-bord_text-normal">
+                                        19-9-999-9-99999997
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="menu-bord-payment-table-row">
+                                <span class="menu-bord-payment-header-table-row__header menu-bord_text-normal">
+                                    To Account Number
+                                </span>
+                                <div class="menu-bord-transfer-table-row-block-input-to-transfer">
+                                    <input type="text"
+                                        class="menu-bord-transfer-table-row__input-to-transfer menu-bord_text-normal"
+                                        placeholder="19-9-999-9-99999998">
+                                    <img src="img/account-error-img.png" alt=""
+                                        class="menu-bord-transfer-table-row__img-to-transfer">
+                                    <span class="menu-bord-transfer-table-row__text-error-input-to-transfer">
+                                        Invalid!
+                                    </span>
+                                    <span class="menu-bord-transfer-table-row__text-error-input-to-transfer">
+                                        Destination account doesn`t exist!
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="menu-bord-payment-table-row">
+                                <span class="menu-bord-payment-header-table-row__header menu-bord_text-normal">
+                                    Amount
+                                </span>
+                                <div class="menu-bord-transfer-table-row-block-amount-transfer">
+                                    <input type="text"
+                                        class="menu-bord-transfer-table-row__input-amount-transfer menu-bord_text-normal">
+                                    <img src="img/account-error-img.png" alt=""
+                                        class="menu-bord-transfer-table-row__img-amount-transfer">
+                                    <span class="menu-bord-transfer-table-row__text-error-amount-transfer">
+                                        Wrong amount!
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="menu-bord-payment-table-row">
+                                <span class="menu-bord-payment-header-table-row__header menu-bord_text-normal">
+                                    Reference
+                                </span>
+                                <div class="menu-bord-transfer-table-row-block-reference-transfer">
+                                    <input type="text"
+                                        class="menu-bord-transfer-table-row__input-reference-transfer menu-bord_text-normal">
+                                    <img src="img/account-error-img.png" alt=""
+                                        class="menu-bord-transfer-table-row__img-reference-transfer">
+                                    <span class="menu-bord-transfer-table-row__text-error-reference-transfer">
+                                        Wrong amount!
+                                    </span>
+                                </div>
+                            </div>
+                            <a href="#" class="menu-transfer__step-two">Go to Step 2</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="menu-beneficiary">
                     <h2 class="menu-bord__header">

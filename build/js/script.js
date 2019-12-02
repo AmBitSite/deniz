@@ -36,13 +36,14 @@ xhrN.open("GET", "https://newsapi.org/v2/top-headlines?category = business&sourc
 xhrN.send();
 xhrN.addEventListener("readystatechange", function () {
     for (var j = 0; j < blockNews.length; j++) {
+        
         blockNews[j].setAttribute('href', JSON.parse(this.responseText).articles[j].url);
         blockNews[j].firstElementChild.innerText = JSON.parse(this.responseText).articles[j].title;
     }
 });
 
 // ---------------------------------------httprequest cryptocurrency courses --------------------------------------------------
-if (moneyCryptoName == undefined) {
+// if (moneyCryptoName !== undefined) {
     var xhrC = new XMLHttpRequest();
     xhrC.withCredentials = false;
     xhrC.open("GET", "https://min-api.cryptocompare.com/data/price?fsym=EUR&tsyms=BTC,ETH,BCH,USDT,LTC&apiKey=bb98291570d521612ebd320b47a541e57dd03581bc116ddeb19abb62e7a306a6", true);
@@ -55,7 +56,7 @@ if (moneyCryptoName == undefined) {
             };
         };
     });
-}
+// }
 
 // -----------------------------------------------   Slider   ----------------------------------------------------------------
 function sliderCart(arrElem, count) {
@@ -141,12 +142,11 @@ if (btnBlock) {
             password: document.querySelector(".authorization__password").value
         }
         var objS = JSON.stringify(obj)
-        console.log(objS);
 
         let promise = new Promise((resolve, reject) => {
             var xhrd = new XMLHttpRequest();
             xhrd.withCredentials = false;
-            xhrd.open("POST", "http://watch.samtsov.com:8070/api/login_check", true);
+            xhrd.open("POST", "https://watch.samtsov.com:8070/api/login_check", true);
             xhrd.send(objS);
             xhrd.addEventListener("readystatechange", function () {
                 if (this.status == 200) {
