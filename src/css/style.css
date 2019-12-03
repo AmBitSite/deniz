@@ -2309,7 +2309,6 @@ ul {
 
 .menu-payment {
     display: none;
-    display: none;
     flex-direction: column;
     width: 995px;
     align-items: flex-start;
@@ -2383,7 +2382,6 @@ ul {
     display: flex;
     justify-content: space-between;
     padding: 10px 15px;
-    box-sizing: border-box;
     cursor: pointer;
 }
 
@@ -2448,7 +2446,6 @@ ul {
     display: flex;
     justify-content: space-between;
     padding: 10px 15px;
-    box-sizing: border-box;
     cursor: pointer;
 }
 
@@ -2686,7 +2683,6 @@ ul {
     width: 329px;
     border: 1px solid #C4C4C4;
     box-sizing: border-box;
-    box-sizing: border-box;
     border-radius: 5px;
     padding: 10px 15px;
 }
@@ -2717,7 +2713,6 @@ ul {
 .menu-bord-transfer-table-row__input-amount-transfer {
     width: 329px;
     border: 1px solid #C4C4C4;
-    box-sizing: border-box;
     box-sizing: border-box;
     border-radius: 5px;
     padding: 10px 15px;
@@ -2781,7 +2776,246 @@ ul {
 
 .menu-beneficiary {
     display: none;
+    width: 995px;
+    flex-direction: column;
+    justify-items: flex-start;
 }
+
+.menu-bord-beneficiary-header-table {
+    padding: 10px 23px;
+    background-color: #f9f9f9;
+}
+
+.menu-bord-beneficiary-table-row {
+    padding: 10px 23px;
+    background-color: #fefefe
+}
+
+.menu-bord-beneficiary-table-row:nth-child(2n+1) {
+    background-color: #f9f9f9;
+}
+
+.menu-bord-beneficiary-table-row:nth-last-child(1) {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.menu-bord-beneficiary-table-row-1st-column {
+    display: inline-flex;
+    width: 231px;
+    flex-direction: column;
+}
+
+.menu-bord-beneficiary__number-account-link {
+    margin-top: 5px;
+    color: #18A7C0;
+    text-decoration: underline;
+}
+
+.menu-bord-beneficiary-table-row-2st-column {
+    display: inline-flex;
+    width: 211px;
+}
+
+.menu-bord-beneficiary-table-row-3st-column {
+    display: inline-flex;
+    width: 252px;
+}
+
+.menu-bord-beneficiary-table-row-edit-column {
+    display: inline-flex;
+    width: 77px;
+    justify-content: center;
+}
+
+.menu-bord-beneficiary-table-row-delete-column {
+    display: inline-flex;
+    width: 95px;
+    justify-content: center;
+}
+
+.menu-bord-beneficiary-table-row-view-column {
+    display: inline-flex;
+    width: 40px;
+    justify-content: center;
+}
+
+.menu-bord-beneficiary-table-row-edit-column>img {
+    display: flex;
+    align-self: center;
+    object-fit: contain;
+}
+
+.menu-bord-beneficiary-table-row-delete-column>img {
+    display: flex;
+    align-self: center;
+    object-fit: contain;
+}
+
+.menu-bord-beneficiary-table-row-view-column>img {
+    display: flex;
+    align-self: center;
+    object-fit: contain;
+}
+
+.menu-beneficiary__input {
+    display: none
+}
+.menu-beneficiary-add{
+    display: none;
+    flex-direction: column;
+    visibility: hidden;
+}
+
+.menu-beneficiary-block{
+    display:flex;
+    flex-direction: column;
+    visibility: visible;
+}
+.menu-beneficiary__input:checked~.menu-beneficiary-label{
+    display: none;
+    visibility: hidden;
+}
+.menu-beneficiary__input:checked~.menu-beneficiary-block{
+    display: none;
+    visibility: hidden;
+}
+.menu-beneficiary__input:checked~.menu-beneficiary-add{
+    display: flex;
+    visibility: visible;
+}
+.menu-beneficiary__input:checked{
+    display: none;
+    visibility: hidden;
+}
+.menu-beneficiary-label {
+    display: flex;
+    width: 198px;
+    height: 40px;
+    background: linear-gradient(180deg, #D63347 0%, #9B1727 100%);
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 35px;
+    margin-bottom: 25px;
+}
+
+.menu-beneficiary-label:active {
+    transform: translateY(1px);
+}
+
+.menu-beneficiary-label__text {
+    display: inline-flex;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 21px;
+    color: #FEFEFE;
+    padding: 10px 25px;
+    border-right: 1px solid #971827;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.menu-beneficiary-label__img {
+    object-fit: contain;
+    padding: 10px 9px;
+}
+
+.menu-bord-beneficiary-add-table {
+    width: 995px;
+    background-color: #fefefe;
+    padding: 10px 23px;
+    box-sizing: border-box;
+}
+
+.menu-bord-beneficiary-add-table-block {
+    display: flex;
+}
+
+.menu-bord-beneficiary-add-table {
+    margin-bottom: 40px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.menu-bord-beneficiary-add-table-column {
+    margin-right: 40px;
+}
+
+.menu-bord-beneficiary-add-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.menu-bord_text-error {
+    color: #FF0A0A;
+}
+
+.menu-bord-beneficiary-add__input {
+    width: 407px;
+    border: 1px solid #C4C4C4;
+    margin-top: 5px;
+    border-radius: 5px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 21px;
+    padding: 10px 20px;
+    color: #b1b1b1;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.menu-bord-beneficiary-add__input::placeholder {
+    color: #c4c4c4
+}
+
+.menu-bord-beneficiary-add-row__textarea {
+    width: 855px;
+    height: 86px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 10px 20px;
+    resize: none;
+}
+
+.menu-bord-beneficiary-add-row__textarea {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.menu-bord-beneficiary-add__create {
+    display: inline-flex;
+    background: linear-gradient(180deg, #D63347 0%, #9B1727 100%);
+    border-radius: 5px;
+    padding: 10px 30px;
+    color: #fefefe;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+.menu-bord-beneficiary-add__create-back{
+    display: inline-flex;
+    background: transparent;
+    border-radius: 5px;
+    padding: 10px 30px;
+    color: #181818;
+    margin-bottom: 40px;
+    font-weight: bold;
+    border:2px solid #c4c4c4;
+    margin-left:12px;
+    box-sizing: border-box;
+    
+}
+.menu-bord-beneficiary-add__create-back:hover{
+    background-color: #c4c4c4;
+}
+/* ----------------------------------------------------------------------------------------------- */
 
 .menu-exchange {
     display: none;
@@ -2825,4 +3059,9 @@ ul {
 
 .visible {
     visibility: visible;
+    display: flex;
+}
+.hidden{
+    visibility: hidden;
+    display: none;
 }

@@ -36,7 +36,7 @@ xhrN.open("GET", "https://newsapi.org/v2/top-headlines?category = business&sourc
 xhrN.send();
 xhrN.addEventListener("readystatechange", function () {
     for (var j = 0; j < blockNews.length; j++) {
-        
+
         blockNews[j].setAttribute('href', JSON.parse(this.responseText).articles[j].url);
         blockNews[j].firstElementChild.innerText = JSON.parse(this.responseText).articles[j].title;
     }
@@ -44,18 +44,18 @@ xhrN.addEventListener("readystatechange", function () {
 
 // ---------------------------------------httprequest cryptocurrency courses --------------------------------------------------
 // if (moneyCryptoName !== undefined) {
-    var xhrC = new XMLHttpRequest();
-    xhrC.withCredentials = false;
-    xhrC.open("GET", "https://min-api.cryptocompare.com/data/price?fsym=EUR&tsyms=BTC,ETH,BCH,USDT,LTC&apiKey=bb98291570d521612ebd320b47a541e57dd03581bc116ddeb19abb62e7a306a6", true);
-    xhrC.send();
-    xhrC.addEventListener("readystatechange", function () {
-        if (this.readyState === this.DONE) {
-            for (var i = 0; i < arrCryptoMoney.length; i++) {
-                moneyCryptoName[i].innerText = arrCryptoMoney[i];
-                moneyCryptoValue[i].innerText = JSON.parse(this.responseText)[arrCryptoMoney[i]];
-            };
+var xhrC = new XMLHttpRequest();
+xhrC.withCredentials = false;
+xhrC.open("GET", "https://min-api.cryptocompare.com/data/price?fsym=EUR&tsyms=BTC,ETH,BCH,USDT,LTC&apiKey=bb98291570d521612ebd320b47a541e57dd03581bc116ddeb19abb62e7a306a6", true);
+xhrC.send();
+xhrC.addEventListener("readystatechange", function () {
+    if (this.readyState === this.DONE) {
+        for (var i = 0; i < arrCryptoMoney.length; i++) {
+            moneyCryptoName[i].innerText = arrCryptoMoney[i];
+            moneyCryptoValue[i].innerText = JSON.parse(this.responseText)[arrCryptoMoney[i]];
         };
-    });
+    };
+});
 // }
 
 // -----------------------------------------------   Slider   ----------------------------------------------------------------
@@ -146,7 +146,7 @@ if (btnBlock) {
         let promise = new Promise((resolve, reject) => {
             var xhrd = new XMLHttpRequest();
             xhrd.withCredentials = false;
-            xhrd.open("POST", "https://watch.samtsov.com:8070/api/login_check", true);
+            xhrd.open("POST", "https://watch.samtsov.com:8090/api/login_check", true);
             xhrd.send(objS);
             xhrd.addEventListener("readystatechange", function () {
                 if (this.status == 200) {
@@ -181,19 +181,7 @@ if (btnBlock) {
     })
 }
 
-// $(window).on("load", function () {
-//     fetch("http://watch.samtsov.com:8070/public/product/gets/products", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json"
-//       },
-//       body: JSON.stringify({
-//         "brand": INPUT_BRAND
-//       })
-//     })
-//     .then(response => response.json())
-//     .then(result => startLogic(result));
-//   });
+
 var arrTabs = document.getElementsByClassName("menu-wrap-item__input");
 var blockArrTabs = document.querySelector(".menu-wrap-contain");
 var blockArrMenu = document.querySelector(".menu-bord");
@@ -210,12 +198,12 @@ if (blockArrTabs) {
     })
 }
 //-----------------------------------------open account---------------------------
-if(localStorage.getItem("test")){
+if (localStorage.getItem("test")) {
     var test = document.querySelector(".form-block-hide");
     var test2 = document.querySelector(".account-open-resolve")
-        test.style.display = "none";
-        test2.style.display = "block"
-        localStorage.removeItem('test')
+    test.style.display = "none";
+    test2.style.display = "block"
+    localStorage.removeItem('test')
 }
 function accountOpenFunc() {
     localStorage.setItem("test", "1")
@@ -224,3 +212,21 @@ function accountOpenFunc() {
     //     test.style.display = "none";
     // }, 2000)
 }
+var beneficiaryClose = document.querySelector(".menu-bord-beneficiary-add__create-back");
+var beneficiaryAdd = document.querySelector(".menu-beneficiary-label");
+var beneficiaryblock = document.querySelector(".menu-beneficiary-block");
+var beneficiaryaddBlock = document.querySelector(".menu-beneficiary-add");
+beneficiaryAdd.addEventListener("click", function(){
+    beneficiaryAdd.classList.add("hidden");
+    beneficiaryblock.classList.add("hidden");
+    beneficiaryaddBlock.classList.remove('hidden')
+    beneficiaryaddBlock.classList.add('visible')
+    
+})
+beneficiaryClose.addEventListener("click", function (e) {
+    e.preventDefault();
+    beneficiaryAdd.classList.remove("hidden");
+    beneficiaryblock.classList.remove("hidden");
+    beneficiaryaddBlock.classList.add('hidden')
+    beneficiaryaddBlock.classList.remove('visible')
+})
