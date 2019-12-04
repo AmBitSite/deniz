@@ -12,7 +12,7 @@ var sliderControls = document.querySelector(".slider-control");
 //---------------------------------------------send email address in contact page--------------------------------------------------------------
 if (inputMail) {
     inputMail.addEventListener("keyup", function () {
-        dynamicText.innerText = test.value;
+        dynamicText.innerText = inputMail.value;
     });
 }
 // ---------------------------------------httprequest EUR exchange rates ----------------------------------------------------------
@@ -43,20 +43,20 @@ xhrN.addEventListener("readystatechange", function () {
 });
 
 // ---------------------------------------httprequest cryptocurrency courses --------------------------------------------------
-// if (moneyCryptoName !== undefined) {
-var xhrC = new XMLHttpRequest();
-xhrC.withCredentials = false;
-xhrC.open("GET", "https://min-api.cryptocompare.com/data/price?fsym=EUR&tsyms=BTC,ETH,BCH,USDT,LTC&apiKey=bb98291570d521612ebd320b47a541e57dd03581bc116ddeb19abb62e7a306a6", true);
-xhrC.send();
-xhrC.addEventListener("readystatechange", function () {
-    if (this.readyState === this.DONE) {
-        for (var i = 0; i < arrCryptoMoney.length; i++) {
-            moneyCryptoName[i].innerText = arrCryptoMoney[i];
-            moneyCryptoValue[i].innerText = JSON.parse(this.responseText)[arrCryptoMoney[i]];
+if (moneyCryptoName[0]) {
+    var xhrC = new XMLHttpRequest();
+    xhrC.withCredentials = false;
+    xhrC.open("GET", "https://min-api.cryptocompare.com/data/price?fsym=EUR&tsyms=BTC,ETH,BCH,USDT,LTC&apiKey=bb98291570d521612ebd320b47a541e57dd03581bc116ddeb19abb62e7a306a6", true);
+    xhrC.send();
+    xhrC.addEventListener("readystatechange", function () {
+        if (this.readyState === this.DONE) {
+            for (var i = 0; i < arrCryptoMoney.length; i++) {
+                moneyCryptoName[i].innerText = arrCryptoMoney[i];
+                moneyCryptoValue[i].innerText = JSON.parse(this.responseText)[arrCryptoMoney[i]];
+            };
         };
-    };
-});
-// }
+    });
+}
 
 // -----------------------------------------------   Slider   ----------------------------------------------------------------
 function sliderCart(arrElem, count) {
@@ -145,12 +145,13 @@ if (btnBlock) {
 
         let promise = new Promise((resolve, reject) => {
             var xhrd = new XMLHttpRequest();
-            xhrd.withCredentials = false;
             xhrd.open("POST", "https://watch.samtsov.com:8090/api/login_check", true);
             xhrd.send(objS);
             xhrd.addEventListener("readystatechange", function () {
                 if (this.status == 200) {
-                    resolve(sessionStorage.setItem("token", JSON.parse(this.responseText).token))
+                    sessionStorage.setItem("token", JSON.parse(this.responseText).token);
+                    console.log(this.responseText)
+                    resolve(this.responseText)
                 }
                 else {
                     var error = new Error(this.statusText);
@@ -162,16 +163,39 @@ if (btnBlock) {
         promise
             .then(
                 result => {
-                    // hideCildrenElements(authorizationBlock);
-                    // showElement(authorizationBlock.children[2]);
-                    window.location.href = `${window.location.origin}/account.html`;
+                    hideCildrenElements(authorizationBlock);
+                    showElement(authorizationBlock.children[2]);
+                    // window.location.href = `${window.location.origin}/account.html`;
+                    return objR
                 },
                 error => {
                     hideCildrenElements(authorizationBlock);
                     showElement(authorizationBlock.children[3]);
                     hideElement(btnBlock.children[1]);
                 }
-            );
+            )
+            .then(
+                objR => {
+                    // let xhrX = new XMLHttpRequest();
+                    // xhrX.open("POST", "https://servercgbank.samtsov.com:8090", true);
+                    // xhrX.send(sessionStorage.getItem("token"));
+                    // xhrX.addEventListener("readystatechange", function () {
+                    //     if (this.status == 200) {
+                    //         resolve(window.location.href = `${window.location.origin}/account.html`)
+                    //     }
+                    //     else {
+                    //         var error = new Error(this.statusText);
+                    //         error.code = this.status;
+                    //         reject(error);
+                    //     }
+                    // });
+                }
+                
+            )
+
+            // .catch(
+                
+            // )
     });
     btnBlock.children[0].addEventListener("click", function () {
         hideCildrenElements(authorizationBlock);
@@ -192,41 +216,40 @@ if (blockArrTabs) {
             if (arrTabs[i].checked) {
                 document.querySelector(".d-flex").classList.remove("d-flex")
                 blockArrMenu.children[i].classList.add("d-flex")
-                // console.log(i)
             }
         }
     })
 }
 //-----------------------------------------open account---------------------------
-if (localStorage.getItem("test")) {
-    var test = document.querySelector(".form-block-hide");
-    var test2 = document.querySelector(".account-open-resolve")
-    test.style.display = "none";
-    test2.style.display = "block"
-    localStorage.removeItem('test')
+if (localStorage.getItem("checkform")) {
+    var formBlockHide = document.querySelector(".form-block-hide");
+    var accountOpenResolve = document.querySelector(".account-open-resolve")
+    formBlockHide.style.display = "none";
+    accountOpenResolve.style.display = "block"
+    localStorage.removeItem('checkform')
 }
 function accountOpenFunc() {
-    localStorage.setItem("test", "1")
-    // setTimeout(() => {
-    //     var test = document.querySelector(".form-block-hide");
-    //     test.style.display = "none";
-    // }, 2000)
+    localStorage.setItem("checkform", "1")
 }
 var beneficiaryClose = document.querySelector(".menu-bord-beneficiary-add__create-back");
 var beneficiaryAdd = document.querySelector(".menu-beneficiary-label");
 var beneficiaryblock = document.querySelector(".menu-beneficiary-block");
 var beneficiaryaddBlock = document.querySelector(".menu-beneficiary-add");
-beneficiaryAdd.addEventListener("click", function(){
-    beneficiaryAdd.classList.add("hidden");
-    beneficiaryblock.classList.add("hidden");
-    beneficiaryaddBlock.classList.remove('hidden')
-    beneficiaryaddBlock.classList.add('visible')
-    
-})
-beneficiaryClose.addEventListener("click", function (e) {
-    e.preventDefault();
-    beneficiaryAdd.classList.remove("hidden");
-    beneficiaryblock.classList.remove("hidden");
-    beneficiaryaddBlock.classList.add('hidden')
-    beneficiaryaddBlock.classList.remove('visible')
-})
+if (beneficiaryAdd) {
+    beneficiaryAdd.addEventListener("click", function () {
+        beneficiaryAdd.classList.add("hidden");
+        beneficiaryblock.classList.add("hidden");
+        beneficiaryaddBlock.classList.remove('hidden')
+        beneficiaryaddBlock.classList.add('visible')
+
+    })
+}
+if (beneficiaryClose) {
+    beneficiaryClose.addEventListener("click", function (e) {
+        e.preventDefault();
+        beneficiaryAdd.classList.remove("hidden");
+        beneficiaryblock.classList.remove("hidden");
+        beneficiaryaddBlock.classList.add('hidden')
+        beneficiaryaddBlock.classList.remove('visible')
+    })
+}

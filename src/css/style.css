@@ -605,6 +605,7 @@ ul {
 }
 
 .slider-control__item:active {
+    visibility: visible;
     background: #005e78;
     border: 0;
     text-indent: 0;
@@ -3016,13 +3017,35 @@ ul {
     background-color: #c4c4c4;
 }
 /* ----------------------------------------------------------------------------------------------- */
+.menu-bord-beneficiary-table{
+    
+}
+.menu-message-bord-header-table{
+    padding: 10px 23px;
+    background-color: #f9f9f9;
+}
+.menu-bord-message-table-row-1st-column{
+    display: inline-flex;
+    width: 170px;
+}
+.menu-bord-message-table-row-2st-column{
+    display: inline-flex;
+    width: 304px;
+}
+.menu-bord-message-table-row-3st-column{
+    display: inline-flex;
+    width: auto;
+}
 
 .menu-exchange {
     display: none;
+    
 }
 
 .menu-message {
     display: none;
+    flex-direction: column;
+    width: 995px;
 }
 
 .d-flex {
