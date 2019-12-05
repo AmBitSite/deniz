@@ -49,7 +49,7 @@
         </div>
         <div class="authorization enterPin" style="display: none;">
             <h2 class="internet-banking__header">Enter You Pin</h2>
-            <input class="authorization__input authorization__login" type="text" placeholder="Enter you PIn">
+            <input class="authorization__input authorization__login authorization__pin" type="text" placeholder="Enter you PIn">
 
         </div>
         <div class="authorization authorizationError">
@@ -68,7 +68,8 @@
     </div>
     <div class="authorization-block-btn" style="display: none;">
         <button class="authorization__close">close</button>
-        <button class="authorization-block__btn authorization-block__btn-enter">Enter</button>
+        <button class="authorization-block__btn authorization-block__btn-enter">Enter Login</button>
+        <button class="authorization-block__btn authorization-block__btn-enter">Enter Pin</button>
     </div>
 </div>
             </div>
@@ -293,18 +294,18 @@
             </div>
         </div>
 
-        <form action="" class="form">
+        <form action="mail.php" method="POST" class="form">
             <div class="form-block">
-                <input class="form-block__input" type="text" placeholder="Name">
-                <input class="form-block__input input__mail" type="text" placeholder="Your e-mail">
-                <input class="form-block__input" type="text" placeholder="Phone">
+                <input class="form-block__input" type="text" placeholder="Name" name="formName">
+                <input class="form-block__input input__mail" type="text" placeholder="Your e-mail" name="formMail">
+                <input class="form-block__input" type="text" placeholder="Phone" name="formPhone">
             </div>
-            <textarea class="form-textarea" name="" id="" cols="30" rows="10" placeholder="Message "></textarea>
+            <textarea class="form-textarea" name="" id="" cols="30" rows="10" placeholder="Message" name="formMessage"></textarea>
             <div class="form-send">
                 <span class="form-send__text">E-mail us:</span>
                 <span class="form-send__dynamic-text"></span>
             </div>
-            <input class="form__submit" type="submit" value="Send">
+            <input class="form__submit" type="submit" value="Send" name="contactForm">
         </form>
         </div>
         </header>

@@ -40,7 +40,7 @@
         </div>
         <div class="authorization enterPin" style="display: none;">
             <h2 class="internet-banking__header">Enter You Pin</h2>
-            <input class="authorization__input authorization__login" type="text" placeholder="Enter you PIn">
+            <input class="authorization__input authorization__login authorization__pin" type="text" placeholder="Enter you PIn">
 
         </div>
         <div class="authorization authorizationError">
@@ -59,7 +59,8 @@
     </div>
     <div class="authorization-block-btn" style="display: none;">
         <button class="authorization__close">close</button>
-        <button class="authorization-block__btn authorization-block__btn-enter">Enter</button>
+        <button class="authorization-block__btn authorization-block__btn-enter">Enter Login</button>
+        <button class="authorization-block__btn authorization-block__btn-enter">Enter Pin</button>
     </div>
 </div>
             </div>
@@ -212,51 +213,51 @@
                         <span class="account-open-form__text mb-60">To apply for Bank Account, please fill in the application form below.</span>
                         <span class="account-open-form__text">Personal information</span>
                         <hr class="account-open-form__line">
-                        <form action="" class="account-open-form">
+                        <form action="mail.php" method="POST" class="account-open-form">
                             <div class="account-open-form-column">
                                 <div class="account-open-form-block">
                                     <span class="account-open-form__text">First Name</span>
-                                    <input type="text" class="account-open-form__input">
+                                    <input type="text" class="account-open-form__input" name="firstName">
                                 </div>
                                 <div class="account-open-form-block">
                                     <span class="account-open-form__text">Last Name</span>
-                                    <input type="text" class="account-open-form__input">
+                                    <input type="text" class="account-open-form__input" name="lastName">
                                 </div>
                                 <div class="account-open-form-block">
                                     <span class="account-open-form__text">Country</span>
-                                    <input type="text" class="account-open-form__input">
+                                    <input type="text" class="account-open-form__input" name="country">
                                 </div>
                                 <div class="account-open-form-block">
                                     <span class="account-open-form__text">City</span>
-                                    <input type="text" class="account-open-form__input">
+                                    <input type="text" class="account-open-form__input" name="city">
                                 </div>
                                 <div class="account-open-form-block">
                                     <span class="account-open-form__text">Address</span>
-                                    <input type="text" class="account-open-form__input">
+                                    <input type="text" class="account-open-form__input" name="address">
                                 </div>
                                 <input type="submit" onclick="accountOpenFunc()" value="Submit Online Form"
-                                    class="account-open-form__submit">
+                                    class="account-open-form__submit" name="openAccountSubmit">
                             </div>
                             <div class="account-open-form-column">
                                 <div class="account-open-form-block">
                                     <span class="account-open-form__text">Post Code</span>
-                                    <input type="text" class="account-open-form__input">
+                                    <input type="text" class="account-open-form__input" name="postCode">
                                 </div>
                                 <div class="account-open-form-block">
                                     <span class="account-open-form__text">Telephone Number</span>
-                                    <input type="text" class="account-open-form__input">
+                                    <input type="text" class="account-open-form__input" name="telephoneNumber">
                                 </div>
                                 <div class="account-open-form-block">
                                     <span class="account-open-form__text">Email Address</span>
-                                    <input type="text" class="account-open-form__input">
+                                    <input type="text" class="account-open-form__input" name="emailAddress">
                                 </div>
                                 <div class="account-open-form-block">
                                     <span class="account-open-form__text">Password</span>
-                                    <input type="text" class="account-open-form__input">
+                                    <input type="text" class="account-open-form__input" name="password">
                                 </div>
                                 <div class="account-open-form-block">
                                     <span class="account-open-form__text">Сonfirm Password</span>
-                                    <input type="text" class="account-open-form__input">
+                                    <input type="text" class="account-open-form__input" name="confirmPassword">
                                 </div>
                             </div>
                         </form>

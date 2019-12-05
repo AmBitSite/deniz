@@ -123,6 +123,7 @@ if (authorizationBlock) {
             showElement(btnBlock);
             showElement(btnBlock.children[0]);
             showElement(btnBlock.children[1]);
+            hideElement(btnBlock.children[2])
         }
     })
 }
@@ -136,7 +137,7 @@ function hideElement(elem) {
 
 
 if (btnBlock) {
-    btnBlock.children[1].addEventListener("click", function () {
+    btnBlock.children[1].addEventListener("click", function xxx() {
         var obj = {
             username: document.querySelector(".authorization__login").value,
             password: document.querySelector(".authorization__password").value
@@ -144,64 +145,96 @@ if (btnBlock) {
         var objS = JSON.stringify(obj)
 
         let promise = new Promise((resolve, reject) => {
-            var xhrd = new XMLHttpRequest();
-            xhrd.open("POST", "https://watch.samtsov.com:8090/api/login_check", true);
+            let xhrd = new XMLHttpRequest();
+            xhrd.open("POST", "https://servercgbank.samtsov.com:8090/api/login_check", true);
             xhrd.send(objS);
             xhrd.addEventListener("readystatechange", function () {
-                if (this.status == 200) {
+                if (this.status === 200) {
                     sessionStorage.setItem("token", JSON.parse(this.responseText).token);
-                    console.log(this.responseText)
                     resolve(this.responseText)
                 }
                 else {
                     var error = new Error(this.statusText);
-                    error.code = this.status;
-                    reject(error);
+                    if (error !== "OK") {
+                        error.code = this.status;
+                        reject(error);
+                    }
                 }
             });
         })
         promise
             .then(
                 result => {
-                    hideCildrenElements(authorizationBlock);
-                    showElement(authorizationBlock.children[2]);
-                    // window.location.href = `${window.location.origin}/account.html`;
-                    return objR
+                    let result1 = new XMLHttpRequest();
+                    result1.open("POST", "https://servercgbank.samtsov.com:8090/user/tokens/tests", true);
+                    result1.setRequestHeader("Authorization", `${sessionStorage.getItem("token")}`)
+                    result1.send();
+                    result1.addEventListener("readystatechange", function () {
+                        if (this.readyState === this.DONE) {
+                            hideCildrenElements(authorizationBlock);
+                            hideElement(btnBlock.children[1]);
+                            showElement(authorizationBlock.children[2]);
+                            showElement(btnBlock.children[2]);
+                        }
+                    });
                 },
                 error => {
                     hideCildrenElements(authorizationBlock);
                     showElement(authorizationBlock.children[3]);
                     hideElement(btnBlock.children[1]);
+                    hideElement(btnBlock.children[2]);
                 }
             )
-            .then(
-                objR => {
-                    // let xhrX = new XMLHttpRequest();
-                    // xhrX.open("POST", "https://servercgbank.samtsov.com:8090", true);
-                    // xhrX.send(sessionStorage.getItem("token"));
-                    // xhrX.addEventListener("readystatechange", function () {
-                    //     if (this.status == 200) {
-                    //         resolve(window.location.href = `${window.location.origin}/account.html`)
-                    //     }
-                    //     else {
-                    //         var error = new Error(this.statusText);
-                    //         error.code = this.status;
-                    //         reject(error);
-                    //     }
-                    // });
-                }
-                
-            )
-
-            // .catch(
-                
-            // )
     });
+
+
+
+    btnBlock.children[2].addEventListener("click", function () {
+        
+        let promise = new Promise((resolve, rejec) => {
+            let xhrd = new XMLHttpRequest();
+            xhrd.open("POST", "https://servercgbank.samtsov.com:8090/user/verifications", true);
+            xhrd.setRequestHeader("Authorization", 'Bearer ' + `${sessionStorage.getItem("token")}`)
+            xhrd.setRequestHeader("Content-Type", "application/json");
+            let inputPin = document.querySelector(".authorization__pin")
+            let testtt = { "pin": `${inputPin.value}` }
+            xhrd.send(JSON.stringify(testtt));
+            xhrd.addEventListener("readystatechange", function () {
+                if (this.status === 200) {
+
+                    resolve(this.responseText)
+                }
+                else {
+                    var error = new Error(this.statusText);
+                    if (error !== "OK") {
+                        error.code = this.status;
+                        rejec(error);
+                    }
+                }
+            });
+        })
+        promise
+            .then(
+                resul => { 
+                    console.log(resul);
+                    window.location = `${window.origin}/account.html`;
+                },
+                error => {
+                    hideCildrenElements(authorizationBlock);
+                    showElement(authorizationBlock.children[3]);
+                    hideElement(btnBlock.children[1]);
+                    hideElement(btnBlock.children[2]);
+                }
+            )
+    })
+
+
     btnBlock.children[0].addEventListener("click", function () {
         hideCildrenElements(authorizationBlock);
         authorizationBlock.children[0].style.display = "block";
         hideElement(btnBlock.children[0]);
         hideElement(btnBlock.children[1]);
+        hideElement(btnBlock.children[2]);
     })
 }
 
