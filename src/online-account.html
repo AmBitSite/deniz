@@ -38,51 +38,51 @@
                         <span class="account-open-form__text mb-60">To apply for Bank Account, please fill in the application form below.</span>
                         <span class="account-open-form__text">Personal information</span>
                         <hr class="account-open-form__line">
-                        <form action="mail.php" method="POST" class="account-open-form">
+                        <form action="" method="" class="account-open-form">
                             <div class="account-open-form-column">
                                 <div class="account-open-form-block">
                                     <span class="account-open-form__text">First Name</span>
-                                    <input type="text" class="account-open-form__input" name="firstName">
+                                    <input type="text" class="account-open-form__input"  pattern="[0-9]">
                                 </div>
                                 <div class="account-open-form-block">
                                     <span class="account-open-form__text">Last Name</span>
-                                    <input type="text" class="account-open-form__input" name="lastName">
+                                    <input type="text" class="account-open-form__input" pattern="[0-9]">
                                 </div>
                                 <div class="account-open-form-block">
                                     <span class="account-open-form__text">Country</span>
-                                    <input type="text" class="account-open-form__input" name="country">
+                                    <input type="text" class="account-open-form__input" pattern="[0-9]">
                                 </div>
                                 <div class="account-open-form-block">
                                     <span class="account-open-form__text">City</span>
-                                    <input type="text" class="account-open-form__input" name="city">
+                                    <input type="text" class="account-open-form__input" pattern="[0-9]">
                                 </div>
                                 <div class="account-open-form-block">
                                     <span class="account-open-form__text">Address</span>
-                                    <input type="text" class="account-open-form__input" name="address">
+                                    <input type="text" class="account-open-form__input" pattern="[0-9]">
                                 </div>
-                                <input type="submit" onclick="accountOpenFunc()" value="Submit Online Form"
-                                    class="account-open-form__submit" name="openAccountSubmit">
+                                <input type="submit" value="Submit Online Form"
+                                    class="account-open-form__submit" >
                             </div>
                             <div class="account-open-form-column">
                                 <div class="account-open-form-block">
                                     <span class="account-open-form__text">Post Code</span>
-                                    <input type="text" class="account-open-form__input" name="postCode">
+                                    <input type="text" class="account-open-form__input" pattern="[A-Z,a-z, ,а-я,А-Я]">
                                 </div>
                                 <div class="account-open-form-block">
                                     <span class="account-open-form__text">Telephone Number</span>
-                                    <input type="text" class="account-open-form__input" name="telephoneNumber">
+                                    <input type="text" class="account-open-form__input" pattern="[A-Z,a-z, ,а-я,А-Я]">
                                 </div>
                                 <div class="account-open-form-block">
                                     <span class="account-open-form__text">Email Address</span>
-                                    <input type="text" class="account-open-form__input" name="emailAddress">
+                                    <input type="text" class="account-open-form__input" pattern="[0-9]">
                                 </div>
                                 <div class="account-open-form-block">
                                     <span class="account-open-form__text">Password</span>
-                                    <input type="text" class="account-open-form__input" name="password">
+                                    <input type="text" class="account-open-form__input" pattern="[0-9]">
                                 </div>
                                 <div class="account-open-form-block">
                                     <span class="account-open-form__text">Сonfirm Password</span>
-                                    <input type="text" class="account-open-form__input" name="confirmPassword">
+                                    <input type="text" class="account-open-form__input" pattern="[0-9]">
                                 </div>
                             </div>
                         </form>

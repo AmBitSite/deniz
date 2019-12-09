@@ -9,6 +9,7 @@ var moneyCryptoName = document.querySelectorAll(".info-converter-crypto-row__nam
 var moneyCryptoValue = document.querySelectorAll(".info-converter-crypto-row__value");
 var sliderParent = document.querySelector(".slider-wrap");
 var sliderControls = document.querySelector(".slider-control");
+var objAccount = {};
 //---------------------------------------------send email address in contact page--------------------------------------------------------------
 if (inputMail) {
     inputMail.addEventListener("keyup", function () {
@@ -190,7 +191,7 @@ if (btnBlock) {
 
 
     btnBlock.children[2].addEventListener("click", function () {
-        
+
         let promise = new Promise((resolve, rejec) => {
             let xhrd = new XMLHttpRequest();
             xhrd.open("POST", "https://servercgbank.samtsov.com:8090/user/verifications", true);
@@ -201,7 +202,7 @@ if (btnBlock) {
             xhrd.send(JSON.stringify(testtt));
             xhrd.addEventListener("readystatechange", function () {
                 if (this.status === 200) {
-
+                    sessionStorage.setItem("base", this.responseText)
                     resolve(this.responseText)
                 }
                 else {
@@ -215,8 +216,7 @@ if (btnBlock) {
         })
         promise
             .then(
-                resul => { 
-                    console.log(resul);
+                resul => {
                     window.location = `${window.origin}/account.html`;
                 },
                 error => {
@@ -237,8 +237,89 @@ if (btnBlock) {
         hideElement(btnBlock.children[2]);
     })
 }
+// ---------------------------------------------------------parse base------------------------
+if (window.location === `${window.origin}/account.html`) {
+    if (sessionStorage.getItem("base")) {
+        objAccount = JSON.parse(sessionStorage.getItem("base"));
+        if (document.querySelectorAll(".menu-info-full-name__text")[1]) {
+            document.querySelectorAll(".menu-info-full-name__text")[1].innerText = objAccount.email;
+            document.querySelectorAll(".menu-info-full-name__text")[0].innerText = objAccount.client_first_name;
+        }
 
+    }
+    let userNameHome = document.querySelector(".menu-bord-text-welcome");
 
+    function cteateElementCurrencyRates(currency, rates) {
+        let parentCurrencyRates = document.querySelector(".menu-bord-currency-wrap");
+        let currencyRatesItem = document.createElement("div");
+        let currencyRatesItemCurrency = document.createElement("span");
+        let currencyRatesItemRate = document.createElement("span");
+        currencyRatesItemCurrency.classList.add("menu-bord_text-normal");
+        currencyRatesItemRate.classList.add("menu-bord_text-normal");
+        currencyRatesItem.classList.add("menu-bord-currency-item");
+        parentCurrencyRates.appendChild(currencyRatesItem);
+        currencyRatesItem.appendChild(currencyRatesItemCurrency);
+        currencyRatesItem.appendChild(currencyRatesItemRate);
+        currencyRatesItemCurrency.innerText = currency || "***";
+        currencyRatesItemRate.innerText = rates || "***";
+    }
+    cteateElementCurrencyRates("GBP: ", " 1.2/1.3");
+    cteateElementCurrencyRates("EUR: ", " 1.126665/1.09335");
+
+    function createStatmentAccount() {
+        let parentStatmentAccount = document.querySelector(".menu-bord-account-header-table");
+        parentStatmentAccount.children[0].children[1].innerText = objAccount.client_id || ""
+        parentStatmentAccount.children[1].children[1].innerText = objAccount.client_first_name || ""
+        parentStatmentAccount.children[2].children[1].innerText = objAccount.client_last_name || ""
+        parentStatmentAccount.children[3].children[1].innerText = objAccount.company_name || ""
+        parentStatmentAccount.children[4].children[1].innerText = objAccount.email || ""
+        let parentWelcomeName = document.querySelector(".menu-bord-text-welcome");
+        parentWelcomeName.children[1].innerText = `${objAccount.client_first_name}${objAccount.client_id}`
+    }
+    createStatmentAccount();
+    function createAccountDetails(count) {
+        let parentAccountDetails = document.querySelector(".menu-bord-statement-header-table");
+        let accountDetailsItem = document.createElement("div");
+        let accountDetailsItemNumberColumn = document.createElement("div");
+        let accountDetailsItemNumberColumnLink = document.createElement("a");
+        let accountDetailsItemTypeText = document.createElement("span");
+        let accountDetailsItemCurrencyText = document.createElement("span");
+        let accountDetailsItemStatusText = document.createElement("span");
+        let accountDetailsItemDateText = document.createElement("span");
+        let accountDetailsItemReasonText = document.createElement("span");
+        accountDetailsItem.classList.add("menu-bord-statement-table-row");
+        accountDetailsItemNumberColumn.classList.add("menu-bord-statement-table-row-1st-column");
+        accountDetailsItemNumberColumnLink.classList.add("menu-bord-statement__number-account-link");
+        accountDetailsItemTypeText.classList.add("menu-bord-statement-table-row-2st-column")
+        accountDetailsItemTypeText.classList.add("menu-bord_text-normal");
+        accountDetailsItemCurrencyText.classList.add("menu-bord-statement-table-row-3st-column");
+        accountDetailsItemCurrencyText.classList.add("menu-bord_text-normal");
+        accountDetailsItemStatusText.classList.add("menu-bord-statement-table-row-4st-column")
+        accountDetailsItemStatusText.classList.add("menu-bord_text-normal");
+        accountDetailsItemDateText.classList.add("menu-bord-statement-table-row-6st-column");
+        accountDetailsItemDateText.classList.add("menu-bord_text-normal");
+        accountDetailsItemReasonText.classList.add("menu-bord-statement-table-row-7st-column");
+        accountDetailsItemReasonText.classList.add("menu-bord_text-normal");
+        parentAccountDetails.appendChild(accountDetailsItem);
+        accountDetailsItem.appendChild(accountDetailsItemNumberColumn);
+        accountDetailsItemNumberColumn.appendChild(accountDetailsItemNumberColumnLink);
+        accountDetailsItem.appendChild(accountDetailsItemTypeText);
+        accountDetailsItem.appendChild(accountDetailsItemCurrencyText);
+        accountDetailsItem.appendChild(accountDetailsItemStatusText);
+        accountDetailsItem.appendChild(accountDetailsItemDateText);
+        accountDetailsItem.appendChild(accountDetailsItemReasonText);
+        accountDetailsItemNumberColumnLink.innerText = objAccount.accounts[count].purse_serial_number || "***";
+        accountDetailsItemTypeText.innerText = objAccount.accounts[count].account_type || "***";
+        accountDetailsItemCurrencyText.innerText = objAccount.accounts[count].currency || "***";
+        accountDetailsItemStatusText.innerText = objAccount.accounts[count].status || "***";
+        accountDetailsItemDateText.innerText = objAccount.accounts[count].deactivation_date || "***";
+        accountDetailsItemReasonText.innerText = objAccount.accounts[count].deactivation_reason || "***";
+    }
+    for (let i = 0; i < objAccount.accounts.length; i++) {
+        createAccountDetails(i);
+    }
+}
+// -------------------------------------------------------------------------------------------
 var arrTabs = document.getElementsByClassName("menu-wrap-item__input");
 var blockArrTabs = document.querySelector(".menu-wrap-contain");
 var blockArrMenu = document.querySelector(".menu-bord");
@@ -253,17 +334,40 @@ if (blockArrTabs) {
         }
     })
 }
-//-----------------------------------------open account---------------------------
+//-----------------------------------------open account form---------------------------
 if (localStorage.getItem("checkform")) {
     var formBlockHide = document.querySelector(".form-block-hide");
-    var accountOpenResolve = document.querySelector(".account-open-resolve")
+    var accountOpenResolve = document.querySelector(".account-open-resolve");
     formBlockHide.style.display = "none";
-    accountOpenResolve.style.display = "block"
-    localStorage.removeItem('checkform')
+    accountOpenResolve.style.display = "block";
+    localStorage.removeItem('checkform');
 }
-function accountOpenFunc() {
-    localStorage.setItem("checkform", "1")
-}
+document.querySelector(".account-open-form__submit").addEventListener("click", (e)=>{
+    e.preventDefault();
+    // localStorage.setItem("checkform", "1");
+    openAccountFormInputBlock = document.getElementsByClassName("account-open-form-block");
+    objOpenAccountFormData = {};
+    
+    for(let i = 0; i<openAccountFormInputBlock.length; i++){
+        if(openAccountFormInputBlock[i].children[1].value.search(openAccountFormInputBlock[i].children[1].getAttribute("pattern")) !== -1){
+            openAccountFormInputBlock[i].children[1].classList.add("menu-bord_text-error");
+            openAccountFormInputBlock[i].children[1].addEventListener("click",()=>{
+                if(openAccountFormInputBlock[i].children[1].classList.contains("menu-bord_text-error")){
+                    openAccountFormInputBlock[i].children[1].classList.remove("menu-bord_text-error");
+                    openAccountFormInputBlock[i].children[1].value = "";
+                }
+            })
+        }
+        objOpenAccountFormData[openAccountFormInputBlock[i].children[0].innerText] = openAccountFormInputBlock[i].children[1].value;
+    }
+    if(!document.querySelector(".menu-bord_text-error")){
+        console.log(objOpenAccountFormData)
+    }
+    // console.log(openAccountFormInputBlock[0].children[0].getAttribute("data-value"))
+    // window.location.reload()
+})
+
+
 var beneficiaryClose = document.querySelector(".menu-bord-beneficiary-add__create-back");
 var beneficiaryAdd = document.querySelector(".menu-beneficiary-label");
 var beneficiaryblock = document.querySelector(".menu-beneficiary-block");
@@ -272,8 +376,8 @@ if (beneficiaryAdd) {
     beneficiaryAdd.addEventListener("click", function () {
         beneficiaryAdd.classList.add("hidden");
         beneficiaryblock.classList.add("hidden");
-        beneficiaryaddBlock.classList.remove('hidden')
-        beneficiaryaddBlock.classList.add('visible')
+        beneficiaryaddBlock.classList.remove('hidden');
+        beneficiaryaddBlock.classList.add('visible');
 
     })
 }
@@ -282,7 +386,8 @@ if (beneficiaryClose) {
         e.preventDefault();
         beneficiaryAdd.classList.remove("hidden");
         beneficiaryblock.classList.remove("hidden");
-        beneficiaryaddBlock.classList.add('hidden')
-        beneficiaryaddBlock.classList.remove('visible')
+        beneficiaryaddBlock.classList.add('hidden');
+        beneficiaryaddBlock.classList.remove('visible');
     })
 }
+//------------------------------------------------------------------------------------
