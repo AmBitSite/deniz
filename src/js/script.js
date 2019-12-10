@@ -167,7 +167,7 @@ if (btnBlock) {
             .then(
                 result => {
                     let result1 = new XMLHttpRequest();
-                    result1.open("POST", "https://servercgbank.samtsov.com:8090/user/tokens/tests", true);
+                    result1.open("POST", "https://servercgbank.samtsov.com:8090/user/sends/users/pins", true);
                     result1.setRequestHeader("Authorization", `${sessionStorage.getItem("token")}`)
                     result1.send();
                     result1.addEventListener("readystatechange", function () {
@@ -238,7 +238,7 @@ if (btnBlock) {
     })
 }
 // ---------------------------------------------------------parse base------------------------
-if (window.location === `${window.origin}/account.html`) {
+if (window.location == `${window.origin}/account.html`) {
     if (sessionStorage.getItem("base")) {
         objAccount = JSON.parse(sessionStorage.getItem("base"));
         if (document.querySelectorAll(".menu-info-full-name__text")[1]) {
@@ -315,8 +315,10 @@ if (window.location === `${window.origin}/account.html`) {
         accountDetailsItemDateText.innerText = objAccount.accounts[count].deactivation_date || "***";
         accountDetailsItemReasonText.innerText = objAccount.accounts[count].deactivation_reason || "***";
     }
-    for (let i = 0; i < objAccount.accounts.length; i++) {
-        createAccountDetails(i);
+    if(objAccount.accounts){
+        for (let i = 0; i < objAccount.accounts.length; i++) {
+            createAccountDetails(i);
+        }
     }
 }
 // -------------------------------------------------------------------------------------------
@@ -335,37 +337,44 @@ if (blockArrTabs) {
     })
 }
 //-----------------------------------------open account form---------------------------
-if (localStorage.getItem("checkform")) {
-    var formBlockHide = document.querySelector(".form-block-hide");
-    var accountOpenResolve = document.querySelector(".account-open-resolve");
-    formBlockHide.style.display = "none";
-    accountOpenResolve.style.display = "block";
-    localStorage.removeItem('checkform');
-}
-document.querySelector(".account-open-form__submit").addEventListener("click", (e)=>{
-    e.preventDefault();
-    // localStorage.setItem("checkform", "1");
-    openAccountFormInputBlock = document.getElementsByClassName("account-open-form-block");
-    objOpenAccountFormData = {};
-    
-    for(let i = 0; i<openAccountFormInputBlock.length; i++){
-        if(openAccountFormInputBlock[i].children[1].value.search(openAccountFormInputBlock[i].children[1].getAttribute("pattern")) !== -1){
-            openAccountFormInputBlock[i].children[1].classList.add("menu-bord_text-error");
-            openAccountFormInputBlock[i].children[1].addEventListener("click",()=>{
-                if(openAccountFormInputBlock[i].children[1].classList.contains("menu-bord_text-error")){
-                    openAccountFormInputBlock[i].children[1].classList.remove("menu-bord_text-error");
-                    openAccountFormInputBlock[i].children[1].value = "";
-                }
+
+if (document.querySelector(".account-open-form__submit")) {
+    document.querySelector(".account-open-form__submit").addEventListener("click", e => {
+        e.preventDefault();
+        let openAccountFormInputBlock = document.getElementsByClassName("account-open-form-block");
+        let inputPassword = document.querySelector(".account-open-form__input_password");
+        let inputPasswordConfirm = document.querySelector(".account-open-form__input_password-confirm");
+        let objOpenAccountFormData = {};
+        let getChildElem = e => { return openAccountFormInputBlock[e].children[1] };
+        let setErrorOnElem = e => {
+            getChildElem(e).classList.add("menu-bord_text-error");
+            getChildElem(e).addEventListener("click", () => {
+                getChildElem(e).classList.remove("menu-bord_text-error");
+                getChildElem(e).value = "";
             })
         }
-        objOpenAccountFormData[openAccountFormInputBlock[i].children[0].innerText] = openAccountFormInputBlock[i].children[1].value;
-    }
-    if(!document.querySelector(".menu-bord_text-error")){
-        console.log(objOpenAccountFormData)
-    }
-    // console.log(openAccountFormInputBlock[0].children[0].getAttribute("data-value"))
-    // window.location.reload()
-})
+        
+        for (let i = 0; i < openAccountFormInputBlock.length; i++) {
+            if (getChildElem(i).value.search(getChildElem(i).getAttribute("pattern")) !== -1) { setErrorOnElem(i) };
+            if (inputPassword.value == inputPasswordConfirm.value) {
+                setErrorOnElem(inputPassword.parentNode)
+                setErrorOnElem(inputPasswordConfirm.parentNode)
+
+            }
+            objOpenAccountFormData[openAccountFormInputBlock[i].children[0].innerText] = getChildElem(i).value;
+        }
+        console.log(inputPassword.value)
+        console.log(inputPasswordConfirm.value)
+
+        if (!document.querySelector(".menu-bord_text-error")) {
+            console.log(objOpenAccountFormData)
+            let formBlockHide = document.querySelector(".form-block-hide");
+            let accountOpenResolve = document.querySelector(".account-open-resolve");
+            formBlockHide.style.display = "none";
+            accountOpenResolve.style.display = "block";
+        }
+    })
+}
 
 
 var beneficiaryClose = document.querySelector(".menu-bord-beneficiary-add__create-back");

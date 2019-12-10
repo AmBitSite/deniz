@@ -956,9 +956,14 @@ ul {
 }
 
 .footer-block__link_4 {
-    background-position-x: -90px;
+    background-image: url(../img/telegram.png);
 }
-
+.footer-block__link_5 {
+    background-image: url(../img/watsapp.png);
+}
+.footer-block__link_6 {
+    background-image: url(../img/signal.png);
+}
 .footer-block-right {
     margin-top: 15px;
     display: flex;
