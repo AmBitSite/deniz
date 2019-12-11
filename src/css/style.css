@@ -1747,7 +1747,7 @@ ul {
     display: none;
     position: absolute;
     bottom: 0px;
-    left: 38%;
+    left: 44%;
     width: 0;
     height: 0;
     border-left: 10px solid transparent;
@@ -2310,6 +2310,9 @@ ul {
 
 .menu-statement {
     display: none;
+    flex-direction: column;
+    width: 995px;
+    align-items: flex-start;
 }
 
 .menu-payment {
@@ -2363,7 +2366,9 @@ ul {
     padding: 10px 23px;
     box-sizing: border-box;
 }
-
+.menu-bord-payment-header-table_payment>div:nth-child(2n+1){
+    margin-right: 50px;
+}
 .menu-bord-payment-table-row {
     margin-bottom: 20px;
     display: flex;
@@ -2614,6 +2619,7 @@ ul {
     line-height: 21px;
     color: #FEFEFE;
     padding: 10px 53px;
+    cursor: pointer;
 }
 
 .menu-transfer {
@@ -3091,4 +3097,7 @@ ul {
 .hidden{
     visibility: hidden;
     display: none;
+}
+.flex-wrap{
+    flex-wrap: wrap;
 }

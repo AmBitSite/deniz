@@ -9,7 +9,7 @@ var moneyCryptoName = document.querySelectorAll(".info-converter-crypto-row__nam
 var moneyCryptoValue = document.querySelectorAll(".info-converter-crypto-row__value");
 var sliderParent = document.querySelector(".slider-wrap");
 var sliderControls = document.querySelector(".slider-control");
-var objAccount = {};
+var objAccount = sessionStorage.getItem("base") || {};
 //---------------------------------------------send email address in contact page--------------------------------------------------------------
 if (inputMail) {
     inputMail.addEventListener("keyup", function () {
@@ -228,7 +228,6 @@ if (btnBlock) {
             )
     })
 
-
     btnBlock.children[0].addEventListener("click", function () {
         hideCildrenElements(authorizationBlock);
         authorizationBlock.children[0].style.display = "block";
@@ -308,20 +307,28 @@ if (window.location == `${window.origin}/account.html`) {
         accountDetailsItem.appendChild(accountDetailsItemStatusText);
         accountDetailsItem.appendChild(accountDetailsItemDateText);
         accountDetailsItem.appendChild(accountDetailsItemReasonText);
-        accountDetailsItemNumberColumnLink.innerText = objAccount.accounts[count].purse_serial_number || "***";
-        accountDetailsItemTypeText.innerText = objAccount.accounts[count].account_type || "***";
-        accountDetailsItemCurrencyText.innerText = objAccount.accounts[count].currency || "***";
-        accountDetailsItemStatusText.innerText = objAccount.accounts[count].status || "***";
-        accountDetailsItemDateText.innerText = objAccount.accounts[count].deactivation_date || "***";
-        accountDetailsItemReasonText.innerText = objAccount.accounts[count].deactivation_reason || "***";
+        accountDetailsItemNumberColumnLink.innerText = objAccount.accounts[count].account_special_number || "***";
+        accountDetailsItemTypeText.innerText = objAccount.accounts[count].account_type_name || "***";
+        accountDetailsItemCurrencyText.innerText = objAccount.accounts[count].currency_name || "***";
+        accountDetailsItemStatusText.innerText = checkStatus(objAccount.accounts[count].status) || "***";
+        accountDetailsItemDateText.innerText = objAccount.accounts[count].deactivation_date || "None";
+        accountDetailsItemReasonText.innerText = objAccount.accounts[count].deactivation_reason || "None";
     }
-    if(objAccount.accounts){
+    function checkStatus(e) {
+        if (e === true) {
+            return "Active"
+        }
+        else {
+            return "Deactive"
+        }
+    }
+    if (objAccount.accounts) {
         for (let i = 0; i < objAccount.accounts.length; i++) {
             createAccountDetails(i);
         }
     }
 }
-// -------------------------------------------------------------------------------------------
+// --------------------------------------------------------account-----------------------------------
 var arrTabs = document.getElementsByClassName("menu-wrap-item__input");
 var blockArrTabs = document.querySelector(".menu-wrap-contain");
 var blockArrMenu = document.querySelector(".menu-bord");
@@ -335,15 +342,90 @@ if (blockArrTabs) {
             }
         }
     })
+    //-------------------------PAYMENT REQUEST----------------------
+
+    let blockAccountNumber = document.querySelector(".menu-bord-payment-table-row-options");
+    let activeAccountNumber = document.querySelector(".menu-bord-select");
+    blockAccountNumber.addEventListener("click", (e) => {
+        let activeTarget = e.target;
+        activeAccountNumber.innerText = activeTarget.innerText
+    });
+    let paymentRequestSubmit = document.querySelector(".menu-bord-payment-header-table__submit");
+    let paymentRequestInput = document.getElementsByClassName("menu-bord-reference-table-row");
+    let payChargesinput = document.getElementsByClassName("menu-bord-pay-charges-table-row-input-block__input");
+    let objPaymentDate = {}
+    paymentRequestSubmit.addEventListener("click", (e) => {
+        e.preventDefault()
+        for (let i = 0; i < paymentRequestInput.length; i++) {
+            objPaymentDate[paymentRequestInput[i].children[0].innerText] = paymentRequestInput[i].children[1].value
+        }
+        for (let i = 0; i < payChargesinput.length; i++) {
+            if (payChargesinput[i].checked) {
+                console.log(payChargesinput[i].value)
+            }
+        }
+
+        objPaymentDate["Account Number"] = activeAccountNumber.innerText
+        objPaymentDate["PayCharges"] = payChargesinput[i].value
+        console.log(objPaymentDate)
+
+        // let promise = new Promise((resolve, rejec) => {
+        //     let xhrd = new XMLHttpRequest();
+        //     xhrd.open("POST", "https://servercgbank.samtsov.com:8090/mailer/onlines/registrations", true);
+        //     xhrd.send(JSON.stringify(objPaymentDate));
+        //     xhrd.addEventListener("readystatechange", function () {
+        //         if (this.status === 200) {
+        //             resolve(this.responseText)
+        //         }
+        //         else {
+        //             var error = new Error(this.statusText);
+        //             if (error !== "OK") {
+        //                 error.code = this.status;
+        //                 rejec(error);
+        //             }
+        //         }
+        //     });
+        // })
+        // promise
+        //     .then(
+        //         resul => {
+        //             alert("Your Reqest Send")
+        //         },
+        //         error => {
+        //             alert("error")
+        //         }
+        //     )
+
+
+
+
+//-------------------------intra transfer----------------------
+
+    })
+    function createPaymentRequst(count) {
+
+        let paymentAccountBlock = document.querySelector(".menu-bord-payment-table-row-options__paymentRequest")
+        let paymentAccountBlockNumber = document.createElement("span");
+        
+        paymentAccountBlockNumber.classList.add("menu-bord-transfer-table-row__account-number")
+        paymentAccountBlockNumber.classList.add("menu-bord_text-normal")
+        paymentAccountBlock.appendChild(paymentAccountBlockNumber)
+        paymentAccountBlockNumber.innerText = objAccount.accounts[count].account_special_number
+    }
+    
+    for(let i = 0; i<objAccount.accounts.length; i++){
+        createPaymentRequst(i)
+    }
 }
+
 //-----------------------------------------open account form---------------------------
 
 if (document.querySelector(".account-open-form__submit")) {
     document.querySelector(".account-open-form__submit").addEventListener("click", e => {
         e.preventDefault();
         let openAccountFormInputBlock = document.getElementsByClassName("account-open-form-block");
-        let inputPassword = document.querySelector(".account-open-form__input_password");
-        let inputPasswordConfirm = document.querySelector(".account-open-form__input_password-confirm");
+        // let inputPassword = document.querySelector(".account-open-form__input_password");
+        // let inputPasswordConfirm = document.querySelector(".account-open-form__input_password-confirm");
         let objOpenAccountFormData = {};
         let getChildElem = e => { return openAccountFormInputBlock[e].children[1] };
         let setErrorOnElem = e => {
@@ -353,50 +435,99 @@ if (document.querySelector(".account-open-form__submit")) {
                 getChildElem(e).value = "";
             })
         }
-        
-        for (let i = 0; i < openAccountFormInputBlock.length; i++) {
-            if (getChildElem(i).value.search(getChildElem(i).getAttribute("pattern")) !== -1) { setErrorOnElem(i) };
-            if (inputPassword.value == inputPasswordConfirm.value) {
-                setErrorOnElem(inputPassword.parentNode)
-                setErrorOnElem(inputPasswordConfirm.parentNode)
 
-            }
+        for (let i = 0; i < openAccountFormInputBlock.length; i++) {
+
+            if (getChildElem(i).value.search(getChildElem(i).getAttribute("pattern")) !== -1) { setErrorOnElem(i) };
+
             objOpenAccountFormData[openAccountFormInputBlock[i].children[0].innerText] = getChildElem(i).value;
         }
-        console.log(inputPassword.value)
-        console.log(inputPasswordConfirm.value)
-
+        // if (inputPassword.value !== inputPasswordConfirm.value) {
+        //     debugger
+        //     setErrorOnElem(inputPassword.parentNode)
+        //     setErrorOnElem(inputPasswordConfirm.parentNode)
+        // }
         if (!document.querySelector(".menu-bord_text-error")) {
-            console.log(objOpenAccountFormData)
-            let formBlockHide = document.querySelector(".form-block-hide");
-            let accountOpenResolve = document.querySelector(".account-open-resolve");
-            formBlockHide.style.display = "none";
-            accountOpenResolve.style.display = "block";
+            // console.log(objOpenAccountFormData)
+
+            let promise = new Promise((resolve, rejec) => {
+                let xhrd = new XMLHttpRequest();
+                xhrd.open("POST", "https://servercgbank.samtsov.com:8090/mailer/onlines/registrations", true);
+                xhrd.setRequestHeader("Content-Type", "application/json");
+                xhrd.send(JSON.stringify(objOpenAccountFormData));
+                xhrd.addEventListener("readystatechange", function () {
+                    if (this.status === 200) {
+                        resolve(this.responseText)
+                    }
+                    else {
+                        var error = new Error(this.statusText);
+                        if (error !== "OK") {
+                            error.code = this.status;
+                            rejec(error);
+                        }
+                    }
+                });
+            })
+            promise
+                .then(
+                    resul => {
+                        let formBlockHide = document.querySelector(".form-block-hide");
+                        let accountOpenResolve = document.querySelector(".account-open-resolve");
+                        formBlockHide.style.display = "none";
+                        accountOpenResolve.style.display = "block";
+                    },
+                    error => {
+                        alert("error")
+                    }
+                )
         }
     })
 }
 
-
-var beneficiaryClose = document.querySelector(".menu-bord-beneficiary-add__create-back");
-var beneficiaryAdd = document.querySelector(".menu-beneficiary-label");
-var beneficiaryblock = document.querySelector(".menu-beneficiary-block");
-var beneficiaryaddBlock = document.querySelector(".menu-beneficiary-add");
-if (beneficiaryAdd) {
-    beneficiaryAdd.addEventListener("click", function () {
-        beneficiaryAdd.classList.add("hidden");
-        beneficiaryblock.classList.add("hidden");
-        beneficiaryaddBlock.classList.remove('hidden');
-        beneficiaryaddBlock.classList.add('visible');
-
+// ---------------------------------------contact us----------------------------------
+if (document.querySelector(".form__submit")) [
+    document.querySelector(".form__submit").addEventListener("click", (e) => {
+        e.preventDefault()
+        let formfiends = document.querySelectorAll(".form-block__input");
+        let formFiendsArea = document.querySelector(".form-textarea")
+        let objForm = {};
+        objForm[formfiends[0].getAttribute("placeholder")] = formfiends[0].value
+        objForm[formfiends[1].getAttribute("placeholder")] = formfiends[1].value
+        objForm[formfiends[2].getAttribute("placeholder")] = formfiends[2].value
+        objForm[formFiendsArea.getAttribute("placeholder")] = formFiendsArea.value
+        let promise = new Promise((resolve, rejec) => {
+            let xhrd = new XMLHttpRequest();
+            xhrd.open("POST", "https://servercgbank.samtsov.com:8090/mailer/contacts/forms", true);
+            console.log(JSON.stringify(objForm))
+            xhrd.setRequestHeader("Content-Type", "application/json");
+            xhrd.send(JSON.stringify(objForm));
+            xhrd.addEventListener("readystatechange", function () {
+                if (this.status === 200) {
+                    // console.log(objOpenAccountFormData)
+                    resolve(this.responseText)
+                    console.log(objForm)
+                }
+                else {
+                    var error = new Error(this.statusText);
+                    if (error !== "OK") {
+                        error.code = this.status;
+                        rejec(error);
+                    }
+                }
+            });
+        })
+        promise
+            .then(
+                resul => {
+                    alert("Your Message Send")
+                },
+                error => {
+                    alert("error")
+                    console.log(objForm)
+                }
+            )
     })
-}
-if (beneficiaryClose) {
-    beneficiaryClose.addEventListener("click", function (e) {
-        e.preventDefault();
-        beneficiaryAdd.classList.remove("hidden");
-        beneficiaryblock.classList.remove("hidden");
-        beneficiaryaddBlock.classList.add('hidden');
-        beneficiaryaddBlock.classList.remove('visible');
-    })
-}
-//------------------------------------------------------------------------------------
+
+]
+
+
