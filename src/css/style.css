@@ -958,12 +958,15 @@ ul {
 .footer-block__link_4 {
     background-image: url(../img/telegram.png);
 }
+
 .footer-block__link_5 {
     background-image: url(../img/watsapp.png);
 }
+
 .footer-block__link_6 {
     background-image: url(../img/signal.png);
 }
+
 .footer-block-right {
     margin-top: 15px;
     display: flex;
@@ -1547,6 +1550,48 @@ ul {
 
 /* --------------------------------------online account---------------------- */
 
+.account-message {
+    display: flex;
+    top: 140px;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.account-message__send {
+    display: none;
+    visibility: hidden;
+    left: 40%;
+    color: #fefefe;
+    font-size: 30px;
+    background-color: #18A7C0;
+    padding: 10px 30px;
+    border-radius: 5px;
+    margin: auto;
+}
+
+.animation-account-message {
+    display: inline-flex;
+    visibility: visible;
+    animation-name: showMessage;
+    animation-direction: normal;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    animation-duration: 4s;
+}
+
+@keyframes showMessage {
+    0% {
+        display: inline-flex;
+        visibility: visible;
+    }
+    100% {
+        display: none;
+        visibility: hidden;
+    }
+}
+
 .online-account {
     width: 300px;
     height: 100px;
@@ -1641,6 +1686,7 @@ ul {
     font-size: 16px;
     line-height: 21px;
 }
+
 .account-open-form__submit:active {
     transform: translateY(1px);
 }
@@ -1913,6 +1959,7 @@ ul {
     line-height: 21px;
     letter-spacing: 0.03em;
     color: #949494;
+    letter-spacing: 1px;
 }
 
 .menu-bord_text-bold {
@@ -2235,7 +2282,9 @@ ul {
     display: inline-flex;
     width: 165px;
 }
-
+.correct-width{
+    width: 145px;
+}
 .menu-bord-statement-table-row-3st-column {
     display: inline-flex;
     width: 110px;
@@ -2314,7 +2363,43 @@ ul {
     width: 995px;
     align-items: flex-start;
 }
+.menu-bord-statement-field-table-row {
+    padding: 10px 23px;
+    background-color: #fefefe;
+    font-family: PT Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+    color: #949494;
+    letter-spacing: 1px;
+}
+.menu-bord-statement-field-width-1{
+    width: 100px;
+    display: inline-flex;
+}
+.menu-bord-statement-field-width-2{
+    width: 160px;
+    display: inline-flex;
+}
+.menu-bord-statement-field-width-3{
+    width: 160px;
+    display: inline-flex;
+}
+.menu-bord-statement-field-width-4{
+    width: 160px;
+    display: inline-flex;
+}
+.menu-bord-statement-field-width-5{
+    width: 160px;
+    display: inline-flex;
+}
 
+.menu-bord-statement-field-width-6{
+    width: 160px;
+    display: inline-flex;
+}
 .menu-payment {
     display: none;
     flex-direction: column;
@@ -2366,13 +2451,16 @@ ul {
     padding: 10px 23px;
     box-sizing: border-box;
 }
-.menu-bord-payment-header-table_payment>div:nth-child(2n+1){
+
+.menu-bord-payment-header-table_payment>div:nth-child(2n+1) {
     margin-right: 50px;
 }
+
 .menu-bord-payment-table-row {
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
+    max-width: 400px;
 }
 
 .menu-bord-payment-header-table-row__header {
@@ -2540,6 +2628,7 @@ ul {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
+    max-width: 400px;
 }
 
 .menu-bord-reference-table-row__input {
@@ -2781,6 +2870,7 @@ ul {
     line-height: 21px;
     color: #FEFEFE;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 /* -------------------------------------------------------------------------------------------------------------- */
@@ -2872,33 +2962,39 @@ ul {
 .menu-beneficiary__input {
     display: none
 }
-.menu-beneficiary-add{
+
+.menu-beneficiary-add {
     display: none;
     flex-direction: column;
     visibility: hidden;
 }
 
-.menu-beneficiary-block{
-    display:flex;
+.menu-beneficiary-block {
+    display: flex;
     flex-direction: column;
     visibility: visible;
 }
-.menu-beneficiary__input:checked~.menu-beneficiary-label{
+
+.menu-beneficiary__input:checked~.menu-beneficiary-label {
     display: none;
     visibility: hidden;
 }
-.menu-beneficiary__input:checked~.menu-beneficiary-block{
+
+.menu-beneficiary__input:checked~.menu-beneficiary-block {
     display: none;
     visibility: hidden;
 }
-.menu-beneficiary__input:checked~.menu-beneficiary-add{
+
+.menu-beneficiary__input:checked~.menu-beneficiary-add {
     display: flex;
     visibility: visible;
 }
-.menu-beneficiary__input:checked{
+
+.menu-beneficiary__input:checked {
     display: none;
     visibility: hidden;
 }
+
 .menu-beneficiary-label {
     display: flex;
     width: 198px;
@@ -3010,7 +3106,8 @@ ul {
     margin-bottom: 40px;
     font-weight: bold;
 }
-.menu-bord-beneficiary-add__create-back{
+
+.menu-bord-beneficiary-add__create-back {
     display: inline-flex;
     background: transparent;
     border-radius: 5px;
@@ -3018,38 +3115,41 @@ ul {
     color: #181818;
     margin-bottom: 40px;
     font-weight: bold;
-    border:2px solid #c4c4c4;
-    margin-left:12px;
+    border: 2px solid #c4c4c4;
+    margin-left: 12px;
     box-sizing: border-box;
-    
 }
-.menu-bord-beneficiary-add__create-back:hover{
+
+.menu-bord-beneficiary-add__create-back:hover {
     background-color: #c4c4c4;
 }
+
 /* ----------------------------------------------------------------------------------------------- */
-.menu-bord-beneficiary-table{
-    
-}
-.menu-message-bord-header-table{
+
+.menu-bord-beneficiary-table {}
+
+.menu-message-bord-header-table {
     padding: 10px 23px;
     background-color: #f9f9f9;
 }
-.menu-bord-message-table-row-1st-column{
+
+.menu-bord-message-table-row-1st-column {
     display: inline-flex;
     width: 170px;
 }
-.menu-bord-message-table-row-2st-column{
+
+.menu-bord-message-table-row-2st-column {
     display: inline-flex;
     width: 304px;
 }
-.menu-bord-message-table-row-3st-column{
+
+.menu-bord-message-table-row-3st-column {
     display: inline-flex;
     width: auto;
 }
 
 .menu-exchange {
     display: none;
-    
 }
 
 .menu-message {
@@ -3094,10 +3194,15 @@ ul {
     visibility: visible;
     display: flex;
 }
-.hidden{
+
+.hidden {
     visibility: hidden;
     display: none;
 }
-.flex-wrap{
+
+.flex-wrap {
     flex-wrap: wrap;
+}
+.text-align{
+    text-align: center;
 }

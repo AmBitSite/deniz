@@ -311,8 +311,8 @@ if (window.location == `${window.origin}/account.html`) {
         accountDetailsItemTypeText.innerText = objAccount.accounts[count].account_type_name || "***";
         accountDetailsItemCurrencyText.innerText = objAccount.accounts[count].currency_name || "***";
         accountDetailsItemStatusText.innerText = checkStatus(objAccount.accounts[count].status) || "***";
-        accountDetailsItemDateText.innerText = objAccount.accounts[count].deactivation_date || "None";
-        accountDetailsItemReasonText.innerText = objAccount.accounts[count].deactivation_reason || "None";
+        accountDetailsItemDateText.innerText = objAccount.accounts[count].balance || "None";
+        accountDetailsItemReasonText.innerText = objAccount.accounts[count].min_balance || "None";
     }
     function checkStatus(e) {
         if (e === true) {
@@ -361,60 +361,202 @@ if (blockArrTabs) {
         }
         for (let i = 0; i < payChargesinput.length; i++) {
             if (payChargesinput[i].checked) {
-                console.log(payChargesinput[i].value)
+                objPaymentDate["PayCharges"] = payChargesinput[i].value
             }
         }
 
-        objPaymentDate["Account Number"] = activeAccountNumber.innerText
-        objPaymentDate["PayCharges"] = payChargesinput[i].value
-        console.log(objPaymentDate)
+        objPaymentDate["from_account"] = activeAccountNumber.innerText
+        console.log(objPaymentDate);
+        let promise = new Promise((resolve, rejec) => {
+            let xhrd = new XMLHttpRequest();
+            xhrd.open("POST", "https://servercgbank.samtsov.com:8090/api/transfeers/applications/beneficiaries/transfers", true);
+            xhrd.setRequestHeader("Authorization", 'Bearer ' + `${sessionStorage.getItem("token")}`)
+            xhrd.setRequestHeader("Content-Type", "application/json");
+            xhrd.send(JSON.stringify(objPaymentDate));
+            xhrd.addEventListener("readystatechange", function () {
+                if (this.status === 200) {
+                    resolve(this.responseText)
+                }
+                else {
+                    var error = new Error(this.statusText);
+                    if (error !== "OK") {
+                        error.code = this.status;
+                        rejec(error);
+                    }
+                }
+            });
+        })
+        promise
+            .then(
+                resul => {
+                    if (document.querySelector(".animation-account-message")) {
+                        document.querySelector(".animation-account-message").classList.remove("animation-account-message")
+                    }
+                    let messageApproved = document.querySelector(".account-message");
+                    messageApproved.children[0].classList.add("animation-account-message")
+                    for (let i = 0; i < paymentRequestInput.length; i++) {
+                        paymentRequestInput[i].children[1].value = "";
+                    }
+                    activeAccountNumber.innerText = ""
+                },
+                error => {
+                    if (document.querySelector(".animation-account-message")) {
+                        document.querySelector(".animation-account-message").classList.remove("animation-account-message")
+                    };
+                    let messageApproved = document.querySelector(".account-message");
+                    messageApproved.children[1].classList.add("animation-account-message")
+                }
+            )
 
-        // let promise = new Promise((resolve, rejec) => {
-        //     let xhrd = new XMLHttpRequest();
-        //     xhrd.open("POST", "https://servercgbank.samtsov.com:8090/mailer/onlines/registrations", true);
-        //     xhrd.send(JSON.stringify(objPaymentDate));
-        //     xhrd.addEventListener("readystatechange", function () {
-        //         if (this.status === 200) {
-        //             resolve(this.responseText)
-        //         }
-        //         else {
-        //             var error = new Error(this.statusText);
-        //             if (error !== "OK") {
-        //                 error.code = this.status;
-        //                 rejec(error);
-        //             }
-        //         }
-        //     });
-        // })
-        // promise
-        //     .then(
-        //         resul => {
-        //             alert("Your Reqest Send")
-        //         },
-        //         error => {
-        //             alert("error")
-        //         }
-        //     )
 
 
 
+        //-------------------------intra transfer----------------------
 
-//-------------------------intra transfer----------------------
 
     })
     function createPaymentRequst(count) {
 
         let paymentAccountBlock = document.querySelector(".menu-bord-payment-table-row-options__paymentRequest")
         let paymentAccountBlockNumber = document.createElement("span");
-        
+
         paymentAccountBlockNumber.classList.add("menu-bord-transfer-table-row__account-number")
         paymentAccountBlockNumber.classList.add("menu-bord_text-normal")
         paymentAccountBlock.appendChild(paymentAccountBlockNumber)
         paymentAccountBlockNumber.innerText = objAccount.accounts[count].account_special_number
     }
-    
-    for(let i = 0; i<objAccount.accounts.length; i++){
+
+    for (let i = 0; i < objAccount.accounts.length; i++) {
         createPaymentRequst(i)
+    }
+
+    let blockAccountNumberTransfer = document.querySelector(".menu-bord-payment-table-row-options__transfer");
+    let activeAccountNumberTransfer = document.querySelector(".menu-bord-select__transfer");
+    blockAccountNumberTransfer.addEventListener("click", (e) => {
+        let activeTarget = e.target;
+        activeAccountNumberTransfer.innerText = activeTarget.innerText
+    });
+    function createIntraTransfer(count) {
+        let AccountBlock = document.querySelector(".menu-bord-payment-table-row-options__transfer")
+        let AccountBlockNumber = document.createElement("span");
+        AccountBlockNumber.classList.add("menu-bord-transfer-table-row__account-number")
+        AccountBlockNumber.classList.add("menu-bord_text-normal")
+        AccountBlock.appendChild(AccountBlockNumber)
+        AccountBlockNumber.innerText = objAccount.accounts[count].account_special_number
+    }
+
+    for (let i = 0; i < objAccount.accounts.length; i++) {
+        createIntraTransfer(i)
+    }
+
+
+    let blockAccountNumberTransferTo = document.querySelector(".menu-bord-payment-table-row-options__transfer-to");
+    let activeAccountNumberTransferTo = document.querySelector(".menu-bord-select__transfer-to");
+    blockAccountNumberTransferTo.addEventListener("click", (e) => {
+        let activeTarget = e.target;
+        activeAccountNumberTransferTo.innerText = activeTarget.innerText
+    });
+    function createIntraTransferTo(count) {
+        let transferAccountBlock = document.querySelector(".menu-bord-payment-table-row-options__transfer-to")
+        let transferAccountBlockNumber = document.createElement("span");
+        transferAccountBlockNumber.classList.add("menu-bord-transfer-table-row__account-number")
+        transferAccountBlockNumber.classList.add("menu-bord_text-normal")
+        transferAccountBlock.appendChild(transferAccountBlockNumber)
+        transferAccountBlockNumber.innerText = objAccount.accounts[count].account_special_number
+    }
+
+    for (let i = 0; i < objAccount.accounts.length; i++) {
+        createIntraTransferTo(i)
+    }
+    let intraTransferSubmit = document.querySelector(".menu-transfer__step-two");
+    intraTransferSubmit.addEventListener("click", () => {
+        let transferfromAccount = document.querySelector(".menu-bord-select__transfer");
+        let transferToAccount = document.querySelector(".menu-bord-select__transfer-to");
+        let transferAmount = document.querySelector(".menu-bord-transfer-table-row__input-amount-transfer");
+        let transferReference = document.querySelector(".menu-bord-transfer-table-row__input-reference-transfer");
+        let objTransferDate = {};
+        objTransferDate.from_account = transferfromAccount.innerText
+        objTransferDate.to_account = transferToAccount.innerText
+        objTransferDate.amount = transferAmount.value
+        objTransferDate.reference = transferReference.value
+        console.log(objTransferDate)
+
+        let promise = new Promise((resolve, reject) => {
+            let xhrd = new XMLHttpRequest();
+            xhrd.open("POST", "https://servercgbank.samtsov.com:8090/api/transfeers/applications", true);
+            xhrd.setRequestHeader("Authorization", 'Bearer ' + `${sessionStorage.getItem("token")}`)
+            xhrd.setRequestHeader("Content-Type", "application/json");
+            xhrd.send(JSON.stringify(objTransferDate));
+            xhrd.addEventListener("readystatechange", function () {
+                if (this.status === 200) {
+                    resolve(this.responseText)
+                }
+                else {
+                    var error = new Error(this.statusText);
+                    if (error !== "OK") {
+                        error.code = this.status;
+                        reject(error);
+                    }
+                }
+            });
+        })
+        promise
+            .then(
+                resul => {
+                    if (document.querySelector(".animation-account-message")) {
+                        document.querySelector(".animation-account-message").classList.remove("animation-account-message")
+                    }
+                    let messageApproved = document.querySelector(".account-message");
+                    messageApproved.children[0].classList.add("animation-account-message")
+                },
+                error => {
+                    if (document.querySelector(".animation-account-message")) {
+                        document.querySelector(".animation-account-message").classList.remove("animation-account-message")
+                    }
+                    let messageApproved = document.querySelector(".account-message");
+                    messageApproved.children[1].classList.add("animation-account-message")
+                }
+            )
+
+    })
+    function correctData(i){
+        let text = objAccount.intra_transfers[i].transfer_number
+        let arr = text.split("-")
+
+        return timeConverter(arr[arr.length-1])
+    }
+    function createStatistics(i) {
+        let ststementsList = document.querySelector(".menu-bord__list-transfer");
+        let ststementsListRow = document.createElement("div");
+        let statementsListRowDate = document.createElement("span")
+        let statementsListRowNameTransfer = document.createElement("span")
+        let statementsListRowNameRecipient = document.createElement("span")
+        let statementsListRowNumberTransfer = document.createElement("span")
+        let statementsListRowAmountTransfer = document.createElement("span")
+        let statementsListRowStatusTransfer = document.createElement("span")
+        ststementsListRow.classList.add("menu-bord-statement-field-table-row")
+        statementsListRowDate.classList.add("menu-bord-statement-field-width-1")
+        statementsListRowNameTransfer.classList.add("menu-bord-statement-field-width-2")
+        statementsListRowNameRecipient.classList.add("menu-bord-statement-field-width-3")
+        statementsListRowNumberTransfer.classList.add("menu-bord-statement-field-width-4")
+        statementsListRowAmountTransfer.classList.add("menu-bord-statement-field-width-5")
+        statementsListRowStatusTransfer.classList.add("menu-bord-statement-field-width-6")
+        ststementsList.appendChild(ststementsListRow)
+        ststementsListRow.appendChild(statementsListRowDate)
+        ststementsListRow.appendChild(statementsListRowNameTransfer)
+        ststementsListRow.appendChild(statementsListRowNameRecipient)
+        ststementsListRow.appendChild(statementsListRowNumberTransfer)
+        ststementsListRow.appendChild(statementsListRowAmountTransfer)
+        ststementsListRow.appendChild(statementsListRowStatusTransfer)
+        statementsListRowDate.innerText = correctData(i)
+        statementsListRowNameTransfer.innerText = "Intra Transfer"
+        statementsListRowNameRecipient.innerText = objAccount.intra_transfers[i].to_account_number
+        statementsListRowNumberTransfer.innerText = objAccount.intra_transfers[i].from_account_number
+        statementsListRowAmountTransfer.innerText = objAccount.intra_transfers[i].amount
+        statementsListRowStatusTransfer.innerText = objAccount.intra_transfers[i].status_name
+    }
+    for (let i = 0; i < objAccount.intra_transfers.length; i++) {
+        createStatistics(i)
     }
 }
 
@@ -437,9 +579,7 @@ if (document.querySelector(".account-open-form__submit")) {
         }
 
         for (let i = 0; i < openAccountFormInputBlock.length; i++) {
-
             if (getChildElem(i).value.search(getChildElem(i).getAttribute("pattern")) !== -1) { setErrorOnElem(i) };
-
             objOpenAccountFormData[openAccountFormInputBlock[i].children[0].innerText] = getChildElem(i).value;
         }
         // if (inputPassword.value !== inputPasswordConfirm.value) {
@@ -448,7 +588,6 @@ if (document.querySelector(".account-open-form__submit")) {
         //     setErrorOnElem(inputPasswordConfirm.parentNode)
         // }
         if (!document.querySelector(".menu-bord_text-error")) {
-            // console.log(objOpenAccountFormData)
 
             let promise = new Promise((resolve, rejec) => {
                 let xhrd = new XMLHttpRequest();
@@ -484,6 +623,20 @@ if (document.querySelector(".account-open-form__submit")) {
     })
 }
 
+
+function timeConverter(UNIX_timestamp) {
+    var a = new Date(UNIX_timestamp * 1000);
+    var months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    var time = date + '.' + month + '.' + year;
+    return time;
+}
+
+
+
+
 // ---------------------------------------contact us----------------------------------
 if (document.querySelector(".form__submit")) [
     document.querySelector(".form__submit").addEventListener("click", (e) => {
@@ -498,14 +651,11 @@ if (document.querySelector(".form__submit")) [
         let promise = new Promise((resolve, rejec) => {
             let xhrd = new XMLHttpRequest();
             xhrd.open("POST", "https://servercgbank.samtsov.com:8090/mailer/contacts/forms", true);
-            console.log(JSON.stringify(objForm))
             xhrd.setRequestHeader("Content-Type", "application/json");
             xhrd.send(JSON.stringify(objForm));
             xhrd.addEventListener("readystatechange", function () {
                 if (this.status === 200) {
-                    // console.log(objOpenAccountFormData)
                     resolve(this.responseText)
-                    console.log(objForm)
                 }
                 else {
                     var error = new Error(this.statusText);
@@ -523,7 +673,6 @@ if (document.querySelector(".form__submit")) [
                 },
                 error => {
                     alert("error")
-                    console.log(objForm)
                 }
             )
     })
