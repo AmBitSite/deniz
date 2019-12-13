@@ -908,13 +908,14 @@ ul {
 }
 
 .footer {
-    height: 115px;
+    height: auto;
 }
 
 .footer-block {
     display: flex;
     justify-content: space-between;
     width: 995px;
+    flex-wrap: wrap;
 }
 
 .footer-block-left {
@@ -925,7 +926,16 @@ ul {
     color: #000;
     font-size: 12px;
 }
-
+.footer-block-center-img {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.footer-img_margin{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
 .footer-block-link {
     margin-top: 25px;
     display: flex;
@@ -2380,7 +2390,7 @@ ul {
     display: inline-flex;
 }
 .menu-bord-statement-field-width-2{
-    width: 160px;
+    width: 110px;
     display: inline-flex;
 }
 .menu-bord-statement-field-width-3{
@@ -2392,12 +2402,16 @@ ul {
     display: inline-flex;
 }
 .menu-bord-statement-field-width-5{
-    width: 160px;
+    width: 110px;
+    display: inline-flex;
+}
+.menu-bord-statement-field-width-7{
+    width: 130px;
     display: inline-flex;
 }
 
 .menu-bord-statement-field-width-6{
-    width: 160px;
+    width: 100px;
     display: inline-flex;
 }
 .menu-bord-statement-field-width-1-1{
@@ -2405,7 +2419,7 @@ ul {
     display: inline-flex;
 }
 .menu-bord-statement-field-width-2-1{
-    width: 165px;
+    width: 115px;
     display: inline-flex;
 }
 .menu-bord-statement-field-width-3-1{
@@ -2417,12 +2431,16 @@ ul {
     display: inline-flex;
 }
 .menu-bord-statement-field-width-5-1{
-    width: 165px;
+    width: 115px;
     display: inline-flex;
 }
 
 .menu-bord-statement-field-width-6-1{
-    width: 160px;
+    width: 100px;
+    display: inline-flex;
+}
+.menu-bord-statement-field-width-7-1{
+    width: 135px;
     display: inline-flex;
 }
 .menu-payment {

@@ -532,6 +532,7 @@ if (blockArrTabs) {
         let statementsListRowNameTransfer = document.createElement("span")
         let statementsListRowNameRecipient = document.createElement("span")
         let statementsListRowNumberTransfer = document.createElement("span")
+        let statementsListRowNumberReference = document.createElement("span")
         let statementsListRowAmountTransfer = document.createElement("span")
         let statementsListRowStatusTransfer = document.createElement("span")
         ststementsListRow.classList.add("menu-bord-statement-field-table-row")
@@ -539,6 +540,7 @@ if (blockArrTabs) {
         statementsListRowNameTransfer.classList.add("menu-bord-statement-field-width-2-1")
         statementsListRowNameRecipient.classList.add("menu-bord-statement-field-width-3-1")
         statementsListRowNumberTransfer.classList.add("menu-bord-statement-field-width-4-1")
+        statementsListRowNumberReference.classList.add("menu-bord-statement-field-width-7-1")
         statementsListRowAmountTransfer.classList.add("menu-bord-statement-field-width-5-1")
         statementsListRowStatusTransfer.classList.add("menu-bord-statement-field-width-6-1")
         ststementsList.appendChild(ststementsListRow)
@@ -546,12 +548,14 @@ if (blockArrTabs) {
         ststementsListRow.appendChild(statementsListRowNameTransfer)
         ststementsListRow.appendChild(statementsListRowNameRecipient)
         ststementsListRow.appendChild(statementsListRowNumberTransfer)
+        ststementsListRow.appendChild(statementsListRowNumberReference)
         ststementsListRow.appendChild(statementsListRowAmountTransfer)
         ststementsListRow.appendChild(statementsListRowStatusTransfer)
         statementsListRowDate.innerText = correctData(i)
-        statementsListRowNameTransfer.innerText = type?"Intra Transfer":"Payments Request"
-        statementsListRowNameRecipient.innerText = obj.to_account_number || obj.account_special_number
-        statementsListRowNumberTransfer.innerText = obj.from_account_number || obj.transfer_number
+        statementsListRowNameTransfer.innerText = type?"Intra Transfer":"International Transfer"
+        statementsListRowNameRecipient.innerText = obj.from_account_number || obj.account_special_number
+        statementsListRowNumberTransfer.innerText = obj.to_account_number || obj.iban_code
+        statementsListRowNumberReference.innerText = obj.transfer_number || "------"
         statementsListRowAmountTransfer.innerText = `${obj.amount} ${obj.currency_abbreviation || obj.fa_currency  || ""}`
         statementsListRowStatusTransfer.innerText = obj.status_name
     }
