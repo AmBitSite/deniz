@@ -309,7 +309,7 @@ if (window.location == `${window.origin}/account.html`) {
         accountDetailsItem.appendChild(accountDetailsItemReasonText);
         accountDetailsItemNumberColumnLink.innerText = objAccount.accounts[count].account_special_number || "***";
         accountDetailsItemTypeText.innerText = objAccount.accounts[count].account_type_name || "***";
-        accountDetailsItemCurrencyText.innerText = objAccount.accounts[count].currency_name || "***";
+        accountDetailsItemCurrencyText.innerText = objAccount.accounts[count].currency_abbreviation || "***";
         accountDetailsItemStatusText.innerText = checkStatus(objAccount.accounts[count].status) || "***";
         accountDetailsItemDateText.innerText = objAccount.accounts[count].balance || "None";
         accountDetailsItemReasonText.innerText = objAccount.accounts[count].min_balance || "None";
