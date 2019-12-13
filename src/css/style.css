@@ -2400,6 +2400,31 @@ ul {
     width: 160px;
     display: inline-flex;
 }
+.menu-bord-statement-field-width-1-1{
+    width: 105px;
+    display: inline-flex;
+}
+.menu-bord-statement-field-width-2-1{
+    width: 165px;
+    display: inline-flex;
+}
+.menu-bord-statement-field-width-3-1{
+    width: 165px;
+    display: inline-flex;
+}
+.menu-bord-statement-field-width-4-1{
+    width: 165px;
+    display: inline-flex;
+}
+.menu-bord-statement-field-width-5-1{
+    width: 165px;
+    display: inline-flex;
+}
+
+.menu-bord-statement-field-width-6-1{
+    width: 160px;
+    display: inline-flex;
+}
 .menu-payment {
     display: none;
     flex-direction: column;

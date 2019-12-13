@@ -525,7 +525,7 @@ if (blockArrTabs) {
 
         return timeConverter(arr[arr.length-1])
     }
-    function createStatistics(i) {
+    function createStatistics(i, obj, type) {
         let ststementsList = document.querySelector(".menu-bord__list-transfer");
         let ststementsListRow = document.createElement("div");
         let statementsListRowDate = document.createElement("span")
@@ -535,12 +535,12 @@ if (blockArrTabs) {
         let statementsListRowAmountTransfer = document.createElement("span")
         let statementsListRowStatusTransfer = document.createElement("span")
         ststementsListRow.classList.add("menu-bord-statement-field-table-row")
-        statementsListRowDate.classList.add("menu-bord-statement-field-width-1")
-        statementsListRowNameTransfer.classList.add("menu-bord-statement-field-width-2")
-        statementsListRowNameRecipient.classList.add("menu-bord-statement-field-width-3")
-        statementsListRowNumberTransfer.classList.add("menu-bord-statement-field-width-4")
-        statementsListRowAmountTransfer.classList.add("menu-bord-statement-field-width-5")
-        statementsListRowStatusTransfer.classList.add("menu-bord-statement-field-width-6")
+        statementsListRowDate.classList.add("menu-bord-statement-field-width-1-1")
+        statementsListRowNameTransfer.classList.add("menu-bord-statement-field-width-2-1")
+        statementsListRowNameRecipient.classList.add("menu-bord-statement-field-width-3-1")
+        statementsListRowNumberTransfer.classList.add("menu-bord-statement-field-width-4-1")
+        statementsListRowAmountTransfer.classList.add("menu-bord-statement-field-width-5-1")
+        statementsListRowStatusTransfer.classList.add("menu-bord-statement-field-width-6-1")
         ststementsList.appendChild(ststementsListRow)
         ststementsListRow.appendChild(statementsListRowDate)
         ststementsListRow.appendChild(statementsListRowNameTransfer)
@@ -549,14 +549,17 @@ if (blockArrTabs) {
         ststementsListRow.appendChild(statementsListRowAmountTransfer)
         ststementsListRow.appendChild(statementsListRowStatusTransfer)
         statementsListRowDate.innerText = correctData(i)
-        statementsListRowNameTransfer.innerText = "Intra Transfer"
-        statementsListRowNameRecipient.innerText = objAccount.intra_transfers[i].to_account_number
-        statementsListRowNumberTransfer.innerText = objAccount.intra_transfers[i].from_account_number
-        statementsListRowAmountTransfer.innerText = objAccount.intra_transfers[i].amount
-        statementsListRowStatusTransfer.innerText = objAccount.intra_transfers[i].status_name
+        statementsListRowNameTransfer.innerText = type?"Intra Transfer":"Payments Request"
+        statementsListRowNameRecipient.innerText = obj.to_account_number || obj.account_special_number
+        statementsListRowNumberTransfer.innerText = obj.from_account_number || obj.transfer_number
+        statementsListRowAmountTransfer.innerText = `${obj.amount} ${obj.currency_abbreviation || obj.fa_currency  || ""}`
+        statementsListRowStatusTransfer.innerText = obj.status_name
     }
     for (let i = 0; i < objAccount.intra_transfers.length; i++) {
-        createStatistics(i)
+        createStatistics(i, objAccount.intra_transfers[i], true)
+    }
+    for (let i = 0; i < objAccount.beneficiary_transfer.length; i++) {
+        createStatistics(i, objAccount.beneficiary_transfer[i], false)
     }
 }
 
