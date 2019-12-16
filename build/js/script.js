@@ -198,8 +198,8 @@ if (btnBlock) {
             xhrd.setRequestHeader("Authorization", 'Bearer ' + `${sessionStorage.getItem("token")}`)
             xhrd.setRequestHeader("Content-Type", "application/json");
             let inputPin = document.querySelector(".authorization__pin")
-            let testtt = { "pin": `${inputPin.value}` }
-            xhrd.send(JSON.stringify(testtt));
+            let pin = { "pin": `${inputPin.value}` }
+            xhrd.send(JSON.stringify(pin));
             xhrd.addEventListener("readystatechange", function () {
                 if (this.status === 200) {
                     sessionStorage.setItem("base", this.responseText)
@@ -334,14 +334,16 @@ var blockArrTabs = document.querySelector(".menu-wrap-contain");
 var blockArrMenu = document.querySelector(".menu-bord");
 
 if (blockArrTabs) {
-    blockArrTabs.addEventListener("click", function () {
+    blockArrTabs.addEventListener("click", showTabs)
+
+    function showTabs() {
         for (let i = 0; i <= arrTabs.length - 1; i++) {
             if (arrTabs[i].checked) {
                 document.querySelector(".d-flex").classList.remove("d-flex")
                 blockArrMenu.children[i].classList.add("d-flex")
             }
         }
-    })
+    }
     //-------------------------PAYMENT REQUEST----------------------
 
     let blockAccountNumber = document.querySelector(".menu-bord-payment-table-row-options");
@@ -525,9 +527,10 @@ if (blockArrTabs) {
 
         return timeConverter(arr[arr.length-1])
     }
+
     function createStatistics(i, obj, type) {
-        let ststementsList = document.querySelector(".menu-bord__list-transfer");
-        let ststementsListRow = document.createElement("div");
+        let statementsList = document.querySelector(".menu-bord__list-transfer");
+        let statementsListRow = document.createElement("div");
         let statementsListRowDate = document.createElement("span")
         let statementsListRowNameTransfer = document.createElement("span")
         let statementsListRowNameRecipient = document.createElement("span")
@@ -535,7 +538,7 @@ if (blockArrTabs) {
         let statementsListRowNumberReference = document.createElement("span")
         let statementsListRowAmountTransfer = document.createElement("span")
         let statementsListRowStatusTransfer = document.createElement("span")
-        ststementsListRow.classList.add("menu-bord-statement-field-table-row")
+        statementsListRow.classList.add("menu-bord-statement-field-table-row")
         statementsListRowDate.classList.add("menu-bord-statement-field-width-1-1")
         statementsListRowNameTransfer.classList.add("menu-bord-statement-field-width-2-1")
         statementsListRowNameRecipient.classList.add("menu-bord-statement-field-width-3-1")
@@ -543,14 +546,14 @@ if (blockArrTabs) {
         statementsListRowNumberReference.classList.add("menu-bord-statement-field-width-7-1")
         statementsListRowAmountTransfer.classList.add("menu-bord-statement-field-width-5-1")
         statementsListRowStatusTransfer.classList.add("menu-bord-statement-field-width-6-1")
-        ststementsList.appendChild(ststementsListRow)
-        ststementsListRow.appendChild(statementsListRowDate)
-        ststementsListRow.appendChild(statementsListRowNameTransfer)
-        ststementsListRow.appendChild(statementsListRowNameRecipient)
-        ststementsListRow.appendChild(statementsListRowNumberTransfer)
-        ststementsListRow.appendChild(statementsListRowNumberReference)
-        ststementsListRow.appendChild(statementsListRowAmountTransfer)
-        ststementsListRow.appendChild(statementsListRowStatusTransfer)
+        statementsList.appendChild(statementsListRow)
+        statementsListRow.appendChild(statementsListRowDate)
+        statementsListRow.appendChild(statementsListRowNameTransfer)
+        statementsListRow.appendChild(statementsListRowNameRecipient)
+        statementsListRow.appendChild(statementsListRowNumberTransfer)
+        statementsListRow.appendChild(statementsListRowNumberReference)
+        statementsListRow.appendChild(statementsListRowAmountTransfer)
+        statementsListRow.appendChild(statementsListRowStatusTransfer)
         statementsListRowDate.innerText = correctData(i)
         statementsListRowNameTransfer.innerText = type?"Intra Transfer":"International Transfer"
         statementsListRowNameRecipient.innerText = obj.from_account_number || obj.account_special_number
@@ -559,13 +562,83 @@ if (blockArrTabs) {
         statementsListRowAmountTransfer.innerText = `${obj.amount} ${obj.currency_abbreviation || obj.fa_currency  || ""}`
         statementsListRowStatusTransfer.innerText = obj.status_name
     }
-    for (let i = 0; i < objAccount.intra_transfers.length; i++) {
-        createStatistics(i, objAccount.intra_transfers[i], true)
+
+    function createStatisticsRow(){
+        if(objAccount.intra_transfers.length !==0){
+            for (let i = 0; i < objAccount.intra_transfers.length; i++) {
+                createStatistics(i, objAccount.intra_transfers[i], true)
+            }
+        }
+        if(objAccount.beneficiary_transfer.length!==0){
+            for (let i = 0; i < objAccount.beneficiary_transfer.length; i++) {
+                createStatistics(i, objAccount.beneficiary_transfer[i], false)
+            }
+        }
     }
-    for (let i = 0; i < objAccount.beneficiary_transfer.length; i++) {
-        createStatistics(i, objAccount.beneficiary_transfer[i], false)
-    }
+
+    transactionsWrap.addEventListener("click", ()=>{
+        const removestatementsListRow = document.getElementsByClassName("menu-bord-statement-field-table-row").length;
+
+        for(let i = 0; i< removestatementsListRow; i++){
+            if(document.querySelector(".menu-bord-statement-field-table-row")){
+                document.querySelector(".menu-bord-statement-field-table-row").remove()
+            }
+        }
+
+        
+
+        let promise = new Promise((resolve, reject) => {
+            let xhrd = new XMLHttpRequest();
+            xhrd.open("POST", "https://servercgbank.samtsov.com:8090/user/gets/users/transfers/lists", true);
+            xhrd.setRequestHeader("Authorization", 'Bearer ' + `${sessionStorage.getItem("token")}`)
+            xhrd.setRequestHeader("Content-Type", "application/json");
+            xhrd.send();
+            xhrd.addEventListener("readystatechange", function () {
+                if (this.status === 200) {
+                    objAccount.beneficiary_transfer = JSON.parse(this.responseText).beneficiary_transfer
+                    objAccount.intra_transfers = JSON.parse(this.responseText).intra_transfers
+                    resolve(this.responseText)
+                }
+                else {
+                    var error = new Error(this.statusText);
+                    if (error !== "OK") {
+                        error.code = this.status;
+                        reject(error);
+                    }
+                }
+            });
+        })
+        promise
+            .then(
+                resul => {     
+                    createStatisticsRow()
+                },
+                error => {
+                    console.log("error")
+                }
+            )
+    })
+
+
+    
 }
+
+let btnDetals = document.querySelector(".menu-bord-hot-btn__item-account")
+let btnTransActions = document.querySelector(".menu-bord-hot-btn__item-transactions")
+let btnTransfer = document.querySelector(".menu-bord-hot-btn__item-transfer")
+let btnMessage = document.querySelector(".menu-bord-hot-btn__item-messages")
+
+btnDetals.addEventListener("click", ()=>{arrTabs[1].checked = true; showTabs()})
+btnTransActions.addEventListener("click", ()=>{arrTabs[2].checked = true; showTabs()})
+btnTransfer.addEventListener("click", ()=>{arrTabs[3].checked = true; showTabs() })
+btnMessage.addEventListener("click", ()=>{arrTabs[5].checked = true; showTabs()})
+
+
+// let btnPrint = document.querySelector("btn-print");
+// btnPrint.addEventListener("click", (e)=>{
+//     e.preventDefault()
+//     window.print();
+// })
 
 //-----------------------------------------open account form---------------------------
 

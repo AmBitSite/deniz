@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/media.css">
-    <script src="//code.jivosite.com/widget.js" data-jv-id="nxooD9wLJZ" async></script>
+    <!-- <script src="//code.jivosite.com/widget.js" data-jv-id="nxooD9wLJZ" async class="no-print"></script> -->
     <title>Account</title>
 </head>
 
@@ -27,7 +27,7 @@
         <div class="menu">
             <div class="menu-info">
                 <div class="menu-info-contain">
-                    <a href="contact.html" class="menu-info-contact">
+                    <a href="contact.html" class="menu-info-contact no-print">
                         <img src="img/technical-support -i.png" alt="" class="menu-info-contact__img">
                         <span class="menu-info-contact__text">Contact Support</span>
                     </a>
@@ -50,7 +50,7 @@
                     </div>
                 </div>
             </div>
-            <div class="menu-wrap">
+            <div class="menu-wrap no-print">
                 <div class="menu-wrap-contain">
                     <div class="menu-wrap-item menu-wrap-item_left-border">
                         <input class="menu-wrap-item__input" type="radio" name="inset" value="" id="tab_1" checked>
@@ -68,7 +68,7 @@
                     </div>
                     <div class="menu-wrap-item">
                         <input class="menu-wrap-item__input" type="radio" name="inset" value="" id="tab_3">
-                        <label class="menu-wrap-item-label" for="tab_3">
+                        <label class="menu-wrap-item-label" for="tab_3" id="transactionsWrap">
                             <img class="menu-wrap-item-label__img" src="img/statement-i.png" alt="">
                             <span class="menu-wrap-item-label__text">TRANSACTIONS</span>
                         </label>
@@ -121,10 +121,10 @@
                             </div>
                         </div>
                         <div class="menu-bord-hot-btn">
-                            <button class="menu-bord-hot-btn__item">ACCOUNT DETAILS</button>
-                            <button class="menu-bord-hot-btn__item">TRANSACTIONS</button>
-                            <button class="menu-bord-hot-btn__item">INTERNATIONAL TRANSFER</button>
-                            <button class="menu-bord-hot-btn__item">MESSAGES</button>
+                            <button class="menu-bord-hot-btn__item menu-bord-hot-btn__item-account">ACCOUNT DETAILS</button>
+                            <button class="menu-bord-hot-btn__item menu-bord-hot-btn__item-transactions">TRANSACTIONS</button>
+                            <button class="menu-bord-hot-btn__item menu-bord-hot-btn__item-transfer">INTERNATIONAL TRANSFER</button>
+                            <button class="menu-bord-hot-btn__item menu-bord-hot-btn__item-messages">MESSAGES</button>
                         </div>
                     </div>
                     <div class="menu-bord-message">
@@ -231,6 +231,7 @@
                 <div class="menu-statement">
                     <h2 class="menu-bord__header">
                         TRANSACTIONS
+                          <a href="javascript:window.print(); void 0;" id="btn-print" class="no-print">print</a>
                     </h2>
                     <div class="menu-bord-payment menu-bord__list-transfer">
                         <div class="menu-bord-payment-label-item">
@@ -258,9 +259,6 @@
                             <span class="menu-bord_text-bold menu-bord-statement-field-width-6">
                                 Status
                             </span>
-                        </div>
-                        <div class="menu-bord-statement-field-table-row">
-
                         </div>
                     </div>
                 </div>
