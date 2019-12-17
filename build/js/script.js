@@ -585,7 +585,6 @@ if (blockArrTabs) {
             }
         }
 
-        
 
         let promise = new Promise((resolve, reject) => {
             let xhrd = new XMLHttpRequest();
