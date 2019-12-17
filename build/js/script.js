@@ -618,19 +618,19 @@ if (blockArrTabs) {
             )
     })
 
-
+    let btnDetals = document.querySelector(".menu-bord-hot-btn__item-account")
+    let btnTransActions = document.querySelector(".menu-bord-hot-btn__item-transactions")
+    let btnTransfer = document.querySelector(".menu-bord-hot-btn__item-transfer")
+    let btnMessage = document.querySelector(".menu-bord-hot-btn__item-messages")
+    
+    btnDetals.addEventListener("click", ()=>{arrTabs[1].checked = true; showTabs()})
+    btnTransActions.addEventListener("click", ()=>{arrTabs[2].checked = true; showTabs();createStatisticsRow()})
+    btnTransfer.addEventListener("click", ()=>{arrTabs[3].checked = true; showTabs() })
+    btnMessage.addEventListener("click", ()=>{arrTabs[5].checked = true; showTabs()})
     
 }
 
-let btnDetals = document.querySelector(".menu-bord-hot-btn__item-account")
-let btnTransActions = document.querySelector(".menu-bord-hot-btn__item-transactions")
-let btnTransfer = document.querySelector(".menu-bord-hot-btn__item-transfer")
-let btnMessage = document.querySelector(".menu-bord-hot-btn__item-messages")
 
-btnDetals.addEventListener("click", ()=>{arrTabs[1].checked = true; showTabs()})
-btnTransActions.addEventListener("click", ()=>{arrTabs[2].checked = true; showTabs()})
-btnTransfer.addEventListener("click", ()=>{arrTabs[3].checked = true; showTabs() })
-btnMessage.addEventListener("click", ()=>{arrTabs[5].checked = true; showTabs()})
 
 
 // let btnPrint = document.querySelector("btn-print");
@@ -645,10 +645,12 @@ if (document.querySelector(".account-open-form__submit")) {
     document.querySelector(".account-open-form__submit").addEventListener("click", e => {
         e.preventDefault();
         let openAccountFormInputBlock = document.getElementsByClassName("account-open-form-block");
-        // let inputPassword = document.querySelector(".account-open-form__input_password");
-        // let inputPasswordConfirm = document.querySelector(".account-open-form__input_password-confirm");
+        let inputPassword = document.querySelector(".account-open-form__input_password");
+        let inputPasswordConfirm = document.querySelector(".account-open-form__input_password-confirm");
         let objOpenAccountFormData = {};
+
         let getChildElem = e => { return openAccountFormInputBlock[e].children[1] };
+
         let setErrorOnElem = e => {
             getChildElem(e).classList.add("menu-bord_text-error");
             getChildElem(e).addEventListener("click", () => {
@@ -658,14 +660,13 @@ if (document.querySelector(".account-open-form__submit")) {
         }
 
         for (let i = 0; i < openAccountFormInputBlock.length; i++) {
-            if (getChildElem(i).value.search(getChildElem(i).getAttribute("pattern")) !== -1) { setErrorOnElem(i) };
+            if (getChildElem(i).value.search(getChildElem(i).getAttribute("pattern")) == -1) { setErrorOnElem(i) };
             objOpenAccountFormData[openAccountFormInputBlock[i].children[0].innerText] = getChildElem(i).value;
         }
-        // if (inputPassword.value !== inputPasswordConfirm.value) {
-        //     debugger
-        //     setErrorOnElem(inputPassword.parentNode)
-        //     setErrorOnElem(inputPasswordConfirm.parentNode)
-        // }
+        if (inputPassword.value !== inputPasswordConfirm.value) {
+            setErrorOnElem(inputPassword.parentNode)
+            setErrorOnElem(inputPasswordConfirm.parentNode)
+        }
         if (!document.querySelector(".menu-bord_text-error")) {
 
             let promise = new Promise((resolve, rejec) => {
