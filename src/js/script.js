@@ -633,13 +633,6 @@ btnTransActions.addEventListener("click", ()=>{arrTabs[2].checked = true; showTa
 btnTransfer.addEventListener("click", ()=>{arrTabs[3].checked = true; showTabs() })
 btnMessage.addEventListener("click", ()=>{arrTabs[5].checked = true; showTabs()})
 
-
-// let btnPrint = document.querySelector("btn-print");
-// btnPrint.addEventListener("click", (e)=>{
-//     e.preventDefault()
-//     window.print();
-// })
-
 //-----------------------------------------open account form---------------------------
 
 if (document.querySelector(".account-open-form__submit")) {
