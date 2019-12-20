@@ -2376,17 +2376,20 @@ ul {
 .menu-bord-statement-field-table-row {
     padding: 10px 23px;
     background-color: #fefefe;
-    font-family: PT Sans;
+    /* font-family: PT Sans;
     font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 21px;
-    letter-spacing: 0.03em;
+    font-weight: normal; */
+    font-size: 14px;
+    /* letter-spacing: 0.03em; */
     color: #949494;
-    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+}
+.menu-bord-statement-field-table-row:nth-child(2n+1){
+    background-color: #f7f7f7;
 }
 .menu-bord-statement-field-width-1{
-    width: 100px;
+    width: 85px;
     display: inline-flex;
 }
 .menu-bord-statement-field-width-2{
@@ -2394,28 +2397,27 @@ ul {
     display: inline-flex;
 }
 .menu-bord-statement-field-width-3{
-    width: 160px;
+    width: 140px;
     display: inline-flex;
 }
 .menu-bord-statement-field-width-4{
-    width: 160px;
+    width: 150px;
     display: inline-flex;
 }
 .menu-bord-statement-field-width-5{
-    width: 110px;
+    width: 95px;
+    display: inline-flex;
+}
+.menu-bord-statement-field-width-6{
+    width: 100px;
     display: inline-flex;
 }
 .menu-bord-statement-field-width-7{
     width: 130px;
     display: inline-flex;
 }
-
-.menu-bord-statement-field-width-6{
-    width: 100px;
-    display: inline-flex;
-}
 .menu-bord-statement-field-width-1-1{
-    width: 105px;
+    width: 90px;
     display: inline-flex;
 }
 .menu-bord-statement-field-width-2-1{
@@ -2423,15 +2425,18 @@ ul {
     display: inline-flex;
 }
 .menu-bord-statement-field-width-3-1{
-    width: 165px;
+    width: 145px;
     display: inline-flex;
 }
 .menu-bord-statement-field-width-4-1{
-    width: 165px;
+    width: 155px;
     display: inline-flex;
+    cursor: pointer;
+    font-size: 14px;
+    word-break: break-word;
 }
 .menu-bord-statement-field-width-5-1{
-    width: 115px;
+    width: 100px;
     display: inline-flex;
 }
 
@@ -2442,6 +2447,8 @@ ul {
 .menu-bord-statement-field-width-7-1{
     width: 135px;
     display: inline-flex;
+    cursor: pointer;
+    font-size: 14px;
 }
 .menu-payment {
     display: none;

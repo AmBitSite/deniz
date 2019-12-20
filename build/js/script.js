@@ -37,7 +37,6 @@ xhrN.open("GET", "https://newsapi.org/v2/top-headlines?category = business&sourc
 xhrN.send();
 xhrN.addEventListener("readystatechange", function () {
     for (var j = 0; j < blockNews.length; j++) {
-
         blockNews[j].setAttribute('href', JSON.parse(this.responseText).articles[j].url);
         blockNews[j].firstElementChild.innerText = JSON.parse(this.responseText).articles[j].title;
     }
@@ -147,7 +146,7 @@ if (btnBlock) {
 
         let promise = new Promise((resolve, reject) => {
             let xhrd = new XMLHttpRequest();
-            xhrd.open("POST", "https://servercgbank.samtsov.com:8090/api/login_check", true);
+            xhrd.open("POST", "https://server.samtsov.com:8090/api/login_check", true);
             xhrd.send(objS);
             xhrd.addEventListener("readystatechange", function () {
                 if (this.status === 200) {
@@ -167,7 +166,7 @@ if (btnBlock) {
             .then(
                 result => {
                     let result1 = new XMLHttpRequest();
-                    result1.open("POST", "https://servercgbank.samtsov.com:8090/user/sends/users/pins", true);
+                    result1.open("POST", "https://server.samtsov.com:8090/user/sends/users/pins", true);
                     result1.setRequestHeader("Authorization", `${sessionStorage.getItem("token")}`)
                     result1.send();
                     result1.addEventListener("readystatechange", function () {
@@ -194,7 +193,7 @@ if (btnBlock) {
 
         let promise = new Promise((resolve, rejec) => {
             let xhrd = new XMLHttpRequest();
-            xhrd.open("POST", "https://servercgbank.samtsov.com:8090/user/verifications", true);
+            xhrd.open("POST", "https://server.samtsov.com:8090/user/verifications", true);
             xhrd.setRequestHeader("Authorization", 'Bearer ' + `${sessionStorage.getItem("token")}`)
             xhrd.setRequestHeader("Content-Type", "application/json");
             let inputPin = document.querySelector(".authorization__pin")
@@ -371,7 +370,7 @@ if (blockArrTabs) {
         console.log(objPaymentDate);
         let promise = new Promise((resolve, rejec) => {
             let xhrd = new XMLHttpRequest();
-            xhrd.open("POST", "https://servercgbank.samtsov.com:8090/api/transfeers/applications/beneficiaries/transfers", true);
+            xhrd.open("POST", "https://server.samtsov.com:8090/api/transfeers/payments/requests/applications", true);
             xhrd.setRequestHeader("Authorization", 'Bearer ' + `${sessionStorage.getItem("token")}`)
             xhrd.setRequestHeader("Content-Type", "application/json");
             xhrd.send(JSON.stringify(objPaymentDate));
@@ -485,7 +484,7 @@ if (blockArrTabs) {
 
         let promise = new Promise((resolve, reject) => {
             let xhrd = new XMLHttpRequest();
-            xhrd.open("POST", "https://servercgbank.samtsov.com:8090/api/transfeers/applications", true);
+            xhrd.open("POST", "https://server.samtsov.com:8090/api/transfeers/internals/applications", true);
             xhrd.setRequestHeader("Authorization", 'Bearer ' + `${sessionStorage.getItem("token")}`)
             xhrd.setRequestHeader("Content-Type", "application/json");
             xhrd.send(JSON.stringify(objTransferDate));
@@ -521,11 +520,11 @@ if (blockArrTabs) {
             )
 
     })
-    function correctData(i){
+    function correctData(i) {
         let text = objAccount.intra_transfers[i].transfer_number
         let arr = text.split("-")
 
-        return timeConverter(arr[arr.length-1])
+        return timeConverter(arr[arr.length - 1])
     }
 
     function createStatistics(i, obj, type) {
@@ -534,10 +533,13 @@ if (blockArrTabs) {
         let statementsListRowDate = document.createElement("span")
         let statementsListRowNameTransfer = document.createElement("span")
         let statementsListRowNameRecipient = document.createElement("span")
-        let statementsListRowNumberTransfer = document.createElement("span")
+        let statementsListRowNumberTransfer = document.createElement("a")
         let statementsListRowNumberReference = document.createElement("span")
         let statementsListRowAmountTransfer = document.createElement("span")
         let statementsListRowStatusTransfer = document.createElement("span")
+        let statementsListRowBalanceTransfer = document.createElement("span")
+
+
         statementsListRow.classList.add("menu-bord-statement-field-table-row")
         statementsListRowDate.classList.add("menu-bord-statement-field-width-1-1")
         statementsListRowNameTransfer.classList.add("menu-bord-statement-field-width-2-1")
@@ -546,6 +548,9 @@ if (blockArrTabs) {
         statementsListRowNumberReference.classList.add("menu-bord-statement-field-width-7-1")
         statementsListRowAmountTransfer.classList.add("menu-bord-statement-field-width-5-1")
         statementsListRowStatusTransfer.classList.add("menu-bord-statement-field-width-6-1")
+        statementsListRowBalanceTransfer.classList.add("menu-bord-statement-field-width-8-1")
+
+
         statementsList.appendChild(statementsListRow)
         statementsListRow.appendChild(statementsListRowDate)
         statementsListRow.appendChild(statementsListRowNameTransfer)
@@ -554,33 +559,72 @@ if (blockArrTabs) {
         statementsListRow.appendChild(statementsListRowNumberReference)
         statementsListRow.appendChild(statementsListRowAmountTransfer)
         statementsListRow.appendChild(statementsListRowStatusTransfer)
-        statementsListRowDate.innerText = correctData(i)
-        statementsListRowNameTransfer.innerText = type?"Intra Transfer":"International Transfer"
+        statementsListRow.appendChild(statementsListRowBalanceTransfer)
+
+
+        statementsListRowDate.innerText = correctData(obj.date)
+        statementsListRowNameTransfer.innerText = obj.transfer_type_name
         statementsListRowNameRecipient.innerText = obj.from_account_number || obj.account_special_number
-        statementsListRowNumberTransfer.innerText = obj.to_account_number || obj.iban_code
+        statementsListRowNumberTransfer.innerText = obj.intra_to_account_number || obj.iban_code || ""
         statementsListRowNumberReference.innerText = obj.transfer_number || "------"
-        statementsListRowAmountTransfer.innerText = `${obj.amount} ${obj.currency_abbreviation || obj.fa_currency  || ""}`
+        statementsListRowAmountTransfer.innerText =checkTypeTransfer(obj.transfer_type_name, `${obj.amount} ${obj.currency_abbreviation}`) || ""; 
         statementsListRowStatusTransfer.innerText = obj.status_name
+        statementsListRowBalanceTransfer.innerText = `${obj.balance} ${obj.currency_abbreviation || ""}`
+
+
+        statementsListRowNumberTransfer.addEventListener("click", () => {
+            if (obj.bank_name) {
+                const objFieldsName = {
+                    "Beneficiary": `${obj.iban_code}` || " ",
+                    "To Account Number": `${obj.account_special_number}` || " ",
+                    "Bank Name": `${obj.bank_name}` || " ",
+                    "Bank Address": `${obj.bank_address}` || " ",
+                    "Beneficiary Address": `${obj.beneficiary_address}` || " ",
+                    "Beneficiary City": `${obj.beneficiary_city}` || " ",
+                    "Beneficiary Country": `${obj.beneficiary_country}` || " ",
+                    "Beneficiary Reference": `${obj.reference}` || " ",
+                    "Amount": `${obj.amount + obj.currency_abbreviation}` || " ",
+                    "Transaction Number": `${obj.transfer_number}` || " ",
+                    "Status": `${obj.status_name}` || " "
+                }
+                sessionStorage.setItem("beneficiary", JSON.stringify(objFieldsName))
+                var newWin = window.open("about:blank", "New Blank", "width=600,height=600");
+                newWin.document.write("<script src='js/newWin.js' ></scr" + "ipt>"
+                )
+            }
+
+        })
     }
 
-    function createStatisticsRow(){
-        if(objAccount.intra_transfers.length !==0){
-            for (let i = 0; i < objAccount.intra_transfers.length; i++) {
-                createStatistics(i, objAccount.intra_transfers[i], true)
-            }
+    function correctData(data) {
+        arrData = data.split("T")
+        return arrData[0]
+    }
+
+    function checkTypeTransfer(transfers, amount){
+        if(transfers === "Incoming Transfer"){
+            return  `+${amount}`
         }
-        if(objAccount.beneficiary_transfer.length!==0){
-            for (let i = 0; i < objAccount.beneficiary_transfer.length; i++) {
-                createStatistics(i, objAccount.beneficiary_transfer[i], false)
+        else{
+            return `-${amount}`
+        }
+    }
+
+    function createStatisticsRow() {        // функция обновления строк
+        if (objAccount.transaction.length !== 0) {
+            for (let i = 0; i < objAccount.transaction.length; i++) {
+                for (let ii = 0; ii < objAccount.transaction[i].transaction.length; ii++) {
+                    createStatistics(ii, objAccount.transaction[i].transaction[ii], true);
+                }
             }
         }
     }
 
-    transactionsWrap.addEventListener("click", ()=>{
+    transactionsWrap.addEventListener("click", () => {
         const removestatementsListRow = document.getElementsByClassName("menu-bord-statement-field-table-row").length;
 
-        for(let i = 0; i< removestatementsListRow; i++){
-            if(document.querySelector(".menu-bord-statement-field-table-row")){
+        for (let i = 0; i < removestatementsListRow; i++) {
+            if (document.querySelector(".menu-bord-statement-field-table-row")) {
                 document.querySelector(".menu-bord-statement-field-table-row").remove()
             }
         }
@@ -588,14 +632,13 @@ if (blockArrTabs) {
 
         let promise = new Promise((resolve, reject) => {
             let xhrd = new XMLHttpRequest();
-            xhrd.open("POST", "https://servercgbank.samtsov.com:8090/user/gets/users/transfers/lists", true);
+            xhrd.open("POST", "https://server.samtsov.com:8090/api/transfeers/gets/users/accounts/details", true);
             xhrd.setRequestHeader("Authorization", 'Bearer ' + `${sessionStorage.getItem("token")}`)
             xhrd.setRequestHeader("Content-Type", "application/json");
             xhrd.send();
             xhrd.addEventListener("readystatechange", function () {
                 if (this.status === 200) {
-                    objAccount.beneficiary_transfer = JSON.parse(this.responseText).beneficiary_transfer
-                    objAccount.intra_transfers = JSON.parse(this.responseText).intra_transfers
+                    objAccount.transaction = JSON.parse(this.responseText)
                     resolve(this.responseText)
                 }
                 else {
@@ -609,8 +652,8 @@ if (blockArrTabs) {
         })
         promise
             .then(
-                resul => {     
-                    createStatisticsRow()
+                resul => {
+                    createStatisticsRow() // вызов 591 строки
                 },
                 error => {
                     console.log("error")
@@ -622,22 +665,13 @@ if (blockArrTabs) {
     let btnTransActions = document.querySelector(".menu-bord-hot-btn__item-transactions")
     let btnTransfer = document.querySelector(".menu-bord-hot-btn__item-transfer")
     let btnMessage = document.querySelector(".menu-bord-hot-btn__item-messages")
-    
-    btnDetals.addEventListener("click", ()=>{arrTabs[1].checked = true; showTabs()})
-    btnTransActions.addEventListener("click", ()=>{arrTabs[2].checked = true; showTabs();createStatisticsRow()})
-    btnTransfer.addEventListener("click", ()=>{arrTabs[3].checked = true; showTabs() })
-    btnMessage.addEventListener("click", ()=>{arrTabs[5].checked = true; showTabs()})
-    
+
+    btnDetals.addEventListener("click", () => { arrTabs[1].checked = true; showTabs() })
+    btnTransActions.addEventListener("click", () => { arrTabs[2].checked = true; showTabs(); createStatisticsRow() })
+    btnTransfer.addEventListener("click", () => { arrTabs[3].checked = true; showTabs() })
+    btnMessage.addEventListener("click", () => { arrTabs[5].checked = true; showTabs() })
+
 }
-
-
-
-
-// let btnPrint = document.querySelector("btn-print");
-// btnPrint.addEventListener("click", (e)=>{
-//     e.preventDefault()
-//     window.print();
-// })
 
 //-----------------------------------------open account form---------------------------
 
@@ -658,15 +692,22 @@ if (document.querySelector(".account-open-form__submit")) {
                 getChildElem(e).value = "";
             })
         }
+        let setErrorOnElements = e => {
+            e.classList.add("menu-bord_text-error");
+            e.addEventListener("click", () => {
+                e.classList.remove("menu-bord_text-error");
+                e.value = "";
+            })
+        }
 
-        for (let i = 0; i < openAccountFormInputBlock.length; i++) {
-            if (getChildElem(i).value.search(getChildElem(i).getAttribute("pattern")) == -1) { setErrorOnElem(i) };
-            objOpenAccountFormData[openAccountFormInputBlock[i].children[0].innerText] = getChildElem(i).value;
-        }
-        if (inputPassword.value !== inputPasswordConfirm.value) {
-            setErrorOnElem(inputPassword.parentNode)
-            setErrorOnElem(inputPasswordConfirm.parentNode)
-        }
+        // for (let i = 0; i < openAccountFormInputBlock.length; i++) {
+        //     if (getChildElem(i).value.search(getChildElem(i).getAttribute("pattern")) !== -1) { setErrorOnElem(i) };
+        //     objOpenAccountFormData[openAccountFormInputBlock[i].children[0].innerText] = getChildElem(i).value;
+        // }
+        // if (inputPassword.value !== inputPasswordConfirm.value) {
+        //     setErrorOnElements(inputPassword)
+        //     setErrorOnElements(inputPasswordConfirm)
+        // }
         if (!document.querySelector(".menu-bord_text-error")) {
 
             let promise = new Promise((resolve, rejec) => {
@@ -702,20 +743,6 @@ if (document.querySelector(".account-open-form__submit")) {
         }
     })
 }
-
-
-function timeConverter(UNIX_timestamp) {
-    var a = new Date(UNIX_timestamp * 1000);
-    var months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
-    var year = a.getFullYear();
-    var month = months[a.getMonth()];
-    var date = a.getDate();
-    var time = date + '.' + month + '.' + year;
-    return time;
-}
-
-
-
 
 // ---------------------------------------contact us----------------------------------
 if (document.querySelector(".form__submit")) [
