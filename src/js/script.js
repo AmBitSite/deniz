@@ -538,8 +538,6 @@ if (blockArrTabs) {
         let statementsListRowAmountTransfer = document.createElement("span")
         let statementsListRowStatusTransfer = document.createElement("span")
         let statementsListRowBalanceTransfer = document.createElement("span")
-
-
         statementsListRow.classList.add("menu-bord-statement-field-table-row")
         statementsListRowDate.classList.add("menu-bord-statement-field-width-1-1")
         statementsListRowNameTransfer.classList.add("menu-bord-statement-field-width-2-1")
@@ -549,8 +547,6 @@ if (blockArrTabs) {
         statementsListRowAmountTransfer.classList.add("menu-bord-statement-field-width-5-1")
         statementsListRowStatusTransfer.classList.add("menu-bord-statement-field-width-6-1")
         statementsListRowBalanceTransfer.classList.add("menu-bord-statement-field-width-8-1")
-
-
         statementsList.appendChild(statementsListRow)
         statementsListRow.appendChild(statementsListRowDate)
         statementsListRow.appendChild(statementsListRowNameTransfer)
@@ -561,15 +557,57 @@ if (blockArrTabs) {
         statementsListRow.appendChild(statementsListRowStatusTransfer)
         statementsListRow.appendChild(statementsListRowBalanceTransfer)
 
-
         statementsListRowDate.innerText = correctData(obj.date)
         statementsListRowNameTransfer.innerText = obj.transfer_type_name
-        statementsListRowNameRecipient.innerText = obj.from_account_number || obj.account_special_number
-        statementsListRowNumberTransfer.innerText = obj.intra_to_account_number || obj.iban_code || ""
+        statementsListRowNameRecipient.innerText = createNameRecipient(obj.transfer_type_name, obj.account_special_number, obj.intra_to_account_number)
+
+        statementsListRowNumberTransfer.innerText = createNameBeneficiary(obj.iban_code, obj.intra_to_account_number, obj.account_special_number, obj.transfer_type_name)
+
+        // obj.intra_to_account_number || obj.iban_code || obj.account_special_number || ""
+
+
         statementsListRowNumberReference.innerText = obj.transfer_number || "------"
-        statementsListRowAmountTransfer.innerText =checkTypeTransfer(obj.transfer_type_name, `${obj.amount} ${obj.currency_abbreviation}`) || ""; 
+        statementsListRowAmountTransfer.innerText = checkTypeTransfer(obj.debit, obj.credit, obj.currency_abbreviation) || ""
         statementsListRowStatusTransfer.innerText = obj.status_name
         statementsListRowBalanceTransfer.innerText = `${obj.balance} ${obj.currency_abbreviation || ""}`
+
+
+        function createNameRecipient(transferTypeName, toAccount, intraToAccount) {
+            if (transferTypeName === "Transaction Fee ") {
+                return "EuroDenizIBU"
+            }
+            else if (transferTypeName === "Incoming Transfer" && !intraToAccount) {
+                return "EuroDenizIBU"
+            }
+            else if (transferTypeName === "Incoming Transfer") {
+                return intraToAccount
+            }
+
+            else {
+                return toAccount
+            }
+        }
+
+
+        function createNameBeneficiary(ibanCode, toAccount, specialNumber, typeNameTransfer) {
+            // obj.intra_to_account_number || obj.iban_code || obj.account_special_number || ""
+            if (ibanCode) {
+                return ibanCode
+            }
+            else if (typeNameTransfer == "Intra Transfer") {
+                return toAccount
+            }
+            else if (typeNameTransfer == "Transaction Fee ") {
+                return specialNumber
+            }
+            else if (typeNameTransfer == "Incoming Transfer" && !toAccount) {
+                return specialNumber
+            }
+
+            else if (typeNameTransfer == "Incoming Transfer" && specialNumber) return specialNumber
+        }
+
+
 
 
         statementsListRowNumberTransfer.addEventListener("click", () => {
@@ -583,7 +621,7 @@ if (blockArrTabs) {
                     "Beneficiary City": `${obj.beneficiary_city}` || " ",
                     "Beneficiary Country": `${obj.beneficiary_country}` || " ",
                     "Beneficiary Reference": `${obj.reference}` || " ",
-                    "Amount": `${obj.amount + obj.currency_abbreviation}` || " ",
+                    "Amount": `${checkTypeTransfer(obj.debit, obj.credit, obj.currency_abbreviation)}` || " ",
                     "Transaction Number": `${obj.transfer_number}` || " ",
                     "Status": `${obj.status_name}` || " "
                 }
@@ -597,18 +635,71 @@ if (blockArrTabs) {
     }
 
     function correctData(data) {
-        arrData = data.split("T")
-        return arrData[0]
+        if (data) {
+            arrData = data.split("T")
+            return arrData[0]
+        }
     }
 
-    function checkTypeTransfer(transfers, amount){
-        if(transfers === "Incoming Transfer"){
-            return  `+${amount}`
+    function checkTypeTransfer(debit, credit, currency) {
+        if (debit) {
+            return `-${debit} ${currency}`
         }
-        else{
-            return `-${amount}`
+        else {
+            return `+${credit} ${currency}`
         }
     }
+
+
+    let btnCtatisticsAccount = document.querySelector(".menu-bord-transactions-block-acount")
+    function createBtnAccountStatistics() {
+        let btnAllStatistic = document.createElement("button")
+        btnAllStatistic.innerText = "All"
+        btnCtatisticsAccount.appendChild(btnAllStatistic)
+
+
+
+        if (objAccount.accounts.length !== 0) {
+            for (let i = 0; i < objAccount.accounts.length; i++) {
+                let btnAllStatistic = document.createElement("button")
+                btnAllStatistic.innerText = objAccount.accounts[i].account_special_number;
+                btnCtatisticsAccount.appendChild(btnAllStatistic)
+            }
+        }
+    }
+
+    btnCtatisticsAccount.addEventListener("click", (e) => {
+        let currentBtn = e.target;
+        const rowsStatisticCount = document.getElementsByClassName("menu-bord-statement-field-table-row").length;
+        let rowsStatistic = document.querySelectorAll(".menu-bord-statement-field-table-row")
+        if (currentBtn.innerText == "All") {
+            for (let i = 0; i < rowsStatisticCount; i++) {
+                rowsStatistic[i].remove()
+            }
+            createStatisticsRow()
+        }
+        for (let i = 1;i<btnCtatisticsAccount.children.length;i++) {
+            if (currentBtn.innerText == btnCtatisticsAccount.children[i].innerText) {
+                for (let i = 0; i < rowsStatisticCount; i++) {
+                    rowsStatistic[i].remove()
+                }
+                console.log(objAccount)
+                for (i = 0; i < objAccount.transaction.length; i++) {
+                    if (objAccount.transaction[i].account_number == currentBtn.innerText) {
+                        for (let ii = 0; ii < objAccount.transaction[i].transaction.length; ii++) {
+                            createStatistics(ii, objAccount.transaction[i].transaction[ii], true);
+                        }
+                    }
+                }
+            }
+        }
+    })
+
+
+
+    createBtnAccountStatistics()
+
+
 
     function createStatisticsRow() {        // функция обновления строк
         if (objAccount.transaction.length !== 0) {
