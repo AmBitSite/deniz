@@ -87,13 +87,13 @@
                             <span class="menu-wrap-item-label__text">INTRA TRANSFER</span>
                         </label>
                     </div>
-                    <div class="menu-wrap-item">
+                    <!-- <div class="menu-wrap-item">
                         <input class="menu-wrap-item__input" type="radio" name="inset" value="" id="tab_8">
                         <label class="menu-wrap-item-label" for="tab_8">
                             <img class="menu-wrap-item-label__img" src="img/message-i.png" alt="">
                             <span class="menu-wrap-item-label__text">MESSAGES</span>
                         </label>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="menu-bord">
@@ -124,7 +124,7 @@
                             <button class="menu-bord-hot-btn__item menu-bord-hot-btn__item-account">ACCOUNT DETAILS</button>
                             <button class="menu-bord-hot-btn__item menu-bord-hot-btn__item-transactions">TRANSACTIONS</button>
                             <button class="menu-bord-hot-btn__item menu-bord-hot-btn__item-transfer">INTERNATIONAL TRANSFER</button>
-                            <button class="menu-bord-hot-btn__item menu-bord-hot-btn__item-messages">MESSAGES</button>
+                            <button class="menu-bord-hot-btn__item menu-bord-hot-btn__item-messages">INTRA TRANSFER</button>
                         </div>
                     </div>
                     <div class="menu-bord-message">
@@ -233,8 +233,12 @@
                           <a href="javascript:window.print(); void 0;" id="btn-print" class="no-print">print</a>
                     </h2>
                     <div class="menu-bord-payment menu-bord__list-transfer">
-                        <div class="menu-bord-payment-label-item menu-bord-transactions-block-acount">
-                            
+                        <div class="menu-bord-payment-label-item menu-bord-transactions-block-acount no-print">
+                            <div class="menu-statement-data-block">
+                                <input type="number" class="menu-statement__input" onClick="xCal(this, {lang: 'en', order: 1})" placeholder="From Date">
+                                <input type="number" class="menu-statement__input" onClick="xCal(this, {lang: 'en', order: 1})" placeholder="To Date">
+                                <button id="filterDateBtn">Submit</button>
+                            </div>
                         </div>
                         <div class="menu-bord-payment-header-table">
                             <span class="menu-bord_text-bold menu-bord-statement-field-width-1">
@@ -503,7 +507,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="menu-message">
+                <!-- <div class="menu-message">
                     <h2 class="menu-bord__header">
                         MESSAGES
                     </h2>
@@ -523,10 +527,11 @@
                             </span>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </main>
+    <script src="js/calendar.js"></script>
     <script src="js/script.js"></script>
 </body>
 

@@ -69,7 +69,7 @@ h4 {
     list-style: none;
 }
 
-.nav-wrap__item {}
+/* .nav-wrap__item {} */
 
 .nav-wrap__link {
     font-size: 13px;
@@ -79,7 +79,7 @@ h4 {
     text-transform: capitalize;
 }
 
-.nav-wrap__input {}
+/* .nav-wrap__input {} */
 
 .second-nav {
     margin-top: 40px;
@@ -206,7 +206,7 @@ h4 {
     color: transparent;
 }
 
-.authorization-block-btn {}
+/* .authorization-block-btn {} */
 
 .authorization-block__btn {
     width: 226px;
@@ -229,7 +229,7 @@ h4 {
     background: linear-gradient(to bottom, #838282 0, #b2b2b2 100%);
 }
 
-.authorization-block__btn-enter {}
+/* .authorization-block__btn-enter {} */
 
 .authorization__error_text {
     color: #7f7f7f;
@@ -1911,7 +1911,7 @@ ul {
     color: #fefefe;
 }
 
-.menu-info-full-name__text {}
+/* .menu-info-full-name__text {} */
 
 .menu-info-sing-out {
     display: flex;
@@ -2030,7 +2030,7 @@ ul {
     cursor: pointer;
 }
 
-.menu-bord-currency-label__text {}
+/* .menu-bord-currency-label__text {} */
 
 .menu-bord-label__icon {
     width: 15px;
@@ -2053,7 +2053,7 @@ ul {
     background-color: #fefefe;
 }
 
-.menu-bord-currency-item__text {}
+/* .menu-bord-currency-item__text {} */
 
 .menu-bord-hot-btn {
     justify-content: space-between;
@@ -2130,7 +2130,7 @@ ul {
     transform: rotate(360deg);
 }
 
-.menu-bord-message-label__text {}
+/* .menu-bord-message-label__text {} */
 
 .menu-bord-message-header-table {
     padding: 10px 23px;
@@ -2151,7 +2151,7 @@ ul {
     display: inline-flex;
 }
 
-.menu-bord-message-header-table__received {}
+/* .menu-bord-message-header-table__received {} */
 
 .menu-account {
     display: none;
@@ -2376,14 +2376,21 @@ ul {
 .menu-bord-statement-field-table-row {
     padding: 10px 23px;
     background-color: #fefefe;
-    /* font-family: PT Sans;
-    font-style: normal;
-    font-weight: normal; */
     font-size: 14px;
-    /* letter-spacing: 0.03em; */
     color: #949494;
     display: flex;
     align-items: center;
+}
+.menu-bord-transactions-block-acount{
+    justify-content: space-between;
+}
+.menu-statement__input{
+    width:100px;
+    margin-right: 10px;
+}
+.menu-statement-data-block{
+    display: flex;
+    order: 2;
 }
 .menu-bord-statement-field-table-row:nth-child(2n+1){
     background-color: #f7f7f7;
@@ -2645,7 +2652,7 @@ ul {
     transform: rotate(360deg);
 }
 
-.menu-bord-crypto-label-item__img {}
+/* .menu-bord-crypto-label-item__img {} */
 
 .menu-bord-calendar-table-row {
     display: flex;
@@ -2700,7 +2707,7 @@ ul {
     border: 1px solid #C4C4C4;
 }
 
-.menu-bord-pay-charges-table-row {}
+/* .menu-bord-pay-charges-table-row {} */
 
 .menu-bord-pay-charges-table-row-input-block {
     display: flex;
@@ -3111,6 +3118,7 @@ ul {
 
 .menu-bord_text-error {
     color: #FF0A0A;
+    border:1px solid #FF0A0A
 }
 
 .menu-bord-beneficiary-add__input {
@@ -3176,7 +3184,7 @@ ul {
 
 /* ----------------------------------------------------------------------------------------------- */
 
-.menu-bord-beneficiary-table {}
+/* .menu-bord-beneficiary-table {} */
 
 .menu-message-bord-header-table {
     padding: 10px 23px;
@@ -3256,3 +3264,19 @@ ul {
 .text-align{
     text-align: center;
 }
+.xcalend{position:absolute;z-index:999;width:150px;line-height:1.2em;font-size:15px;text-align:center;background:#fff;border:2px solid #ddd}
+.xcalend td{cursor:pointer;padding:6px}
+.xcalend thead td{color:#333}
+.xcalend thead tr:last-child td{font-size:12px;background:#fff;color:#555;cursor:default}
+.xcalend tbody td{color:#025}
+.xcalend tfoot td{color:#333}
+.xcalend tbody td.tday{background:#eee;font-weight:bold}
+.xcalend tbody td:hover, .xcalend td:hover{background:#025;color:#acf}
+.xcalend tbody td:nth-child(n+6){color:#e78c5c}
+.xcalend .cal-first td:nth-last-child(-n+2){color:#e78c5c}
+.xcalend tbody td.today{background:#d00;color:#fff;font-weight:bold}
+.xcalend tbody td.bold{font-weight:bold}
+.xcalend tbody td.cal-l b, .xcalend tbody td.cal-r b{display:none}
+.xcalend tbody td.cal-l:hover b, .xcalend tbody td.cal-r:hover b{display:inline}
+.xcalend a{text-decoration:none}
+.xcalend th a{color:#ccc;display:block;padding:5px 0}

@@ -367,7 +367,7 @@ if (blockArrTabs) {
         }
 
         objPaymentDate["from_account"] = activeAccountNumber.innerText
-        console.log(objPaymentDate);
+        // console.log(objPaymentDate);
         let promise = new Promise((resolve, rejec) => {
             let xhrd = new XMLHttpRequest();
             xhrd.open("POST", "https://server.samtsov.com:8090/api/transfeers/payments/requests/applications", true);
@@ -480,8 +480,6 @@ if (blockArrTabs) {
         objTransferDate.to_account = transferToAccount.innerText
         objTransferDate.amount = transferAmount.value
         objTransferDate.reference = transferReference.value
-        console.log(objTransferDate)
-
         let promise = new Promise((resolve, reject) => {
             let xhrd = new XMLHttpRequest();
             xhrd.open("POST", "https://server.samtsov.com:8090/api/transfeers/internals/applications", true);
@@ -556,16 +554,10 @@ if (blockArrTabs) {
         statementsListRow.appendChild(statementsListRowAmountTransfer)
         statementsListRow.appendChild(statementsListRowStatusTransfer)
         statementsListRow.appendChild(statementsListRowBalanceTransfer)
-
         statementsListRowDate.innerText = correctData(obj.date)
         statementsListRowNameTransfer.innerText = obj.transfer_type_name
         statementsListRowNameRecipient.innerText = createNameRecipient(obj.transfer_type_name, obj.account_special_number, obj.intra_to_account_number)
-
         statementsListRowNumberTransfer.innerText = createNameBeneficiary(obj.iban_code, obj.intra_to_account_number, obj.account_special_number, obj.transfer_type_name)
-
-        // obj.intra_to_account_number || obj.iban_code || obj.account_special_number || ""
-
-
         statementsListRowNumberReference.innerText = obj.transfer_number || "------"
         statementsListRowAmountTransfer.innerText = checkTypeTransfer(obj.debit, obj.credit, obj.currency_abbreviation) || ""
         statementsListRowStatusTransfer.innerText = obj.status_name
@@ -590,7 +582,6 @@ if (blockArrTabs) {
 
 
         function createNameBeneficiary(ibanCode, toAccount, specialNumber, typeNameTransfer) {
-            // obj.intra_to_account_number || obj.iban_code || obj.account_special_number || ""
             if (ibanCode) {
                 return ibanCode
             }
@@ -652,10 +643,13 @@ if (blockArrTabs) {
 
 
     let btnCtatisticsAccount = document.querySelector(".menu-bord-transactions-block-acount")
+    let btnCtatisticCounain = document.createElement("div")
     function createBtnAccountStatistics() {
+        
         let btnAllStatistic = document.createElement("button")
         btnAllStatistic.innerText = "All"
-        btnCtatisticsAccount.appendChild(btnAllStatistic)
+        btnCtatisticsAccount.append(btnCtatisticCounain)
+        btnCtatisticCounain.append(btnAllStatistic)
 
 
 
@@ -663,12 +657,42 @@ if (blockArrTabs) {
             for (let i = 0; i < objAccount.accounts.length; i++) {
                 let btnAllStatistic = document.createElement("button")
                 btnAllStatistic.innerText = objAccount.accounts[i].account_special_number;
-                btnCtatisticsAccount.appendChild(btnAllStatistic)
+                btnCtatisticCounain.append(btnAllStatistic)
             }
         }
     }
+    let FilterDateBtn = document.getElementById("filterDateBtn")
 
-    btnCtatisticsAccount.addEventListener("click", (e) => {
+    FilterDateBtn.addEventListener("click",()=>{
+        let inputsDate = document.getElementsByClassName("menu-statement__input")
+        let rowsStatisticCount = document.getElementsByClassName("menu-bord-statement-field-table-row")
+        let fromDate = getDatefromRowStatistics(inputsDate[0].value, ".")
+        let toDate = getDatefromRowStatistics(inputsDate[1].value, ".")
+        function getDatefromRowStatistics(e, seporator){
+            let number = +(e.split(`${seporator}`).join(""))
+            if(number !==0){
+                return number
+            }
+            else{
+                return +(xCal(2, {lang: 'en', order: 1}).split(".").join(""))
+            }
+            
+        }
+        
+        for(let i = 0; i< rowsStatisticCount.length;){
+            if((fromDate>=getDatefromRowStatistics(rowsStatisticCount[i].children[0].innerText, "-")) && 
+            toDate<=getDatefromRowStatistics(rowsStatisticCount[i].children[0].innerText, "-")){    
+                i++
+            }
+            else{
+                rowsStatisticCount[i].remove()
+                i=0
+            }
+        }
+    })
+
+
+    btnCtatisticCounain.addEventListener("click", (e) => {
         let currentBtn = e.target;
         const rowsStatisticCount = document.getElementsByClassName("menu-bord-statement-field-table-row").length;
         let rowsStatistic = document.querySelectorAll(".menu-bord-statement-field-table-row")
@@ -678,12 +702,12 @@ if (blockArrTabs) {
             }
             createStatisticsRow()
         }
-        for (let i = 1;i<btnCtatisticsAccount.children.length;i++) {
-            if (currentBtn.innerText == btnCtatisticsAccount.children[i].innerText) {
+        for (let i = 1;i<btnCtatisticCounain.children.length;i++) {
+            if (currentBtn.innerText == btnCtatisticCounain.children[i].innerText) {
                 for (let i = 0; i < rowsStatisticCount; i++) {
                     rowsStatistic[i].remove()
                 }
-                console.log(objAccount)
+                // console.log(objAccount)
                 for (i = 0; i < objAccount.transaction.length; i++) {
                     if (objAccount.transaction[i].account_number == currentBtn.innerText) {
                         for (let ii = 0; ii < objAccount.transaction[i].transaction.length; ii++) {
@@ -710,8 +734,7 @@ if (blockArrTabs) {
             }
         }
     }
-
-    transactionsWrap.addEventListener("click", () => {
+    function requestCreateStatisticsRow() {
         const removestatementsListRow = document.getElementsByClassName("menu-bord-statement-field-table-row").length;
 
         for (let i = 0; i < removestatementsListRow; i++) {
@@ -750,7 +773,8 @@ if (blockArrTabs) {
                     console.log("error")
                 }
             )
-    })
+    }
+    transactionsWrap.addEventListener("click", requestCreateStatisticsRow())
 
     let btnDetals = document.querySelector(".menu-bord-hot-btn__item-account")
     let btnTransActions = document.querySelector(".menu-bord-hot-btn__item-transactions")
@@ -758,9 +782,9 @@ if (blockArrTabs) {
     let btnMessage = document.querySelector(".menu-bord-hot-btn__item-messages")
 
     btnDetals.addEventListener("click", () => { arrTabs[1].checked = true; showTabs() })
-    btnTransActions.addEventListener("click", () => { arrTabs[2].checked = true; showTabs(); createStatisticsRow() })
+    btnTransActions.addEventListener("click", () => { arrTabs[2].checked = true; showTabs(); requestCreateStatisticsRow() })
     btnTransfer.addEventListener("click", () => { arrTabs[3].checked = true; showTabs() })
-    btnMessage.addEventListener("click", () => { arrTabs[5].checked = true; showTabs() })
+    btnMessage.addEventListener("click", () => { arrTabs[4].checked = true; showTabs() })
 
 }
 
@@ -791,14 +815,14 @@ if (document.querySelector(".account-open-form__submit")) {
             })
         }
 
-        // for (let i = 0; i < openAccountFormInputBlock.length; i++) {
-        //     if (getChildElem(i).value.search(getChildElem(i).getAttribute("pattern")) !== -1) { setErrorOnElem(i) };
-        //     objOpenAccountFormData[openAccountFormInputBlock[i].children[0].innerText] = getChildElem(i).value;
-        // }
-        // if (inputPassword.value !== inputPasswordConfirm.value) {
-        //     setErrorOnElements(inputPassword)
-        //     setErrorOnElements(inputPasswordConfirm)
-        // }
+        for (let i = 0; i < openAccountFormInputBlock.length; i++) {
+            if (getChildElem(i).value.search(getChildElem(i).getAttribute("pattern")) == -1) { setErrorOnElem(i) };
+            objOpenAccountFormData[openAccountFormInputBlock[i].children[0].innerText] = getChildElem(i).value;
+        }
+        if (inputPassword.value !== inputPasswordConfirm.value) {
+            setErrorOnElements(inputPassword)
+            setErrorOnElements(inputPasswordConfirm)
+        }
         if (!document.querySelector(".menu-bord_text-error")) {
 
             let promise = new Promise((resolve, rejec) => {
