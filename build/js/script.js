@@ -645,7 +645,7 @@ if (blockArrTabs) {
     let btnCtatisticsAccount = document.querySelector(".menu-bord-transactions-block-acount")
     let btnCtatisticCounain = document.createElement("div")
     function createBtnAccountStatistics() {
-        
+
         let btnAllStatistic = document.createElement("button")
         btnAllStatistic.innerText = "All"
         btnCtatisticsAccount.append(btnCtatisticCounain)
@@ -663,30 +663,30 @@ if (blockArrTabs) {
     }
     let FilterDateBtn = document.getElementById("filterDateBtn")
 
-    FilterDateBtn.addEventListener("click",()=>{
+    FilterDateBtn.addEventListener("click", () => {
         let inputsDate = document.getElementsByClassName("menu-statement__input")
         let rowsStatisticCount = document.getElementsByClassName("menu-bord-statement-field-table-row")
         let fromDate = getDatefromRowStatistics(inputsDate[0].value, ".")
         let toDate = getDatefromRowStatistics(inputsDate[1].value, ".")
-        function getDatefromRowStatistics(e, seporator){
+        function getDatefromRowStatistics(e, seporator) {
             let number = +(e.split(`${seporator}`).join(""))
-            if(number !==0){
+            if (number !== 0) {
                 return number
             }
-            else{
-                return +(xCal(2, {lang: 'en', order: 1}).split(".").join(""))
+            else {
+                return +(xCal(2, { lang: 'en', order: 1 }).split(".").join(""))
             }
-            
+
         }
-        
-        for(let i = 0; i< rowsStatisticCount.length;){
-            if((fromDate>=getDatefromRowStatistics(rowsStatisticCount[i].children[0].innerText, "-")) && 
-            toDate<=getDatefromRowStatistics(rowsStatisticCount[i].children[0].innerText, "-")){    
+
+        for (let i = 0; i < rowsStatisticCount.length;) {
+            if ((fromDate >= getDatefromRowStatistics(rowsStatisticCount[i].children[0].innerText, "-")) &&
+                toDate <= getDatefromRowStatistics(rowsStatisticCount[i].children[0].innerText, "-")) {
                 i++
             }
-            else{
+            else {
                 rowsStatisticCount[i].remove()
-                i=0
+                i = 0
             }
         }
     })
@@ -702,7 +702,7 @@ if (blockArrTabs) {
             }
             createStatisticsRow()
         }
-        for (let i = 1;i<btnCtatisticCounain.children.length;i++) {
+        for (let i = 1; i < btnCtatisticCounain.children.length; i++) {
             if (currentBtn.innerText == btnCtatisticCounain.children[i].innerText) {
                 for (let i = 0; i < rowsStatisticCount; i++) {
                     rowsStatistic[i].remove()
@@ -787,6 +787,43 @@ if (blockArrTabs) {
     btnMessage.addEventListener("click", () => { arrTabs[4].checked = true; showTabs() })
 
 }
+else {
+    function replaceURL(e) {
+        let pagePathName = window.location.pathname
+        let markerLang = pagePathName.split("/")
+        if (e.target.getAttribute("data-href") && e.target.getAttribute("data-href") !== "/uk") {
+
+            let attributeURL = e.target.getAttribute("data-href")
+            if (markerLang.length - 1 === "index.html") {
+                window.location.href = attributeURL +"/index.html"
+            }
+            else if (markerLang.length === 2) {
+                window.location.href = attributeURL + pagePathName
+            }
+        }
+        else if (e.target.getAttribute("data-href") && e.target.getAttribute("data-href") == "/uk") {
+            window.location.pathname = markerLang[markerLang.length - 1]
+        }
+    }
+    if (document.querySelector(".nav-wrap-lang-list")) {
+        document.querySelector(".nav-wrap-lang-list").addEventListener("click", (e) => { replaceURL(e) })
+    }
+
+    function changeURLimg() {
+        let arrImg = document.getElementsByTagName("img")
+        for (let i = 0; i < arrImg.length; i++) {
+            let test = arrImg[i].getAttribute("src");
+            arrImg[i].setAttribute("src", `../${test}`)
+            if(arrImg[i].classList.contains("services__img")){
+                
+                arrImg[i].classList.add("services__img")
+                arrImg[i].previousElementSibling.classList.add("test")
+            }
+        }
+    }
+    window.onload = () => { changeURLimg() }
+}
+
 
 //-----------------------------------------open account form---------------------------
 

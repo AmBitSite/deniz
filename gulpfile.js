@@ -20,9 +20,28 @@ gulp.task('css:build', (done) => {
 
     done();
 });
+
 gulp.task('img:build', (done) => {
     gulp.src("src/img/*.*")
         .pipe(gulp.dest("build/img"))
+
+    done();
+});
+// gulp.task('css:build', (done) => {
+//     gulp.src("src/ru/*.html")
+//         .pipe(cssmin())
+//         .pipe(gulp.dest("build/html"))
+//         .pipe(browserSync.stream());
+
+//     done();
+// });
+gulp.task('ru:build', (done) => {
+    gulp.src("src/ru/*.html")
+    .pipe(fileinclude({
+        prefix: "@@",
+        basepath: "./src/template/"
+    }))
+        .pipe(gulp.dest("build/ru"))
 
     done();
 });
@@ -58,6 +77,7 @@ gulp.task('serve', (done) => {
     gulp.watch("src/img/*.*").on('change', gulp.series('img:build'));
     gulp.watch("src/font/*.*").on('change', gulp.series('font:build'));
     gulp.watch("src/js/*.js").on('change', gulp.series('js:build'));
+    gulp.watch("src/ru/*.html").on('change', gulp.series('ru:build'));
     done()
 });
 gulp.task("watch", (done) => {
@@ -71,5 +91,6 @@ gulp.task("watch", (done) => {
     gulp.watch("src/font/*.*").on('change', gulp.parallel(['font:build', browserSync.reload]));
     gulp.watch("src/js/*.js").on('change', gulp.parallel(['js:build', browserSync.reload]));
     gulp.watch("src/pdf/*.*").on('change', gulp.parallel(['file:build', browserSync.reload]));
+    gulp.watch("src/ru/*.html").on('change', gulp.parallel(['ru:build', browserSync.reload]));
     done()
 })
