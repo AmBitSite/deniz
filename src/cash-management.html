@@ -16,7 +16,7 @@
 <body>
     <main class="main">
         @@include('nav-top.html')
-        <header class="header fees-bg">
+        <header class="header bg-none">
             <div class="second-nav">
                 <a href="index.html" class="second-nav__logo">
                 </a>
@@ -25,15 +25,15 @@
             </div>
             @@include('header-nav.html')
         </header>
-        <div class="block-caption section box">
-            <div class="section__header box">
-                <div class="section__header-text box">Cash Management</div>
+        <div class="section">
+            <div class="section__header">
+                <div class="section__header-text">Cash Management</div>
             </div>
-            <ul class="section__nav box">
-                <li class="section__nav-item box"><a href="index.html">Home Page</a></li>
-                <li class="section__nav-item box"><a href="private-banking.html">Banking</a></li>
-                <li class="section__nav-item box"><a href="corporate-banking.html">Corporate Banking</a></li>
-                <li class="section__nav-item box">Cash Management</li>
+            <ul class="section__nav">
+                <li class="section__nav-item"><a href="index.html">Home Page</a></li>
+                <li class="section__nav-item"><a href="private-banking.html">Banking</a></li>
+                <li class="section__nav-item"><a href="corporate-banking.html">Corporate Banking</a></li>
+                <li class="section__nav-item">Cash Management</li>
             </ul>
             <div class="about-us__text-block clearfix">
                 <img class="services__img about-us__text-block-img" src="img/cash-management.png" alt="">
@@ -50,11 +50,10 @@
                     Pay securely with your account balance, send and receive money transfers, manage your
                     utility payments.
                 </span>
-                <h3 class="services__header">An individual approach to the special needs of our Clients creates
+                <h3 class="section__second-header">An individual approach to the special needs of our Clients creates
                     a diverse range of solutions for your business.
                 </h3>
             </div>
-        </div>
         </div>
         @@include('map-site.html')
         @@include('footer-nav.html')

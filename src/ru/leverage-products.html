@@ -16,7 +16,7 @@
 <body>
     <main class="main">
         @@include('nav-top.html')
-        <header class="header fees-bg">
+        <header class="header bg-none">
             <div class="second-nav">
                 <a href="index.html" class="second-nav__logo">
                 </a>
@@ -25,31 +25,26 @@
             </div>
             @@include('header-nav.html')
         </header>
-        <div class="block-caption section box">
-            <div class="section__header box">
-                <div class="section__header-text box">Продукты с кредитным плечом</div>
+        <div class="section">
+            <div class="section__header">
+                <div class="section__header-text">Продукты с кредитным плечом</div>
             </div>
-            <ul class="section__nav box">
-                <li class="section__nav-item box"><a href="index.html">На главную</a></li>
-                <li class="section__nav-item box"><a href="wealth-management.html">Продукты с кредитным плечом</a></li>
-                <li class="section__nav-item box">Investment Products</li>
-                <li class="section__nav-item box">Управление частным капиталом</li>
+            <ul class="section__nav">
+                <li class="section__nav-item"><a href="index.html">На главную</a></li>
+                <li class="section__nav-item"><a href="wealth-management.html">Продукты с кредитным плечом</a></li>
+                <li class="section__nav-item">Investment Products</li>
+                <li class="section__nav-item">Управление частным капиталом</li>
 
             </ul>
-            <div class="about-us__text-block">
-                <div class="services-block">
-                    <div>
+            <div class="about-us__text-block clearfix">
+                <img class="services__img about-us__text-block-img" src="img/investment-consulting.png" alt="">
                         <h3 class="about-us__text-block-header">Продукты с кредитным плечом </h3>
                         <span class="services__text">
                             Будучи нашим клиентом, у вас есть возможность получить финансовое решение, которое поспособствует быстрому росту вашего благосостояния. Решение, которое поможет получить прибыль, направленное на структурирование и выполнение долговых операций. В рамках этого решения доступны различные варианты для долгового финансирования: облигации, концепции комплексного развития, общие корпоративные приобретения, выкуп заемных средств и т.д. Наши эксперты помогут вам стать конкурентоспособным участником рынка, обеспечивая при этом существенную прибыль с точной оценкой активов.
                             В Euro Deniz мы помогаем нашим клиентам в консультировании по займам, а также по балансовым обязательствам, которые предоставляются в соответствии с потребностями клиентов.
                         </span>
-                        <span class="services__text">Пожалуйста,&nbsp;<a href="./contact.html">свяжитесь с нами, </a>&nbsp чтобы получить консультацию.</span>
-
+                        <span class="services__text">Пожалуйста,&nbsp;<a href="contact.html">свяжитесь с нами, </a>&nbsp чтобы получить консультацию.</span>
                     </div>
-                    <img class="services__img" src="img/investment-consulting.png" alt="">
-                </div>
-            </div>
         </div>
         @@include('map-site.html')
         @@include('footer-nav.html')

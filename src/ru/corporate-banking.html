@@ -14,9 +14,9 @@
 </head>
 
 <body>
-    <main class="main"> 
+    <main class="main">
         @@include('nav-top.html')
-        <header class="header fees-bg">
+        <header class="header bg-none">
             <div class="second-nav">
                 <a href="index.html" class="second-nav__logo">
                 </a>
@@ -25,32 +25,30 @@
             </div>
             @@include('header-nav.html')
         </header>
-        <div class="block-caption section box">
-            <div class="section__header box">
-                <div class="section__header-text box">Банковское обслуживание корпоративных клиентов</div>
+        <div class="section">
+            <div class="section__header">
+                <div class="section__header-text">Банковское обслуживание корпоративных клиентов</div>
             </div>
-            <ul class="section__nav box">
-                <li class="section__nav-item box"><a href="index.html">На главную</a></li>
-                <li class="section__nav-item box"><a href="private-banking.html">Банкинг</a></li>
-                <li class="section__nav-item box"><a href="corporate-banking.html">Банковское обслуживание корпоративных клиентов </a></li>
+            <ul class="section__nav">
+                <li class="section__nav-item"><a href="index.html">На главную</a></li>
+                <li class="section__nav-item"><a href="private-banking.html">Банкинг</a></li>
+                <li class="section__nav-item"><a href="corporate-banking.html">Банковское обслуживание корпоративных
+                        клиентов </a></li>
             </ul>
-            <div class="about-us__text-block">
-                <div class="services-block">
-                    <div>
-                        <h3 class="about-us__text-block-header">Единственное в своем роде банковское решение для вашего бизнеса</h3>
-                        <div>
-                            <ul class="  services-block_mr-25">
-                                <li class="services__text">Наша основная цель - это абсолютная готовность быть вашим деловым партнером, предоставляя исключительный сервис и оправдывая ваши ожидания.
-                                    Наряду с круглосуточной поддержкой, мы предлагаем наилучшие варианты денежных переводов, которые сэкономят ваше время и обеспечат сохранность ваших средств.
-                                     </li>
-                                <li class="services__text">Мы считаем, что каждый клиент уникален и достоин особенного подхода.
-                                    Вам будут оказывать поддержку в лучших традициях частного банковского обслуживания.
-                                     </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <img class="services__img" src="img/private_banking.png" alt="">
-                </div>
+            <div class="about-us__text-block clearfix">
+                <img class="services__img about-us__text-block-img" src="img/private_banking.png" alt="">
+                <h3 class="about-us__text-block-header">Единственное в своем роде банковское решение для вашего бизнеса
+                </h3>
+                <ul>
+                    <li class="services__text">Наша основная цель - это абсолютная готовность быть вашим деловым
+                        партнером, предоставляя исключительный сервис и оправдывая ваши ожидания.
+                        Наряду с круглосуточной поддержкой, мы предлагаем наилучшие варианты денежных переводов,
+                        которые сэкономят ваше время и обеспечат сохранность ваших средств.
+                    </li>
+                    <li class="services__text">Мы считаем, что каждый клиент уникален и достоин особенного подхода.
+                        Вам будут оказывать поддержку в лучших традициях частного банковского обслуживания.
+                    </li>
+                </ul>
             </div>
         </div>
         @@include('map-site.html')

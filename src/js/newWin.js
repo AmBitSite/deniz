@@ -3,9 +3,9 @@ document.body = document.createElement("body");
 let logo = document.createElement("img");
 let h4 = document.createElement("h4");
 let h2 = document.createElement("h2");
-document.body.append(logo)
-document.body.append(h4)
-document.body.append(h2)
+document.body.append(logo);
+document.body.append(h4);
+document.body.append(h2);
 logo.style.margin = "10px 23px";
 logo.style.width = "200px";
 h2.innerText = "Beneficiary Details:";
@@ -14,8 +14,8 @@ h2.style.marginLeft = "23px";
 h4.style.color = "#949494";
 h4.style.marginLeft = "23px";
 document.body.style.margin = "0";
-logo.setAttribute("src", "img/logo1.png")
-h4.innerText = correctData(objFieldsName["Transaction Number"])
+logo.setAttribute("src", "img/logo1.png");
+h4.innerText = correctData(objFieldsName["Transaction Number"]);
 function addStyleRow(elem) {
     elem.style.padding = "10px 23px";
     elem.style.backgroundColor = "#fefefe";
@@ -28,20 +28,20 @@ function addStyleHeader(elem){
     
 }
 for (key in objFieldsName) {
-    let newWinBlock = document.createElement("div")
-    let newWinBlockSpanHeader = document.createElement("span")
-    let newWinBlockSpanText = document.createElement("span")
-    newWinBlockSpanHeader.innerText = key
+    let newWinBlock = document.createElement("div");
+    let newWinBlockSpanHeader = document.createElement("span");
+    let newWinBlockSpanText = document.createElement("span");
+    newWinBlockSpanHeader.innerText = key;
     newWinBlockSpanText.innerText = objFieldsName[key];
-    document.body.append(newWinBlock)
-    newWinBlock.appendChild(newWinBlockSpanHeader)
-    newWinBlock.appendChild(newWinBlockSpanText)
-    addStyleRow(newWinBlock)
-    addStyleHeader(newWinBlockSpanHeader)
+    document.body.append(newWinBlock);
+    newWinBlock.appendChild(newWinBlockSpanHeader);
+    newWinBlock.appendChild(newWinBlockSpanText);
+    addStyleRow(newWinBlock);
+    addStyleHeader(newWinBlockSpanHeader);
 }
 function correctData(i) {
-    let text = i
-    let arr = text.split("-")
+    let text = i;
+    let arr = text.split("-");
     return timeConverter(arr[1])
 }
 function timeConverter(UNIX_timestamp) {

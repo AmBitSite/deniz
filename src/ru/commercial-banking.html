@@ -14,9 +14,9 @@
 </head>
 
 <body>
-    <main class="main"> 
+    <main class="main">
         @@include('nav-top.html')
-        <header class="header fees-bg">
+        <header class="header bg-none">
             <div class="second-nav">
                 <a href="index.html" class="second-nav__logo">
                 </a>
@@ -25,33 +25,31 @@
             </div>
             @@include('header-nav.html')
         </header>
-        <div class="block-caption section box">
-            <div class="section__header box">
-                <div class="section__header-text box">Коммерческий банкинг</div>
+        <div class="section">
+            <div class="section__header">
+                <div class="section__header-text">Коммерческий банкинг</div>
             </div>
-            <ul class="section__nav box">
-                <li class="section__nav-item box"><a href="index.html">На главную</a></li>
-                <li class="section__nav-item box"><a href="private-banking.html">Банкинг</a></li>
-                <li class="section__nav-item box">Коммерческий банкинг </li>
+            <ul class="section__nav">
+                <li class="section__nav-item"><a href="index.html">На главную</a></li>
+                <li class="section__nav-item"><a href="private-banking.html">Банкинг</a></li>
+                <li class="section__nav-item">Коммерческий банкинг </li>
             </ul>
             <div class="about-us__text-block">
-                <div class="services-block">
-                    <div>
-                        <h2 class="about-us__text-block-header">Вы всегда можете рассчитывать на нас.
-                        </h2>
-                        <span class="services__text">Euro Deniz IBU всегда к вашим услугам с экспертной поддержкой 
-                            инвестиционного финансирования через ЕИБ (Европейский инвестиционный банк) и ЕБРР 
-                            (Европейский банк реконструкции и развития).</span>
-                        <ul class="services__text">
-                            <li>Вам будет оказана поддержка в получении наличных средств через службу управления денежными средствами Euro Deniz IBU.
-                                Кроме того, наши менеджеры предоставят вам всю необходимую информацию о внешней торговле.
-                                
-                            </li>
-                        </ul>
-                        <h2 class="services__header">Каждый случай уникален, и мы готовы найти решение, подходящее именно вам.</h2>
-                    </div>
-                    <img class="services__img" src="../img/commercial-banking.png" alt="">
-                </div>
+                <img class="services__img about-us__text-block-img" src="../img/commercial-banking.png" alt="">
+                <h2 class="about-us__text-block-header">Вы всегда можете рассчитывать на нас.
+                </h2>
+                <span class="services__text">Euro Deniz IBU всегда к вашим услугам с экспертной поддержкой
+                    инвестиционного финансирования через ЕИБ (Европейский инвестиционный банк) и ЕБРР
+                    (Европейский банк реконструкции и развития).</span>
+                <ul class="services__text">
+                    <li>Вам будет оказана поддержка в получении наличных средств через службу управления денежными
+                        средствами Euro Deniz IBU.
+                        Кроме того, наши менеджеры предоставят вам всю необходимую информацию о внешней торговле.
+
+                    </li>
+                </ul>
+                <h2 class="section__second-header">Каждый случай уникален, и мы готовы найти решение, подходящее именно вам.
+                </h2>
             </div>
         </div>
         @@include('map-site.html')

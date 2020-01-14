@@ -15,9 +15,9 @@
 </head>
 
 <body>
-    <main class="main"> 
+    <main class="main">
         @@include('nav-top.html')
-        <header class="header fees-bg">
+        <header class="header bg-none">
             <div class="second-nav">
                 <a href="index.html" class="second-nav__logo">
                 </a>
@@ -26,33 +26,32 @@
             </div>
             @@include('header-nav.html')
         </header>
-        <section class="section box">
-            <div class="section__header box">
-                <div class="section__header-text box">Дебетовые карты</div>
+        <section class="section">
+            <div class="section__header">
+                <div class="section__header-text">Дебетовые карты</div>
             </div>
-            <ul class="section__nav box">
-                <li class="section__nav-item box"><a href="">На главную</a></li>
-                <li class="section__nav-item box">Дебетовые карты</li>
+            <ul class="section__nav">
+                <li class="section__nav-item"><a href="index.html">На главную</a></li>
+                <li class="section__nav-item">Дебетовые карты</li>
             </ul>
-            <article class="busines-card-content box">
-                <div class="d-flex">
-                    <div class="busines-card-content__text-block">
-                        <h3 class="about-us__text-block-header">
-                            Быстро, удобно и безопасно.
-                        </h3>
+            <div class="about-us__text-block clearfix">
+                <img src="img/busines-card-image.png" alt="busines card" class=" about-us__text-block-img">
+                <h3 class="about-us__text-block-header">
+                    Быстро, удобно и безопасно.
+                </h3>
 
-                        <h3 class="services__header">Платежи по всему миру. С нашей дебетовой картой вы можете беспрепятственно осуществлять платежи в 177 странах мира.</h3>
-                        <ul>
-                            <li class="services__text">Снятие наличных в банкомате и депозиты.</li>
-                            <li class="services__text">Бесконтактная оплата для покупок до 20 GBP.</li>
-                            <li class="services__text">Доставка на дом или в офис. Бесплатная и простая доставка карты в любое место.</li>
-                        </ul>
-                        <span class="services__text"><a href="contact.html">&nbsp;ЗАКАЗАТЬ КАРТУ</a>&nbsp;Пожалуйста, свяжитесь с нами, если вы еще не являетесь 
-                            клиентом EURO DENIZ IBU.</span>
-                    </div>
-                    <img src="img/busines-card-image.png" alt="busines card" class="busines-card-content__image">
-                </div>
-            </article>
+                <h3 class="section__second-header">Платежи по всему миру. С нашей дебетовой картой вы можете беспрепятственно
+                    осуществлять платежи в 177 странах мира.</h3>
+                <ul>
+                    <li class="services__text">Снятие наличных в банкомате и депозиты.</li>
+                    <li class="services__text">Бесконтактная оплата для покупок до 20 GBP.</li>
+                    <li class="services__text">Доставка на дом или в офис. Бесплатная и простая доставка карты в любое
+                        место.</li>
+                </ul>
+                <span class="about-us__text">Пожалуйста,&nbsp;<a href="contact.html">свяжитесь с нами,</a>
+                если вы еще не являетесь клиентом EURO DENIZ IBU.
+                </span>
+            </div>
         </section>
         @@include('map-site.html')
         @@include('footer-nav.html')

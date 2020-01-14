@@ -1,15 +1,15 @@
-var inputMail = document.querySelector(".input__mail");
-var dynamicText = document.querySelector(".form-send__dynamic-text");
-var arrMoney = ['CNY', 'CHF', 'GBP', 'USD', 'TRY'];
-var moneyName = document.querySelectorAll(".info-converter-row__name");
-var moneyValue = document.querySelectorAll(".info-converter-row__value");
-var blockNews = document.getElementsByClassName("info-news-block");
-var arrCryptoMoney = ['BTC', 'ETH', 'BCH', 'USDT', 'LTC'];
-var moneyCryptoName = document.querySelectorAll(".info-converter-crypto-row__name");
-var moneyCryptoValue = document.querySelectorAll(".info-converter-crypto-row__value");
-var sliderParent = document.querySelector(".slider-wrap");
-var sliderControls = document.querySelector(".slider-control");
-var objAccount = sessionStorage.getItem("base") || {};
+let inputMail = document.querySelector(".input__mail");
+let dynamicText = document.querySelector(".form-send__dynamic-text");
+const arrMoney = ['CNY', 'CHF', 'GBP', 'USD', 'TRY'];
+let moneyName = document.querySelectorAll(".info-converter-row__name");
+let moneyValue = document.querySelectorAll(".info-converter-row__value");
+let blockNews = document.getElementsByClassName("info-news-block");
+const arrCryptoMoney = ['BTC', 'ETH', 'BCH', 'USDT', 'LTC'];
+let moneyCryptoName = document.querySelectorAll(".info-converter-crypto-row__name");
+let moneyCryptoValue = document.querySelectorAll(".info-converter-crypto-row__value");
+let sliderParent = document.querySelector(".slider-wrap");
+let sliderControls = document.querySelector(".slider-control");
+let objAccount = sessionStorage.getItem("base") || {};
 //---------------------------------------------send email address in contact page--------------------------------------------------------------
 if (inputMail) {
     inputMail.addEventListener("keyup", function () {
@@ -17,13 +17,12 @@ if (inputMail) {
     });
 }
 // ---------------------------------------httprequest EUR exchange rates ----------------------------------------------------------
-var xhr = new XMLHttpRequest();
-xhr.withCredentials = false;
+let xhr = new XMLHttpRequest();
 xhr.open("GET", "https://api.exchangeratesapi.io/latest?base=EUR", true);
 xhr.send();
 xhr.addEventListener("readystatechange", function () {
     if (this.readyState === this.DONE) {
-        for (var i = 0; i < moneyName.length; i++) {
+        for (let i = 0; i < moneyName.length; i++) {
             moneyName[i].innerText = arrMoney[i];
             moneyValue[i].innerText = JSON.parse(this.responseText).rates[arrMoney[i]];
         };
@@ -31,12 +30,11 @@ xhr.addEventListener("readystatechange", function () {
 });
 
 // ---------------------------------------httprequest news --------------------------------------------------
-var xhrN = new XMLHttpRequest();
-xhrN.withCredentials = false;
+let xhrN = new XMLHttpRequest();
 xhrN.open("GET", "https://newsapi.org/v2/top-headlines?category = business&sources=bloomberg&apiKey=d5ab78edfa2649a6b0fd66a7cf1c2c68", true);
 xhrN.send();
 xhrN.addEventListener("readystatechange", function () {
-    for (var j = 0; j < blockNews.length; j++) {
+    for (let j = 0; j < blockNews.length; j++) {
         blockNews[j].setAttribute('href', JSON.parse(this.responseText).articles[j].url);
         blockNews[j].firstElementChild.innerText = JSON.parse(this.responseText).articles[j].title;
     }
@@ -44,13 +42,12 @@ xhrN.addEventListener("readystatechange", function () {
 
 // ---------------------------------------httprequest cryptocurrency courses --------------------------------------------------
 if (moneyCryptoName[0]) {
-    var xhrC = new XMLHttpRequest();
-    xhrC.withCredentials = false;
+    let xhrC = new XMLHttpRequest();
     xhrC.open("GET", "https://min-api.cryptocompare.com/data/price?fsym=EUR&tsyms=BTC,ETH,BCH,USDT,LTC&apiKey=bb98291570d521612ebd320b47a541e57dd03581bc116ddeb19abb62e7a306a6", true);
     xhrC.send();
     xhrC.addEventListener("readystatechange", function () {
         if (this.readyState === this.DONE) {
-            for (var i = 0; i < arrCryptoMoney.length; i++) {
+            for (let i = 0; i < arrCryptoMoney.length; i++) {
                 moneyCryptoName[i].innerText = arrCryptoMoney[i];
                 moneyCryptoValue[i].innerText = JSON.parse(this.responseText)[arrCryptoMoney[i]];
             };
@@ -69,8 +66,8 @@ function sliderCart(arrElem, count) {
 if (sliderControls) {
     sliderControls.addEventListener("click", function (e) {
         if (e.target.classList.contains("slider-control__item")) {
-            var btnSlider = e.target;
-            var activeClass = document.querySelector(".slider-control__item_active");
+            let btnSlider = e.target;
+            let activeClass = document.querySelector(".slider-control__item_active");
             activeClass.classList.remove("slider-control__item_active")
             btnSlider.classList.add("slider-control__item_active")
             for (let i = 0; i < sliderControls.children.length; i++) {
@@ -101,12 +98,12 @@ function runSlider() {
 
 setInterval(runSlider, 5000)
 // -----------------------------------------------authorization----------------------------------------------------------
-var authorizationBlock = document.querySelector(".internet-banking");
-var btnBlock = document.querySelector(".authorization-block-btn");
-var pointAuthorithation = 0;
+let authorizationBlock = document.querySelector(".internet-banking");
+let btnBlock = document.querySelector(".authorization-block-btn");
+let pointAuthorithation = 0;
 
 function hideCildrenElements(element) {
-    for (var countElements = 0; countElements < element.children.length; countElements++) {
+    for (let countElements = 0; countElements < element.children.length; countElements++) {
         element.children[countElements].style.display = "none";
     }
 }
@@ -117,7 +114,6 @@ if (authorizationBlock) {
     authorizationBlock.children[0].style.display = "block";
     authorizationBlock.addEventListener("click", function (e) {
         if (e.target === document.querySelector(".internet-banking__btn")) {
-
             hideCildrenElements(authorizationBlock);
             showElement(authorizationBlock.children[1]);
             showElement(btnBlock);
@@ -135,14 +131,14 @@ function hideElement(elem) {
     elem.style.display = "none";
 }
 
-
 if (btnBlock) {
-    btnBlock.children[1].addEventListener("click", function xxx() {
-        var obj = {
+    btnBlock.children[1].addEventListener("click", function () {
+        let obj = {
             username: document.querySelector(".authorization__login").value,
             password: document.querySelector(".authorization__password").value
         }
-        var objS = JSON.stringify(obj)
+        let objS = JSON.stringify(obj)
+
 
         let promise = new Promise((resolve, reject) => {
             let xhrd = new XMLHttpRequest();
@@ -245,7 +241,6 @@ if (window.location == `${window.origin}/account.html`) {
         }
 
     }
-    let userNameHome = document.querySelector(".menu-bord-text-welcome");
 
     function cteateElementCurrencyRates(currency, rates) {
         let parentCurrencyRates = document.querySelector(".menu-bord-currency-wrap");
@@ -367,7 +362,6 @@ if (blockArrTabs) {
         }
 
         objPaymentDate["from_account"] = activeAccountNumber.innerText
-        // console.log(objPaymentDate);
         let promise = new Promise((resolve, rejec) => {
             let xhrd = new XMLHttpRequest();
             xhrd.open("POST", "https://server.samtsov.com:8090/api/transfeers/payments/requests/applications", true);
@@ -408,19 +402,12 @@ if (blockArrTabs) {
                     messageApproved.children[1].classList.add("animation-account-message")
                 }
             )
-
-
-
-
-        //-------------------------intra transfer----------------------
-
-
     })
-    function createPaymentRequst(count) {
+//-------------------------intra transfer----------------------
 
+    function createPaymentRequst(count) {
         let paymentAccountBlock = document.querySelector(".menu-bord-payment-table-row-options__paymentRequest")
         let paymentAccountBlockNumber = document.createElement("span");
-
         paymentAccountBlockNumber.classList.add("menu-bord-transfer-table-row__account-number")
         paymentAccountBlockNumber.classList.add("menu-bord_text-normal")
         paymentAccountBlock.appendChild(paymentAccountBlockNumber)
@@ -480,6 +467,7 @@ if (blockArrTabs) {
         objTransferDate.to_account = transferToAccount.innerText
         objTransferDate.amount = transferAmount.value
         objTransferDate.reference = transferReference.value
+
         let promise = new Promise((resolve, reject) => {
             let xhrd = new XMLHttpRequest();
             xhrd.open("POST", "https://server.samtsov.com:8090/api/transfeers/internals/applications", true);
@@ -519,9 +507,7 @@ if (blockArrTabs) {
 
     })
     function correctData(i) {
-        let text = objAccount.intra_transfers[i].transfer_number
-        let arr = text.split("-")
-
+        let arr = objAccount.intra_transfers[i].transfer_number.split("-")
         return timeConverter(arr[arr.length - 1])
     }
 
@@ -719,11 +705,7 @@ if (blockArrTabs) {
         }
     })
 
-
-
     createBtnAccountStatistics()
-
-
 
     function createStatisticsRow() {        // функция обновления строк
         if (objAccount.transaction.length !== 0) {
@@ -795,7 +777,7 @@ else {
 
             let attributeURL = e.target.getAttribute("data-href")
             if (markerLang.length - 1 === "index.html") {
-                window.location.href = attributeURL +"/index.html"
+                window.location.href = attributeURL + "/index.html"
             }
             else if (markerLang.length === 2) {
                 window.location.href = attributeURL + pagePathName
@@ -814,10 +796,9 @@ else {
         for (let i = 0; i < arrImg.length; i++) {
             let test = arrImg[i].getAttribute("src");
             arrImg[i].setAttribute("src", `../${test}`)
-            if(arrImg[i].classList.contains("services__img")){
-                
+            if (arrImg[i].classList.contains("services__img")) {
+
                 arrImg[i].classList.add("services__img")
-                arrImg[i].previousElementSibling.classList.add("test")
             }
         }
     }
@@ -907,6 +888,7 @@ if (document.querySelector(".form__submit")) [
         objForm[formfiends[1].getAttribute("placeholder")] = formfiends[1].value
         objForm[formfiends[2].getAttribute("placeholder")] = formfiends[2].value
         objForm[formFiendsArea.getAttribute("placeholder")] = formFiendsArea.value
+        
         let promise = new Promise((resolve, rejec) => {
             let xhrd = new XMLHttpRequest();
             xhrd.open("POST", "https://servercgbank.samtsov.com:8090/mailer/contacts/forms", true);
