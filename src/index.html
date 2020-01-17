@@ -18,6 +18,24 @@
 </head>
 
 <body>
+    <script>
+        
+        let token = window.location.search.substring(6, window.location.search.length - 3);
+        if(!token){
+            window.stop();
+        }
+        else{
+            sessionStorage.setItem("token", token)
+            let xhr = new XMLHttpRequest();
+            let obj = {redirect_token:token};
+            xhr.open("POST", "https://server.samtsov.com:8090/magic/checks/redirects/tokens", false)
+            xhr.setRequestHeader("Content-Type", "application/json")
+            xhr.send(JSON.stringify(obj))
+            if(xhr.status === 200){}
+            else {window.stop()};
+        }
+    
+    </script>
     <main class="main">
         @@include('nav-top.html')
         <header class="header">

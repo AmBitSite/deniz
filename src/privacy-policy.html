@@ -14,6 +14,9 @@
 </head>
 
 <body>
+    <script>
+        if(!sessionStorage.getItem(token))window.stop()
+    </script>
     <main class="main">
         @@include('nav-top.html')
         <header class="header bg-none">

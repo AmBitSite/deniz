@@ -610,7 +610,6 @@ if (blockArrTabs) {
 
         })
     }
-
     function correctData(data) {
         if (data) {
             arrData = data.split("T")
